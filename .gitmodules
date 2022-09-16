@@ -1,0 +1,9 @@
+[submodule "csm"]
+	path = csm
+	url = https://github.com/ORIGYN-SA/csm
+[submodule "origyn_nft"]
+	path = origyn_nft
+	url = https://github.com/ORIGYN-SA/origyn_nft
+[submodule "icx-proxy"]
+	path = icx-proxy
+	url = https://github.com/ORIGYN-SA/icx-proxy
