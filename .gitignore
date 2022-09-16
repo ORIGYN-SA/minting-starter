@@ -1,0 +1,30 @@
+# Various IDEs and Editors
+.vscode/**/*
+!.vscode/launch.json
+.idea/
+
+# Github Access Token
+gittoken.key
+
+# dApps
+dapps-latest-build*
+dapps-latest-build.zip
+
+# Mac OSX temporary files
+.DS_Store
+**/.DS_Store
+
+# dfx temporary files
+.dfx/
+
+# mint script output files
+**/__*/
+
+# frontend code
+node_modules
+
+seed.prod.txt
+seed-prod.txt
+seed.txt
+identity.prod.pem
+identity.pem
