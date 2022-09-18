@@ -233,6 +233,7 @@ node csm-config.js \
 --collectionId "bm" \
 --tokenPrefix "bm-" \
 --assetMappings "primary:nft*.png, hidden:mystery-bm.gif" \
+--useProxy "false" \
 --soulbound "false"
 
 show_elapsed_time
