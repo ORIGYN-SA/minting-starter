@@ -35,8 +35,8 @@
                 "false",
                 "--nftQuantities",
                 "3",
-                "--seedFilePath",
-                "seed.txt",
+                "--keyFilePath",
+                "./projects/brain-matters/local_nft_deployer.pem",
                 "--range",
                 "0-7"
             ]

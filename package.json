@@ -14,7 +14,9 @@
         "hdkey": "^2.0.1",
         "mime-types": "^2.1.35",
         "minimist": "^1.2.6",
-        "node-fetch": "^3.2.9"
+        "node-fetch": "^3.2.9",
+        "pem-file": "^1.0.1",
+        "sha256": "^0.2.0"
     },
     "prettier": {
         "trailingComma": "es5",
