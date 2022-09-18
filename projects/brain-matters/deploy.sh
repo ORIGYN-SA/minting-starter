@@ -19,8 +19,25 @@ echo $'\n\n**************************************'
 echo "******** Set User Variables **********"
 echo $'**************************************\n'
 
-IC_NETWORK="local" # local or ic (mainnet)
-NFT_CANISTER_ID="" # leave blank if local network
+# local or ic (mainnet)
+IC_NETWORK="local"
+
+# leave blank if local network
+NFT_CANISTER_ID=""
+
+# leave blank if local network
+# if ic network (mainnet) use private key (.pem file) of mainnet identity
+IDENTITY_PEM_FILE_PATH=""
+
+# Creates, imports and uses identity if it does exist
+# If ic network (mainnet), make sure you manually import your existing
+# identity first, then provide the name of your imported identity here.
+IDENTITY_NAME="local_nft_deployer"
+
+
+echo $'\n\n**************************************'
+echo "********* Input Validation ***********"
+echo $'**************************************\n'
 
 if [[ $IC_NETWORK == "ic" || $IC_NETWORK == "local" ]]; then
   echo "IC_NETWORK: $IC_NETWORK"
@@ -34,6 +51,11 @@ if [[ $IC_NETWORK == "ic" && $NFT_CANISTER_ID == "" ]]; then
   exit 1
 else
   echo "NFT_CANISTER_ID: $NFT_CANISTER_ID"
+fi
+
+if [[ $IDENTITY_NAME == "" ]]; then
+  echo "IDENTITY_NAME can not be empty"
+  exit 1
 fi
 
 show_elapsed_time
@@ -58,6 +80,15 @@ else
   exit 1
 fi
 
+if [[ $IDENTITY_PEM_FILE_PATH == "" ]]; then
+  if [[ $IC_NETWORK == "local" ]]; then
+    IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
+  else
+    echo "Error: IDENTITY_PEM_FILE_PATH can not be empty when the IC_NETWORK is ic"
+    exit 1
+  fi
+fi
+
 echo "Present working directory: $(pwd)"
 echo "REPO_PATH: $REPO_PATH"
 echo "PROJECT_PATH: $PROJECT_PATH"
@@ -65,6 +96,7 @@ echo "DAPPS_PATH: $DAPPS_PATH"
 echo "SCRIPTS_PATH: $SCRIPTS_PATH"
 echo "ORIGYN_NFT_REPO_PATH: $ORIGYN_NFT_REPO_PATH"
 echo "ORIGYN_ENV: $ORIGYN_ENV"
+echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 
 show_elapsed_time
 
@@ -113,15 +145,11 @@ echo "Changing directory to $ORIGYN_NFT_REPO_PATH"
 cd $ORIGYN_NFT_REPO_PATH
 echo "Present working directory: $(pwd)"
 
-echo "Importing identity from $REPO_PATH/identity.pem as 'nft_deployer'"
-dfx identity import nft_deployer --disable-encryption "$REPO_PATH/identity.pem" || true
+bash "$SCRIPTS_PATH/create-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
 
-echo "Using nft_deployer identity"
-dfx identity use nft_deployer
-
-echo "Getting principal for nft_deployer identity"
+echo "Getting principal for $IDENTITY_NAME identity"
 ADMIN_PRINCIPAL=$(dfx identity get-principal)
-echo "The nft_deployer principal is $ADMIN_PRINCIPAL"
+echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 
 show_elapsed_time
 
@@ -147,7 +175,7 @@ echo $'**************************************\n'
 echo "Creating the NFT canister on the $IC_NETWORK network."
 dfx canister --network $IC_NETWORK create origyn_nft_reference || true
 
-if [[ $IC_NETWORK=='local' ]]; then
+if [[ $IC_NETWORK == 'local' ]]; then
   NFT_CANISTER_ID=$(dfx canister --network local id origyn_nft_reference)
 elif [[ $NFT_CANISTER_ID == '' ]]; then
   echo "The NFT_CANISTER_ID must have a mainnet canister id if the IC_NETWORK is not 'local'"
@@ -225,7 +253,7 @@ echo "Calling the csm stage function to upload the NFT files"
 
 node csm-stage.js \
 --folderPath "$PROJECT_PATH/assets" \
---seedFilePath "$REPO_PATH/seed.txt"
+--keyFilePath "$IDENTITY_PEM_FILE_PATH"
 
 show_elapsed_time
 
@@ -238,7 +266,7 @@ echo "Calling the csm mint function to mint the NFTs int the collection"
 
 node csm-mint.js \
 --folderPath "$PROJECT_PATH/assets" \
---seedFilePath "$REPO_PATH/seed.txt"
+--keyFilePath "$IDENTITY_PEM_FILE_PATH"
 # --range "0-7" #only mint token indexes 0 through 7
 
 echo $'\nMinting finished.\n'

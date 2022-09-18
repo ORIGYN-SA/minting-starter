@@ -23,8 +23,4 @@ dapps-latest-build.zip
 # frontend code
 node_modules
 
-seed.prod.txt
-seed-prod.txt
-seed.txt
-identity.prod.pem
-identity.pem
+*.pem

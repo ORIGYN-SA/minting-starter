@@ -451,7 +451,7 @@ Elapsed: 0 hr 0 min 55 sec (Sat Sep 17 10:31:34 MDT 2022)
 Calling the csm stage function to upload the NFT files
 stageArgs {
   folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/assets',
-  seedFilePath: '/Users/jt/origyn/src/minting-starter/seed.txt'
+  keyFilePath: '/Users/jt/origyn/src/minting-starter/seed.txt'
 }
 
 **************************************
@@ -1076,7 +1076,7 @@ Elapsed: 0 hr 2 min 45 sec (Sat Sep 17 10:33:24 MDT 2022)
 Calling the csm mint function to mint the NFTs int the collection
 mintArgs {
   folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/assets',
-  seedFilePath: '/Users/jt/origyn/src/minting-starter/seed.txt',
+  keyFilePath: '/Users/jt/origyn/src/minting-starter/seed.txt',
   range: '',
   batchSize: ''
 }
