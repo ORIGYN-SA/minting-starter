@@ -31,7 +31,7 @@ First ensure that you have read access to all the GithHub repositories listed in
 Once you have confirmed access, run the following command to clone the submodules:
 
 ```console
-git submodule update --init --recursive.
+git submodule update --init --recursive
 ```
 
 ## dfx Command Line Tool
