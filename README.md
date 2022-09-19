@@ -81,12 +81,20 @@ The csm library expects this folder structure when scanning for files.
             starting at the root of the collection folder.
         -   Example: [projects/brain-matters/assets/nfts/0/collection.json](projects/brain-matters/assets/nfts/0/collection.json).
 
+## Generate a token
+
+If you already have a token that have access to the dApps repo you can skip this step
+
+-   First, make sure you have access to this [repo](https://github.com/ORIGYN-SA/DApps) (if not you ask your manager to give you access)
+-   [Generate a token](https://github.com/settings/tokens) with repo and write:packages permissions
+-   Save the token
+
 ## Deploy the Sample NFT Collection
 
 To generate metadata from local files, stage (upload) the files to an NFT canister and mint the NFTs, run:
 
 ```console
-bash ./projects/brain-matters/deploy.sh
+yes yes | bash ./projects/brain-matters/deploy.sh
 ```
 
 If the script runs successfully, it will create a new "\_\_staged" folder in the same folder as the "deploy.sh" script.
