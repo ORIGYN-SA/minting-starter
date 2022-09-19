@@ -94,7 +94,7 @@ If you already have a token that have access to the dApps repo you can skip this
 To generate metadata from local files, stage (upload) the files to an NFT canister and mint the NFTs, run:
 
 ```console
-yes yes | bash ./projects/brain-matters/deploy.sh
+bash ./projects/brain-matters/deploy.sh
 ```
 
 If the script runs successfully, it will create a new "\_\_staged" folder in the same folder as the "deploy.sh" script.
