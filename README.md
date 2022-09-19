@@ -83,7 +83,7 @@ The csm library expects this folder structure when scanning for files.
 
 ## Generate a token
 
-If you already have a token that have access to the dApps repo you can skip this step
+If you already have a token that has access to the dApps repo you can skip this step
 
 -   First, make sure you have access to this [repo](https://github.com/ORIGYN-SA/DApps) (if not you ask your manager to give you access)
 -   [Generate a token](https://github.com/settings/tokens) with repo and write:packages permissions
