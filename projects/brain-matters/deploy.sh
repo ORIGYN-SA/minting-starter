@@ -3,6 +3,12 @@
 # -x (verbose debugging output)
 set -e
 
+NOCOLOR='\033[0m'
+GREEN='\033[0;32m'
+LIGHTBLUE='\033[1;34m'
+LIGHTPURPLE='\033[1;35m'
+
+
 echo ""
 date
 
@@ -11,13 +17,13 @@ show_elapsed_time() {
   SECONDS=$((`date +%s` - START_TIME))
   ELAPSED="Elapsed: $(($SECONDS / 3600)) hr $((($SECONDS / 60) % 60)) min $(($SECONDS % 60)) sec"
   echo ""
-  echo "$ELAPSED ($(date))"
+  echo -e $GREEN"$ELAPSED ($(date))"
 }
 
 
-echo $'\n\n**************************************'
-echo "******** Set User Variables **********"
-echo $'**************************************\n'
+echo -e $LIGHTBLUE$'\n\n**************************************'
+echo -e $LIGHTBLUE"******** Set User Variables **********"
+echo -e $LIGHTBLUE$'**************************************\n'
 
 # local or ic (mainnet)
 IC_NETWORK="local"
@@ -35,9 +41,10 @@ IDENTITY_PEM_FILE_PATH=""
 IDENTITY_NAME="local_nft_deployer"
 
 
-echo $'\n\n**************************************'
-echo "********* Input Validation ***********"
-echo $'**************************************\n'
+echo -e $LIGHTPURPLE$'\n\n**************************************'
+echo -e $LIGHTPURPLE"********* Input Validation ***********"
+echo -e $LIGHTPURPLE$'**************************************\n'
+echo -e $NOCOLOR ""
 
 if [[ $IC_NETWORK == "ic" || $IC_NETWORK == "local" ]]; then
   echo "IC_NETWORK: $IC_NETWORK"
@@ -61,9 +68,10 @@ fi
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "******* Set Dynamic Variables ********"
-echo $'**************************************\n'
+echo -e $LIGHTBLUE$'\n\n**************************************'
+echo -e $LIGHTBLUE"******* Set Dynamic Variables ********"
+echo -e $LIGHTBLUE$'**************************************\n'
+echo -e $NOCOLOR""
 
 PROJECT_PATH="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_PATH="$(cd -P -- "$(dirname -- "$PROJECT_PATH/../../..")" && pwd -P)"
@@ -101,18 +109,20 @@ echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "******** Install Node Modules ********"
-echo $'**************************************\n'
+echo -e $LIGHTPURPLE$'\n\n**************************************'
+echo -e $LIGHTPURPLE"******** Install Node Modules ********"
+echo -e $LIGHTPURPLE$'**************************************\n'
+echo -e $NOCOLOR""
 
 npm i
 
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "********* Copy Latest dApps **********"
-echo $'**************************************\n'
+echo -e $LIGHTBLUE$'\n\n**************************************'
+echo -e $LIGHTBLUE"********* Copy Latest dApps **********"
+echo -e $LIGHTBLUE$'**************************************\n'
+echo -e $NOCOLOR""
 
 echo "Downloading and unzipping latest dapps"
 bash "$SCRIPTS_PATH/build-dapps.sh"
@@ -137,9 +147,10 @@ rm -rf dapps-latest-build
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "******** Import/Use Identity *********"
-echo $'**************************************\n'
+echo -e $LIGHTPURPLE$'\n\n**************************************'
+echo -e $LIGHTPURPLE"******** Import/Use Identity *********"
+echo -e $LIGHTPURPLE$'**************************************\n'
+echo -e $NOCOLOR""
 
 echo "Changing directory to $ORIGYN_NFT_REPO_PATH"
 cd $ORIGYN_NFT_REPO_PATH
@@ -154,9 +165,10 @@ echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "****** Create Identity Wallet ********"
-echo $'**************************************\n'
+echo -e $LIGHTBLUE$'\n\n**************************************'
+echo -e $LIGHTBLUE"****** Create Identity Wallet ********"
+echo -e $LIGHTBLUE$'**************************************\n'
+echo -e $NOCOLOR""
 
 echo "Creating wallet for the imported identity"
 IDENTITY_WALLET=$(dfx identity get-wallet)
@@ -168,9 +180,10 @@ dfx identity --network $IC_NETWORK set-wallet $IDENTITY_WALLET || true
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "******** Create NFT Canister *********"
-echo $'**************************************\n'
+echo -e $LIGHTPURPLE$'\n\n**************************************'
+echo -e $LIGHTPURPLE"******** Create NFT Canister *********"
+echo -e $LIGHTPURPLE$'**************************************\n'
+echo -e $NOCOLOR""
 
 echo "Creating the NFT canister on the $IC_NETWORK network."
 dfx canister --network $IC_NETWORK create origyn_nft_reference || true
@@ -187,9 +200,10 @@ echo "NFT_CANISTER_ID: $NFT_CANISTER_ID"
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "******* Build/Install Canister *******"
-echo $'**************************************\n'
+echo -e $LIGHTBLUE$'\n\n**************************************'
+echo -e $LIGHTBLUE"******* Build/Install Canister *******"
+echo -e $LIGHTBLUE$'**************************************\n'
+echo -e $NOCOLOR""
 
 echo "Building and installing the NFT canister"
 
@@ -213,9 +227,10 @@ show_elapsed_time
 #show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "************ CSM - Config ************"
-echo $'**************************************\n'
+echo -e $LIGHTPURPLE$'\n\n**************************************'
+echo -e $LIGHTPURPLE"************ CSM - Config ************"
+echo -e $LIGHTPURPLE$'**************************************\n'
+echo -e $NOCOLOR""
 
 echo "Changing directory to $SCRIPTS_PATH"
 cd $SCRIPTS_PATH
@@ -228,11 +243,11 @@ node csm-config.js \
 --environment $ORIGYN_ENV \
 --nftCanisterId $NFT_CANISTER_ID \
 --creatorPrincipal $ADMIN_PRINCIPAL \
---collectionDisplayName "Brain Matters" \
---namespace "brain.matters" \
---collectionId "bm" \
---tokenPrefix "bm-" \
---assetMappings "primary:nft*.png, hidden:mystery-bm.gif" \
+--collectionDisplayName "Moai" \
+--namespace "moai" \
+--collectionId "mo" \
+--tokenPrefix "mo-" \
+--assetMappings "primary:nft*.png" \
 --useProxy "false" \
 --soulbound "false"
 
@@ -246,9 +261,10 @@ read -p "Press return/enter to stage and mint your NFT collection..."
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "************ CSM - Stage **************"
-echo $'**************************************\n'
+echo -e $LIGHTBLUE$'\n\n**************************************'
+echo -e $LIGHTBLUE"************ CSM - Stage **************"
+echo -e $LIGHTBLUE$'**************************************\n'
+echo -e $NOCOLOR""
 
 echo "Calling the csm stage function to upload the NFT files"
 
@@ -259,9 +275,10 @@ node csm-stage.js \
 show_elapsed_time
 
 
-echo $'\n\n**************************************'
-echo "************* CSM - Mint **************"
-echo $'**************************************\n'
+echo -e $LIGHTPURPLE$'\n\n**************************************'
+echo -e $LIGHTPURPLE"************* CSM - Mint **************"
+echo -e $LIGHTPURPLE$'**************************************\n'
+echo -e $NOCOLOR""
 
 echo "Calling the csm mint function to mint the NFTs int the collection"
 
