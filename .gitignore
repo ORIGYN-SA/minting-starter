@@ -23,4 +23,4 @@ dapps-latest-build.zip
 # frontend code
 node_modules
 
-*.pem
+**/*.pem

@@ -22,9 +22,10 @@ else
     echo "Importing private key as new identity \"$IDENTITY\""
     dfx identity import --disable-encryption $IDENTITY "$PEM_FILE_PATH"
   else
-    echo "Creating new private key at $PEM_FILE_PATH"
     # openssl ecparam -name secp256k1 -genkey -noout -out "$PEM_FILE_PATH"
+    echo "Creating new Ed25519 identity..."
     dfx identity new $IDENTITY --disable-encryption
+    echo "Exporting private key file for new identity at $PEM_FILE_PATH..."
     dfx identity export $IDENTITY > $PEM_FILE_PATH
   fi
   

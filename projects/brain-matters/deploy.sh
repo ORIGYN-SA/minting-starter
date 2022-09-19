@@ -145,7 +145,7 @@ echo "Changing directory to $ORIGYN_NFT_REPO_PATH"
 cd $ORIGYN_NFT_REPO_PATH
 echo "Present working directory: $(pwd)"
 
-bash "$SCRIPTS_PATH/create-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
+bash "$SCRIPTS_PATH/create-local-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
 
 echo "Getting principal for $IDENTITY_NAME identity"
 ADMIN_PRINCIPAL=$(dfx identity get-principal)

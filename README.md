@@ -30,7 +30,7 @@ First ensure that you have read access to all the GithHub repositories listed in
 
 Once you have confirmed access, run the following command to clone the submodules:
 
-```bash
+```console
 git submodule update --init --recursive.
 ```
 
@@ -40,13 +40,13 @@ When creating an NFT collection, you can practice on your local computer before 
 
 To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [origyn_nft/dfx.json](origyn_nft/dfx.json).
 
-```bash
+```console
 DFX_VERSION=0.11.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
 
 Open a separate terminal dedicated to running dfx. (Debug output from code running in the NFT canister will be displayed in this terminal.)
 
-```bash
+```console
 cd origyn_nft
 dfx start --clean
 ```
@@ -85,7 +85,7 @@ The csm library expects this folder structure when scanning for files.
 
 To generate metadata from local files, stage (upload) the files to an NFT canister and mint the NFTs, run:
 
-```bash
+```console
 bash ./projects/brain-matters/deploy.sh
 ```
 
@@ -97,29 +97,28 @@ To verify that the sample NFT collection was deployed correctly, you can click a
 
 You should also be able to view the NFT collection information here: [http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/info](http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/info).
 
+## Sample Command Line Output
+
+When deploying an NFT collection the progress of the deploy script will be sent to the terminal.
+
+Here is [sample terminal output](./docs/terminal-deploy-script.md) for a successful mint on localhost.
+
 ## Creating Your Own NFT Collection
 
 -   Fork this GitHub repository.
 -   Replace the files in the assets folders with your own files.
 -   Find this code in the deploy.sh script: "node csm-config.js"
     -   Change the argument values with your own.
--   Follow the same instructions above.
+-   Follow the same instructions above to run the deploy.sh script and test locally.
 
-When you have finished testing locally:
+## Deploying to the Internet Computer Mainnet
 
+-   Create a dfx idenity and wallet on the mainnet by following [these instructions](./docs/create-dfx-mainnet-identity-wallet.md).
 -   Create a canister on the mainnet.
 -   In deploy.sh
     -   Change IC_NETWORK to "ic"
     -   Change NFT_CANISTER_ID to the id of your mainnet canister
 -   Follow the same instructions above.
-
-## Sample Command Line Output
-
-When deploying an NFT collection the progress of the deploy script will be sent to the terminal.
-
-Here is sample output for a successful mint on localhost:
-
-[./docs/SampleOutput.md](./docs/SampleOutput.md)
 
 ---
 
@@ -174,7 +173,7 @@ Re-run the deploy script using the instructions above.
 
 Open a new dedicated terminal and run these two commands.
 
-```bash
+```console
 cd icx-proxy
 
 cargo run -- --debug -v --log "stderr" --replica "http://localhost:8000" --redis-url "" --phonebook-id ""
