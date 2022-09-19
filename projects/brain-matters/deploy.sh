@@ -194,7 +194,7 @@ echo $'**************************************\n'
 echo "Building and installing the NFT canister"
 
 dfx build origyn_nft_reference
-dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=install --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = null})"
+dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = null})"
 
 show_elapsed_time
 
