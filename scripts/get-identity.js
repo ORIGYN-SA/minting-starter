@@ -6,5 +6,6 @@
 import { getIdentity } from '@origyn-sa/csm';
 
 const filePath = process.argv[2];
-console.log(filePath);
-await getIdentity(filePath);
+console.log(`File path: ${filePath}`);
+const identity = await getIdentity(filePath);
+console.log(`Principal ID: ${identity.getPrincipal().toText()}`);

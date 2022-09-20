@@ -1,4 +1,4 @@
-# Actual Terminal Output from Creating dfx Mainnet Identity and Wallet
+# Actual Output from Creating dfx Mainnet Identity, Cycles Wallet, & NFT Canister
 
 ```console
 ➜ dfx identity new jt-mainnet-Ed25519
@@ -164,4 +164,15 @@ dfx.json not found, using default.
 Please enter a passphrase for your identity: [hidden]
 Decryption complete.
 8.765 TC (trillion cycles).
+
+➜ dfx canister --network ic create origyn_nft_reference
+Please enter a passphrase for your identity: [hidden]
+Decryption complete.
+Creating canister origyn_nft_reference...
+origyn_nft_reference canister created on network ic with canister id: ap5ok-kqaaa-aaaak-acvha-cai
+
+➜ dfx wallet --network ic balance
+Please enter a passphrase for your identity: [hidden]
+Decryption complete.
+4.764 TC (trillion cycles).
 ```
