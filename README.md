@@ -109,7 +109,7 @@ You should also be able to view the NFT collection information here: [http://rrk
 
 When deploying an NFT collection the progress of the deploy script will be sent to the terminal.
 
-Here is [sample terminal output](./docs/terminal-deploy-script.md) for a successful mint on localhost.
+Here is [sample terminal output](./docs/terminal-deploy-script-localhost.md) for a successful mint on localhost.
 
 ## Creating Your Own NFT Collection
 
@@ -121,12 +121,13 @@ Here is [sample terminal output](./docs/terminal-deploy-script.md) for a success
 
 ## Deploying to the Internet Computer Mainnet
 
--   Create a dfx idenity and wallet on the mainnet by following [these instructions](./docs/create-dfx-mainnet-identity-wallet.md).
--   Create a canister on the mainnet.
+-   Create a dfx identity, a cycles wallet canister and an NFT canister on the mainnet by following [these instructions](./docs/create-dfx-mainnet-identity-wallet.md).
 -   In deploy.sh
-    -   Change IC_NETWORK to "ic"
-    -   Change NFT_CANISTER_ID to the id of your mainnet canister
--   Follow the same instructions above.
+    -   Change IC_NETWORK to "ic".
+    -   Change IDENTITY_NAME to the id of your mainnet identity.
+-   Run the deploy.sh script.
+
+Here is [sample terminal output](./docs/terminal-deploy-script-mainnet.md) for a successful mint on mainnet.
 
 ---
 

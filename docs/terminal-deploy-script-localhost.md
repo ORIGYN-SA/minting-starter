@@ -1,9 +1,9 @@
-# Sample Terminal Output from deploy.sh
+# Sample Output from Running deploy.sh for localhost
 
-```
-jts-MacBook-Pro:~ jt$ bash ./projects/brain-matters/deploy.sh
+```console
+➜ bash ./projects/brain-matters/deploy.sh
 
-Sat Sep 17 10:30:39 MDT 2022
+Mon Sep 19 22:57:30 MDT 2022
 
 
 **************************************
@@ -11,24 +11,33 @@ Sat Sep 17 10:30:39 MDT 2022
 **************************************
 
 IC_NETWORK: local
-NFT_CANISTER_ID: 
+IDENTITY_NAME: local_nft_deployer
 
-Elapsed: 0 hr 0 min 0 sec (Sat Sep 17 10:30:39 MDT 2022)
+
+**************************************
+********* Input Validation ***********
+**************************************
+
+IC_NETWORK is valid
+IDENTITY_NAME is valid
+
+Elapsed: 0 hr 0 min 0 sec (Mon Sep 19 22:57:30 MDT 2022)
 
 
 **************************************
 ******* Set Dynamic Variables ********
 **************************************
 
-Present working directory: /Users/jt/origyn/src/minting-starter
-REPO_PATH: /Users/jt/origyn/src/minting-starter
-PROJECT_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matters
-DAPPS_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matters/assets/collection/dapps
-SCRIPTS_PATH: /Users/jt/origyn/src/minting-starter/scripts
-ORIGYN_NFT_REPO_PATH: /Users/jt/origyn/src/minting-starter/origyn_nft
+Present working directory: /Users/jt/origyn/test/minting-starter
+REPO_PATH: /Users/jt/origyn/test/minting-starter
+PROJECT_PATH: /Users/jt/origyn/test/minting-starter/projects/brain-matters
+DAPPS_PATH: /Users/jt/origyn/test/minting-starter/projects/brain-matters/assets/collection/dapps
+SCRIPTS_PATH: /Users/jt/origyn/test/minting-starter/scripts
+ORIGYN_NFT_REPO_PATH: /Users/jt/origyn/test/minting-starter/origyn_nft
 ORIGYN_ENV: local
+IDENTITY_PEM_FILE_PATH: /Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem
 
-Elapsed: 0 hr 0 min 0 sec (Sat Sep 17 10:30:39 MDT 2022)
+Elapsed: 0 hr 0 min 0 sec (Mon Sep 19 22:57:30 MDT 2022)
 
 
 **************************************
@@ -36,14 +45,14 @@ Elapsed: 0 hr 0 min 0 sec (Sat Sep 17 10:30:39 MDT 2022)
 **************************************
 
 
-up to date, audited 503 packages in 935ms
+up to date, audited 508 packages in 1s
 
 52 packages are looking for funding
   run `npm fund` for details
 
 found 0 vulnerabilities
 
-Elapsed: 0 hr 0 min 1 sec (Sat Sep 17 10:30:40 MDT 2022)
+Elapsed: 0 hr 0 min 2 sec (Mon Sep 19 22:57:32 MDT 2022)
 
 
 **************************************
@@ -56,45 +65,42 @@ Downloading asset...
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-100 1909k  100 1909k    0     0  2066k      0 --:--:-- --:--:-- --:--:-- 2066k
-/Users/jt/origyn/src/minting-starter/scripts/build-dapps.sh done.
+100 1909k  100 1909k    0     0  2241k      0 --:--:-- --:--:-- --:--:-- 5424k
+/Users/jt/origyn/test/minting-starter/scripts/build-dapps.sh done.
 Archive:  dapps-latest-build.zip
    creating: dapps-latest-build/dist/
-  inflating: dapps-latest-build/dist/ledger.html  
-  inflating: dapps-latest-build/dist/marketplace.html  
-  inflating: dapps-latest-build/dist/library.html  
-  inflating: dapps-latest-build/dist/wallet.html  
-  inflating: dapps-latest-build/dist/marketplace.js.LICENSE.txt  
-  inflating: dapps-latest-build/dist/nftData.js.LICENSE.txt  
-  inflating: dapps-latest-build/dist/wallet.js.LICENSE.txt  
-  inflating: dapps-latest-build/dist/nftData.html  
-  inflating: dapps-latest-build/dist/library.js.LICENSE.txt  
-  inflating: dapps-latest-build/dist/ledger.js.LICENSE.txt  
+  inflating: dapps-latest-build/dist/ledger.html
+  inflating: dapps-latest-build/dist/marketplace.html
+  inflating: dapps-latest-build/dist/library.html
+  inflating: dapps-latest-build/dist/wallet.html
+  inflating: dapps-latest-build/dist/marketplace.js.LICENSE.txt
+  inflating: dapps-latest-build/dist/nftData.js.LICENSE.txt
+  inflating: dapps-latest-build/dist/wallet.js.LICENSE.txt
+  inflating: dapps-latest-build/dist/nftData.html
+  inflating: dapps-latest-build/dist/library.js.LICENSE.txt
+  inflating: dapps-latest-build/dist/ledger.js.LICENSE.txt
 Removing temporary zip file
-Ensuring path exists: /Users/jt/origyn/src/minting-starter/projects/brain-matters/assets/collection/dapps
+Ensuring path exists: /Users/jt/origyn/test/minting-starter/projects/brain-matters/assets/collection/dapps
 Removing all txt files from the unzipped files
-Copying unzipped files to /Users/jt/origyn/src/minting-starter/projects/brain-matters/assets/collection/dapps
+Copying unzipped files to /Users/jt/origyn/test/minting-starter/projects/brain-matters/assets/collection/dapps
 Removing unzipped folder
 
-Elapsed: 0 hr 0 min 3 sec (Sat Sep 17 10:30:42 MDT 2022)
+Elapsed: 0 hr 0 min 3 sec (Mon Sep 19 22:57:33 MDT 2022)
 
 
 **************************************
 ******** Import/Use Identity *********
 **************************************
 
-Changing directory to /Users/jt/origyn/src/minting-starter/origyn_nft
-Present working directory: /Users/jt/origyn/src/minting-starter/origyn_nft
-Importing identity from /Users/jt/origyn/src/minting-starter/identity.pem as 'nft_deployer'
-Error: Failed to create new identity 'nft_deployer'.
-Caused by: Failed to create new identity 'nft_deployer'.
-  Identity already exists.
-Using nft_deployer identity
-Using identity: "nft_deployer".
-Getting principal for nft_deployer identity
-The nft_deployer principal is 6i6da-t3dfv-vteyg-v5agl-tpgrm-63p4y-t5nmm-gi7nl-o72zu-jd3sc-7qe
+Changing directory to /Users/jt/origyn/test/minting-starter/origyn_nft
+Present working directory: /Users/jt/origyn/test/minting-starter/origyn_nft
+IDENTITY: "local_nft_deployer"
+Using identity: "local_nft_deployer".
+Identity "local_nft_deployer" already imported and in use
+Getting principal for local_nft_deployer identity
+The local_nft_deployer principal is 6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae
 
-Elapsed: 0 hr 0 min 3 sec (Sat Sep 17 10:30:42 MDT 2022)
+Elapsed: 0 hr 0 min 3 sec (Mon Sep 19 22:57:33 MDT 2022)
 
 
 **************************************
@@ -103,18 +109,18 @@ Elapsed: 0 hr 0 min 3 sec (Sat Sep 17 10:30:42 MDT 2022)
 
 Creating wallet for the imported identity
 Creating a wallet canister on the local network.
-The wallet canister on the "local" network for user "nft_deployer" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
+The wallet canister on the "local" network for user "local_nft_deployer" is "rwlgt-iiaaa-aaaaa-aaaaa-cai"
 Identity wallet: rwlgt-iiaaa-aaaaa-aaaaa-cai
 Setting wallet for the imported identity
 Checking availability of the canister on the network...
-Setting wallet for identity 'nft_deployer' on network 'local' to id 'rwlgt-iiaaa-aaaaa-aaaaa-cai'
+Setting wallet for identity 'local_nft_deployer' on network 'local' to id 'rwlgt-iiaaa-aaaaa-aaaaa-cai'
 Wallet set successfully.
 
-Elapsed: 0 hr 0 min 7 sec (Sat Sep 17 10:30:46 MDT 2022)
+Elapsed: 0 hr 0 min 7 sec (Mon Sep 19 22:57:37 MDT 2022)
 
 
 **************************************
-******** Create NFT Canister *********
+******** Ensure NFT Canister *********
 **************************************
 
 Creating the NFT canister on the local network.
@@ -122,7 +128,7 @@ Creating canister origyn_nft_reference...
 origyn_nft_reference canister created with canister id: rrkah-fqaaa-aaaaa-aaaaq-cai
 NFT_CANISTER_ID: rrkah-fqaaa-aaaaa-aaaaq-cai
 
-Elapsed: 0 hr 0 min 10 sec (Sat Sep 17 10:30:49 MDT 2022)
+Elapsed: 0 hr 0 min 10 sec (Mon Sep 19 22:57:40 MDT 2022)
 
 
 **************************************
@@ -157,33 +163,42 @@ Array.append has critical performance flaws; use a Buffer, and Buffer.append, in
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
 .vessel/ext/v0.1.0/src/Core.mo:136.29-136.41: warning [M0154], field append is deprecated:
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
-/Users/jt/origyn/src/minting-starter/origyn_nft/src/origyn_nft_reference/governance.mo:44.13-44.16: warning [M0146], this pattern is never matched
-/Users/jt/origyn/src/minting-starter/origyn_nft/src/origyn_nft_reference/ledger_interface.mo:0.1: warning [M0142], deprecated syntax: an imported library should be a module or named actor class
-/Users/jt/origyn/src/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:103.9-103.38: warning [M0145], this pattern of type
+/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/governance.mo:44.13-44.16: warning [M0146], this pattern is never matched
+/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/ledger_interface.mo:0.1: warning [M0142], deprecated syntax: an imported library should be a module or named actor class
+/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:103.9-103.38: warning [M0145], this pattern of type
   State__1 = {#v0_0_0 : {#data; #id}; #v0_1_0 : {#data : State; #id}}
 does not cover value
   #v0_1_0(#id) or
   #v0_0_0(_)
-/Users/jt/origyn/src/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:887.21-887.33: warning [M0154], field append is deprecated:
+/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:887.21-887.33: warning [M0154], field append is deprecated:
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
-/Users/jt/origyn/src/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:887.21-887.33: warning [M0154], field append is deprecated:
+/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:887.21-887.33: warning [M0154], field append is deprecated:
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
-/Users/jt/origyn/src/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:888.13-888.25: warning [M0154], field append is deprecated:
+/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:888.13-888.25: warning [M0154], field append is deprecated:
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
 
 Creating UI canister on the local network.
 The UI canister on the "local" network is "ryjl3-tyaaa-aaaaa-aaaba-cai"
-Installing code for canister origyn_nft_reference, with canister ID rrkah-fqaaa-aaaaa-aaaaq-cai
+WARNING!
+You are about to reinstall the origyn_nft_reference canister
+This will OVERWRITE all the data and code in the canister.
 
-Elapsed: 0 hr 0 min 36 sec (Sat Sep 17 10:31:15 MDT 2022)
+YOU WILL LOSE ALL DATA IN THE CANISTER.");
+
+
+Do you want to proceed? yes/No
+yes
+Reinstalling code for canister origyn_nft_reference, with canister ID rrkah-fqaaa-aaaaa-aaaaq-cai
+
+Elapsed: 0 hr 0 min 39 sec (Mon Sep 19 22:58:09 MDT 2022)
 
 
 **************************************
 ************ CSM - Config ************
 **************************************
 
-Changing directory to /Users/jt/origyn/src/minting-starter/scripts
-Present working directory: /Users/jt/origyn/src/minting-starter/scripts
+Changing directory to /Users/jt/origyn/test/minting-starter/scripts
+Present working directory: /Users/jt/origyn/test/minting-starter/scripts
 Calling the csm config function to create NFT metadata
 configArgs {
   environment: 'local',
@@ -191,11 +206,12 @@ configArgs {
   collectionDisplayName: 'Brain Matters',
   tokenPrefix: 'bm-',
   nftCanisterId: 'rrkah-fqaaa-aaaaa-aaaaq-cai',
-  creatorPrincipal: '6i6da-t3dfv-vteyg-v5agl-tpgrm-63p4y-t5nmm-gi7nl-o72zu-jd3sc-7qe',
+  creatorPrincipal: '6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae',
   namespace: 'brain.matters',
-  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/assets',
+  folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
   assetMappings: 'primary:nft*.png, hidden:mystery-bm.gif',
   nftOwnerId: 'rrkah-fqaaa-aaaaa-aaaaq-cai',
+  useProxy: 'false',
   soulbound: 'false',
   nftQuantities: ''
 }
@@ -207,7 +223,7 @@ Creating metadata for the collection
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/ledger.html
+/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/ledger.html
 
 regex matches 5
 
@@ -240,7 +256,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/library.html
+/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/library.html
 
 regex matches 5
 
@@ -273,7 +289,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/marketplace.html
+/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/marketplace.html
 
 regex matches 5
 
@@ -306,7 +322,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/nftData.html
+/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/nftData.html
 
 regex matches 5
 
@@ -339,7 +355,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/wallet.html
+/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/wallet.html
 
 regex matches 5
 
@@ -426,14 +442,14 @@ Total Files Found: 26
 Total File Size: 23832417 (22.73 MB)
 Total NFT Definition Count: 20
 Total NFT Count: 20
-Metadata File: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/full_def.json'
+Metadata File: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/full_def.json'
 
 Finished (config subcommand)
 
 **************************************
 
 
-Elapsed: 0 hr 0 min 36 sec (Sat Sep 17 10:31:15 MDT 2022)
+Elapsed: 0 hr 0 min 40 sec (Mon Sep 19 22:58:10 MDT 2022)
 
 Metadata file created at $PROJECT_PATH/__staged/full_def.json.
 
@@ -441,7 +457,7 @@ You may manually modify the metadata in full_def.json before continuing.
 
 Press return/enter to stage and mint your NFT collection...
 
-Elapsed: 0 hr 0 min 55 sec (Sat Sep 17 10:31:34 MDT 2022)
+Elapsed: 0 hr 0 min 43 sec (Mon Sep 19 22:58:13 MDT 2022)
 
 
 **************************************
@@ -450,13 +466,14 @@ Elapsed: 0 hr 0 min 55 sec (Sat Sep 17 10:31:34 MDT 2022)
 
 Calling the csm stage function to upload the NFT files
 stageArgs {
-  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/assets',
-  keyFilePath: '/Users/jt/origyn/src/minting-starter/seed.txt'
+  folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
+  keyFilePath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem'
 }
 
 **************************************
 
 Started (stage subcommand)
+Loaded Ed25519 identity 6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae from .pem file /Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem.
 
 --------------------------------------
 
@@ -1066,7 +1083,7 @@ Finished (stage subcommand)
 **************************************
 
 
-Elapsed: 0 hr 2 min 45 sec (Sat Sep 17 10:33:24 MDT 2022)
+Elapsed: 0 hr 2 min 33 sec (Mon Sep 19 23:00:03 MDT 2022)
 
 
 **************************************
@@ -1075,8 +1092,8 @@ Elapsed: 0 hr 2 min 45 sec (Sat Sep 17 10:33:24 MDT 2022)
 
 Calling the csm mint function to mint the NFTs int the collection
 mintArgs {
-  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/assets',
-  keyFilePath: '/Users/jt/origyn/src/minting-starter/seed.txt',
+  folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
+  keyFilePath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem',
   range: '',
   batchSize: ''
 }
@@ -1084,6 +1101,7 @@ mintArgs {
 **************************************
 
 Started (mint subcommand)
+Loaded Ed25519 identity 6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae from .pem file /Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem.
 
 --------------------------------------
 
@@ -1109,5 +1127,5 @@ Finished (mint subcommand)
 Minting finished.
 
 
-Elapsed: 0 hr 2 min 50 sec (Sat Sep 17 10:33:29 MDT 2022)
+Elapsed: 0 hr 2 min 38 sec (Mon Sep 19 23:00:08 MDT 2022)
 ```

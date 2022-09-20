@@ -7,7 +7,7 @@ NOCOLOR='\033[0m'
 GREEN='\033[0;32m'
 LIGHTBLUE='\033[1;34m'
 LIGHTPURPLE='\033[1;35m'
-
+YELLOW='\033[1;33m'
 
 echo ""
 date
@@ -21,57 +21,51 @@ show_elapsed_time() {
 }
 
 
-echo -e $LIGHTBLUE$'\n\n**************************************'
-echo -e $LIGHTBLUE"******** Set User Variables **********"
-echo -e $LIGHTBLUE$'**************************************\n'
+echo -e $LIGHTBLUE
+echo $'\n**************************************'
+echo "******** Set User Variables **********"
+echo $'**************************************'
+echo -e $NOCOLOR
 
-# local or ic (mainnet)
+# "local" or "ic" (mainnet)
 IC_NETWORK="local"
 
-# leave blank if local network
-NFT_CANISTER_ID=""
-
-# leave blank if local network
-# if ic network (mainnet) use private key (.pem file) of mainnet identity
-IDENTITY_PEM_FILE_PATH=""
-
-# Creates, imports and uses identity if it does exist
+# If local network, creates/imports/uses identity if it does exist.
 # If ic network (mainnet), make sure you manually import your existing
 # identity first, then provide the name of your imported identity here.
 IDENTITY_NAME="local_nft_deployer"
 
+echo "IC_NETWORK: $IC_NETWORK"
+echo "IDENTITY_NAME: $IDENTITY_NAME"
 
-echo -e $LIGHTPURPLE$'\n\n**************************************'
-echo -e $LIGHTPURPLE"********* Input Validation ***********"
-echo -e $LIGHTPURPLE$'**************************************\n'
-echo -e $NOCOLOR ""
+echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "********* Input Validation ***********"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 if [[ $IC_NETWORK == "ic" || $IC_NETWORK == "local" ]]; then
-  echo "IC_NETWORK: $IC_NETWORK"
+  echo "IC_NETWORK is valid"
 else
   echo "Error: Invalid value of \"$IC_NETWORK\" for IC_NETWORK. Valid values are \"ic\" or \"local\"."
   exit 1
 fi
 
-if [[ $IC_NETWORK == "ic" && $NFT_CANISTER_ID == "" ]]; then
-  echo $'\nError: The NFT_CANISTER_ID can not be empty if the IC_NETWORK is "ic". Please set it to a mainnet canister id.\n'
-  exit 1
-else
-  echo "NFT_CANISTER_ID: $NFT_CANISTER_ID"
-fi
-
 if [[ $IDENTITY_NAME == "" ]]; then
   echo "IDENTITY_NAME can not be empty"
   exit 1
+else
+  echo "IDENTITY_NAME is valid"
 fi
 
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE$'\n\n**************************************'
-echo -e $LIGHTBLUE"******* Set Dynamic Variables ********"
-echo -e $LIGHTBLUE$'**************************************\n'
-echo -e $NOCOLOR""
+echo -e $LIGHTBLUE
+echo $'\n**************************************'
+echo "******* Set Dynamic Variables ********"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 PROJECT_PATH="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_PATH="$(cd -P -- "$(dirname -- "$PROJECT_PATH/../../..")" && pwd -P)"
@@ -88,14 +82,7 @@ else
   exit 1
 fi
 
-if [[ $IDENTITY_PEM_FILE_PATH == "" ]]; then
-  if [[ $IC_NETWORK == "local" ]]; then
-    IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
-  else
-    echo "Error: IDENTITY_PEM_FILE_PATH can not be empty when the IC_NETWORK is ic"
-    exit 1
-  fi
-fi
+IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
 
 echo "Present working directory: $(pwd)"
 echo "REPO_PATH: $REPO_PATH"
@@ -106,23 +93,42 @@ echo "ORIGYN_NFT_REPO_PATH: $ORIGYN_NFT_REPO_PATH"
 echo "ORIGYN_ENV: $ORIGYN_ENV"
 echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 
+if [[ -f "$IDENTITY_PEM_FILE_PATH" ]]; then
+  echo "Found $IDENTITY_PEM_FILE_PATH"
+elif [[ $IC_NETWORK == 'ic' ]]; then
+  echo -e $YELLOW
+  echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  echo "WARNING: Exporting identity private key to pem file at:"
+  echo "$IDENTITY_PEM_FILE_PATH."
+  echo "For you security, please permanently delete this file after running this script."
+  echo "(This is needed by node scripts to create an actor reference with your identity"
+  echo "to call functions on the NFT canister.)"
+  echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  echo -e $NOCOLOR
+  read -p "Press return/enter to export the private key of your dfx identity and continue..."
+fi
+
+dfx identity export "$IDENTITY_NAME" > "$IDENTITY_PEM_FILE_PATH"
+
 show_elapsed_time
 
 
-echo -e $LIGHTPURPLE$'\n\n**************************************'
-echo -e $LIGHTPURPLE"******** Install Node Modules ********"
-echo -e $LIGHTPURPLE$'**************************************\n'
-echo -e $NOCOLOR""
+echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "******** Install Node Modules ********"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 npm i
 
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE$'\n\n**************************************'
-echo -e $LIGHTBLUE"********* Copy Latest dApps **********"
-echo -e $LIGHTBLUE$'**************************************\n'
-echo -e $NOCOLOR""
+echo -e $LIGHTBLUE
+echo $'\n**************************************'
+echo "********* Copy Latest dApps **********"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 echo "Downloading and unzipping latest dapps"
 bash "$SCRIPTS_PATH/build-dapps.sh"
@@ -147,10 +153,11 @@ rm -rf dapps-latest-build
 show_elapsed_time
 
 
-echo -e $LIGHTPURPLE$'\n\n**************************************'
-echo -e $LIGHTPURPLE"******** Import/Use Identity *********"
-echo -e $LIGHTPURPLE$'**************************************\n'
-echo -e $NOCOLOR""
+echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "******** Import/Use Identity *********"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 echo "Changing directory to $ORIGYN_NFT_REPO_PATH"
 cd $ORIGYN_NFT_REPO_PATH
@@ -165,50 +172,63 @@ echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE$'\n\n**************************************'
-echo -e $LIGHTBLUE"****** Create Identity Wallet ********"
-echo -e $LIGHTBLUE$'**************************************\n'
-echo -e $NOCOLOR""
+if [[ $IC_NETWORK == 'local' ]]; then
+  echo -e $LIGHTBLUE
+  echo $'\n**************************************'
+  echo "****** Create Identity Wallet ********"
+  echo $'**************************************'
+  echo -e $NOCOLOR
 
-echo "Creating wallet for the imported identity"
-IDENTITY_WALLET=$(dfx identity get-wallet)
-echo "Identity wallet: $IDENTITY_WALLET"
+  echo "Creating wallet for the imported identity"
+  IDENTITY_WALLET=$(dfx identity get-wallet)
+  echo "Identity wallet: $IDENTITY_WALLET"
 
-echo "Setting wallet for the imported identity"
-dfx identity --network $IC_NETWORK set-wallet $IDENTITY_WALLET || true
+  echo "Setting wallet for the imported identity"
+  dfx identity --network $IC_NETWORK set-wallet $IDENTITY_WALLET || true
 
-show_elapsed_time
+  show_elapsed_time
+fi
 
-
-echo -e $LIGHTPURPLE$'\n\n**************************************'
-echo -e $LIGHTPURPLE"******** Create NFT Canister *********"
-echo -e $LIGHTPURPLE$'**************************************\n'
-echo -e $NOCOLOR""
-
-echo "Creating the NFT canister on the $IC_NETWORK network."
-dfx canister --network $IC_NETWORK create origyn_nft_reference || true
+echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "******** Ensure NFT Canister *********"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 if [[ $IC_NETWORK == 'local' ]]; then
-  NFT_CANISTER_ID=$(dfx canister --network local id origyn_nft_reference)
-elif [[ $NFT_CANISTER_ID == '' ]]; then
-  echo "The NFT_CANISTER_ID must have a mainnet canister id if the IC_NETWORK is not 'local'"
+  # Note: if ic network, the canister should already be created
+  # and the mainnet canister id should be in ./origyn_nft/canister_ids.json
+  echo "Creating the NFT canister on the $IC_NETWORK network."
+  dfx canister --network $IC_NETWORK create origyn_nft_reference || true
+fi
+
+NFT_CANISTER_ID=$(dfx canister --network $IC_NETWORK id origyn_nft_reference)
+echo "NFT_CANISTER_ID: $NFT_CANISTER_ID"
+
+if [[ $NFT_CANISTER_ID == '' ]]; then
+  echo "The NFT canister id could not be found."
   exit 1
 fi
 
-echo "NFT_CANISTER_ID: $NFT_CANISTER_ID"
-
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE$'\n\n**************************************'
-echo -e $LIGHTBLUE"******* Build/Install Canister *******"
-echo -e $LIGHTBLUE$'**************************************\n'
-echo -e $NOCOLOR""
+echo -e $LIGHTBLUE
+echo $'\n**************************************'
+echo "******* Build/Install Canister *******"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 echo "Building and installing the NFT canister"
 
-dfx build origyn_nft_reference
-dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = null})"
+dfx build --network $IC_NETWORK origyn_nft_reference
+
+if [[ $IC_NETWORK == 'ic' ]]; then
+  gzip -k ./.dfx/ic/canisters/origyn_nft_reference/origyn_nft_reference.wasm
+  dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/ic/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = null})"
+else
+  dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = null})"
+fi
 
 show_elapsed_time
 
@@ -227,10 +247,11 @@ show_elapsed_time
 #show_elapsed_time
 
 
-echo -e $LIGHTPURPLE$'\n\n**************************************'
-echo -e $LIGHTPURPLE"************ CSM - Config ************"
-echo -e $LIGHTPURPLE$'**************************************\n'
-echo -e $NOCOLOR""
+echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "************ CSM - Config ************"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 echo "Changing directory to $SCRIPTS_PATH"
 cd $SCRIPTS_PATH
@@ -243,11 +264,11 @@ node csm-config.js \
 --environment $ORIGYN_ENV \
 --nftCanisterId $NFT_CANISTER_ID \
 --creatorPrincipal $ADMIN_PRINCIPAL \
---collectionDisplayName "Moai" \
---namespace "moai" \
---collectionId "mo" \
---tokenPrefix "mo-" \
---assetMappings "primary:nft*.png" \
+--collectionDisplayName "Brain Matters" \
+--namespace "brain.matters" \
+--collectionId "bm" \
+--tokenPrefix "bm-" \
+--assetMappings "primary:nft*.png, hidden:mystery-bm.gif" \
 --useProxy "false" \
 --soulbound "false"
 
@@ -261,10 +282,11 @@ read -p "Press return/enter to stage and mint your NFT collection..."
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE$'\n\n**************************************'
-echo -e $LIGHTBLUE"************ CSM - Stage **************"
-echo -e $LIGHTBLUE$'**************************************\n'
-echo -e $NOCOLOR""
+echo -e $LIGHTBLUE
+echo $'\n**************************************'
+echo "************ CSM - Stage **************"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 echo "Calling the csm stage function to upload the NFT files"
 
@@ -275,10 +297,11 @@ node csm-stage.js \
 show_elapsed_time
 
 
-echo -e $LIGHTPURPLE$'\n\n**************************************'
-echo -e $LIGHTPURPLE"************* CSM - Mint **************"
-echo -e $LIGHTPURPLE$'**************************************\n'
-echo -e $NOCOLOR""
+echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "************* CSM - Mint **************"
+echo $'**************************************'
+echo -e $NOCOLOR
 
 echo "Calling the csm mint function to mint the NFTs int the collection"
 
