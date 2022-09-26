@@ -99,11 +99,7 @@ bash ./projects/brain-matters/deploy.sh
 
 If the script runs successfully, it will create a new "\_\_staged" folder in the same folder as the "deploy.sh" script.
 
-## Test the Local Deployment
-
-To verify that the sample NFT collection was deployed correctly, you can click any URL in the [projects/brain-matters/\_\_staged/full_def.json](projects/brain-matters/__staged/full_def.json) metadata file and it should open to display a file or dapp.
-
-You should also be able to view the NFT collection information here: [http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/info](http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/info).
+To verify your deployment, see the "Testing Deployments" section below.
 
 ## Sample Command Line Output
 
@@ -172,12 +168,6 @@ If your NFT collection has large media files, you may want to test it locally wi
     sudo apt-get -y install cmake-qt-gui
     ```
 
-## Updating Deploy Script
-
-In the sample project (./projects/brain-matters), open the [deploy.sh](projects/brain-matters/deploy.sh) file and search for "useProxy", then change the value to "true".
-
-Re-run the deploy script using the instructions above.
-
 ## Running the Proxy
 
 Open a new dedicated terminal and run these two commands.
@@ -190,8 +180,64 @@ cargo run -- --debug -v --log "stderr" --replica "http://localhost:8000" --redis
 
 Leave the proxy running while you are testing. To stop it, press CTRL+c.
 
-## Testing the Proxy
+## Testing Deployments
 
-Open the [full_def.json](projects/brain-matters/__staged/full_def.json) metadata file. The updated URLs will point at port 3000 on localhost. Click on any of the URLs to send the HTTP request to the proxy.
+To verify that your NFT collection was deployed correctly, you can view your on-chain resources with the root URL for your configuration, followed by the relative URL of a resource:
 
-If you have a video, it should stream smoothly now.
+### Root URLs
+
+NFTs and collections can be access in three ways.
+
+-   Direct: HTTP requests are sent directly to the canister using the canister id. This option is fully decentralized, so it's always online, even if the proxy can't be reached. However, large files take longer to download and video streaming may be slow, resulting in a poor user experience.
+-   Proxy: HTTP requests are sent to a reverse-proxy which requests files from the canister and caches them so they can be served to the user quickly and videso can stream smoothly.
+-   Proxy + Phonebook: The canister id in the URL can be replaced with a user friendly collection id. The reverse-proxy will lookup the canister id in the phonebook canister. The URL will only work after a phonebook entry has been created mapping the collection id to the canister id.
+
+**Localhost**
+
+The canister id will be located here: [origyn_nft/.dfx/local/canister_ids.json](origyn_nft/.dfx/local/canister_ids.json) at "origyn_nft_reference" > "local".
+
+-   Direct: http://{canister-id}.localhost:8000/
+-   Proxy: http://localhost:3000/-/{canister-id}/
+-   Proxy + Phonebook: http://localhost:3000/-/{collection-id}/
+
+**Mainnet**
+
+The canister id will be located here: [origyn_nft/canister_ids.json](origyn_nft/canister_ids.json) at "origyn_nft_reference" > "ic".
+
+-   Direct (Fully decentralized): https://{canister id}.raw.ic0.app/
+-   Proxy: https://exos.origyn.network/-/{canister-id}/
+-   Proxy + Phonebook: https://exos.origyn.network/-/{collection-id}/
+
+### Relative URLs
+
+Collection Info: \/collection\/info
+
+All staged files will have "location" attribute in the generated metadata file here: [projects/brain-matters/\_\_staged/full_def.json](projects/brain-matters/__staged/full_def.json).
+
+The location is the relative path and should work when combined with the root URL.
+
+### Eample URLs
+
+**Localhost**
+
+-   Direct:
+    -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/info
+    -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-0/-/brain.matters.nft0.png
+-   Proxy:
+    -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/collection/info
+    -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/-/bm-0/-/brain.matters.nft0.png
+-   Proxy + Phonebook:
+    -   http://localhost:3000/-/bm/collection/info
+    -   http://localhost:3000/-/bm/-/bm-0/-/brain.matters.nft0.png
+
+**Mainnet**
+
+-   Direct:
+    -   https://fgbfc-aqaaa-aaaak-acv3a-cai.raw.ic0.app/collection/info
+    -   https://fgbfc-aqaaa-aaaak-acv3a-cai.raw.ic0.app/-/bm-0/-/brain.matters.nft0.png
+-   Proxy:
+    -   https://exos.origyn.network/-/fgbfc-aqaaa-aaaak-acv3a-cai/collection/info
+    -   https://exos.origyn.network/-/fgbfc-aqaaa-aaaak-acv3a-cai/-/bm-0/-/brain.matters.nft0.png
+-   Proxy + Phonebook (no phonebook entry has been made for this example):
+    -   https://exos.origyn.network/-/bm/collection/info
+    -   https://exos.origyn.network/-/bm/-/bm-0/-/brain.matters.nft0.png
