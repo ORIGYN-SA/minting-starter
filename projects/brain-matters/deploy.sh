@@ -73,15 +73,6 @@ DAPPS_PATH="$PROJECT_PATH/assets/collection/dapps"
 SCRIPTS_PATH="$REPO_PATH/scripts"
 ORIGYN_NFT_REPO_PATH="$REPO_PATH/origyn_nft"
 
-if [[ $IC_NETWORK == 'ic' ]]; then
-  ORIGYN_ENV='production'
-elif [[ $IC_NETWORK == 'local' ]]; then
-  ORIGYN_ENV='local'
-else
-  echo "Error: Invalid value for IC_NETWORK. Valid values are 'ic' or 'local'."
-  exit 1
-fi
-
 IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
 
 echo "Present working directory: $(pwd)"
@@ -90,7 +81,7 @@ echo "PROJECT_PATH: $PROJECT_PATH"
 echo "DAPPS_PATH: $DAPPS_PATH"
 echo "SCRIPTS_PATH: $SCRIPTS_PATH"
 echo "ORIGYN_NFT_REPO_PATH: $ORIGYN_NFT_REPO_PATH"
-echo "ORIGYN_ENV: $ORIGYN_ENV"
+echo "IC_NETWORK: $IC_NETWORK"
 echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 
 if [[ -f "$IDENTITY_PEM_FILE_PATH" ]]; then
@@ -261,7 +252,6 @@ echo "Calling the csm config function to create NFT metadata"
 
 node csm-config.js \
 --folderPath "$PROJECT_PATH/assets" \
---environment $ORIGYN_ENV \
 --nftCanisterId $NFT_CANISTER_ID \
 --creatorPrincipal $ADMIN_PRINCIPAL \
 --collectionDisplayName "Brain Matters" \
@@ -269,7 +259,6 @@ node csm-config.js \
 --collectionId "bm" \
 --tokenPrefix "bm-" \
 --assetMappings "primary:nft*.png, hidden:mystery-bm.gif" \
---useProxy "false" \
 --soulbound "false"
 
 show_elapsed_time
@@ -291,6 +280,7 @@ echo -e $NOCOLOR
 echo "Calling the csm stage function to upload the NFT files"
 
 node csm-stage.js \
+--environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
 
@@ -306,6 +296,7 @@ echo -e $NOCOLOR
 echo "Calling the csm mint function to mint the NFTs int the collection"
 
 node csm-mint.js \
+--environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
 # --range "0-7" #only mint token indexes 0 through 7

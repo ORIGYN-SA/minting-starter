@@ -211,7 +211,6 @@ configArgs {
   folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
   assetMappings: 'primary:nft*.png, hidden:mystery-bm.gif',
   nftOwnerId: 'rrkah-fqaaa-aaaaa-aaaaq-cai',
-  useProxy: 'false',
   soulbound: 'false',
   nftQuantities: ''
 }
