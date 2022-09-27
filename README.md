@@ -38,7 +38,7 @@ git submodule update --init --recursive
 
 When creating an NFT collection, you can practice on your local computer before attempting to stage and mint your collection on the Internet Computer's mainnet.
 
-To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [origyn_nft/dfx.json](origyn_nft/dfx.json).
+To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [dfx.json](dfx.json).
 
 ```console
 DFX_VERSION=0.11.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
@@ -47,7 +47,6 @@ DFX_VERSION=0.11.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 Open a separate terminal dedicated to running dfx. (Debug output from code running in the NFT canister will be displayed in this terminal.)
 
 ```console
-cd origyn_nft
 dfx start --clean
 ```
 
@@ -129,7 +128,7 @@ Here is [sample terminal output](./docs/terminal-deploy-script-mainnet.md) for a
 
 # Using the Origyn ICX-Proxy
 
-When Origyn NFTs are deployed in production, the URLs point at a reverse proxy and the proxy interacts with the canister to fetch and cache files. This enables smooth streaming of videos and fast loading of high resolution images.
+When Origyn NFTs are deployed to the IC mainnet, the URLs point at a reverse proxy and the proxy interacts with the canister to fetch and cache files. This enables smooth streaming of videos and fast loading of high resolution images.
 
 If your NFT collection has large media files, you may want to test it locally with the proxy.
 
@@ -168,15 +167,17 @@ If your NFT collection has large media files, you may want to test it locally wi
     sudo apt-get -y install cmake-qt-gui
     ```
 
-## Running the Proxy
+## Running the Proxy (local testing only)
 
 Open a new dedicated terminal and run these two commands.
 
 ```console
 cd icx-proxy
 
-cargo run -- --debug -v --log "stderr" --replica "http://localhost:8000" --redis-url "" --phonebook-id ""
+cargo run -- --debug -v --log "stderr" --replica "http://localhost:8000" --redis-url "" --phonebook-id "{phonebook canister id}"
 ```
+
+The phone book canister id will be located here: [.dfx/local/canister_ids.json](.dfx/local/canister_ids.json) at "phonebook" > "local".
 
 Leave the proxy running while you are testing. To stop it, press CTRL+c.
 
@@ -194,7 +195,7 @@ NFTs and collections can be access in three ways.
 
 **Localhost**
 
-The canister id will be located here: [origyn_nft/.dfx/local/canister_ids.json](origyn_nft/.dfx/local/canister_ids.json) at "origyn_nft_reference" > "local".
+The canister id will be located here: [.dfx/local/canister_ids.json](.dfx/local/canister_ids.json) at "origyn_nft_reference" > "local".
 
 -   Direct: http://{canister-id}.localhost:8000/
 -   Proxy: http://localhost:3000/-/{canister-id}/
@@ -202,7 +203,7 @@ The canister id will be located here: [origyn_nft/.dfx/local/canister_ids.json](
 
 **Mainnet**
 
-The canister id will be located here: [origyn_nft/canister_ids.json](origyn_nft/canister_ids.json) at "origyn_nft_reference" > "ic".
+The canister id will be located here: [canister_ids.json](canister_ids.json) at "origyn_nft_reference" > "ic".
 
 -   Direct (Fully decentralized): https://{canister id}.raw.ic0.app/
 -   Proxy: https://exos.origyn.network/-/{canister-id}/
