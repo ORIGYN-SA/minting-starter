@@ -90,8 +90,6 @@ PROJECT_PATH="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_PATH="$(cd -P -- "$(dirname -- "$PROJECT_PATH/../../..")" && pwd -P)"
 DAPPS_PATH="$PROJECT_PATH/assets/collection/dapps"
 SCRIPTS_PATH="$REPO_PATH/scripts"
-# ORIGYN_NFT_REPO_PATH="$REPO_PATH/origyn_nft"
-# PHONE_BOOK_REPO_PATH="$REPO_PATH/phone_book"
 
 IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
 
@@ -100,8 +98,6 @@ echo "REPO_PATH: $REPO_PATH"
 echo "PROJECT_PATH: $PROJECT_PATH"
 echo "DAPPS_PATH: $DAPPS_PATH"
 echo "SCRIPTS_PATH: $SCRIPTS_PATH"
-# echo "ORIGYN_NFT_REPO_PATH: $ORIGYN_NFT_REPO_PATH"
-# echo "PHONE_BOOK_REPO_PATH: $PHONE_BOOK_REPO_PATH"
 echo "IC_NETWORK: $IC_NETWORK"
 echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 
@@ -170,10 +166,6 @@ echo $'\n**************************************'
 echo "******** Import/Use Identity *********"
 echo $'**************************************'
 echo -e $NOCOLOR
-
-# echo "Changing directory to $ORIGYN_NFT_REPO_PATH"
-# cd $ORIGYN_NFT_REPO_PATH
-# echo "Present working directory: $(pwd)"
 
 bash "$SCRIPTS_PATH/create-local-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
 
@@ -244,68 +236,59 @@ fi
 
 show_elapsed_time
 
-
-echo -e $LIGHTPURPLE
-echo $'\n**************************************'
-echo "**** Ensure PHONE BOOK Canister ******"
-echo $'**************************************'
-echo -e $NOCOLOR
-
-# echo "Changing directory to $PHONE_BOOK_REPO_PATH"
-# cd $PHONE_BOOK_REPO_PATH
-
 if [[ $IC_NETWORK == 'local' ]]; then
+  echo -e $LIGHTPURPLE
+  echo $'\n**************************************'
+  echo "**** Ensure PHONE BOOK Canister ******"
+  echo $'**************************************'
+  echo -e $NOCOLOR
+
   # Note: if ic network, the phone book canister is already created
   echo "Creating the PHONE BOOK canister on the $IC_NETWORK network."
   dfx canister --network $IC_NETWORK create phonebook
   PHONE_BOOK_CANISTER_ID=$(dfx canister --network $IC_NETWORK id phonebook)
-else
-  # The mainnet phone book canister is a well-known canister id
-  PHONE_BOOK_CANISTER_ID="ngrpb-5qaaa-aaaaj-adz7a-cai"
-fi
 
-echo "PHONE_BOOK_CANISTER_ID: $PHONE_BOOK_CANISTER_ID"
+  echo "PHONE_BOOK_CANISTER_ID: $PHONE_BOOK_CANISTER_ID"
 
-if [[ $PHONE_BOOK_CANISTER_ID == '' ]]; then
-  echo "The PHONE BOOK canister id could not be found."
-  exit 1
-fi
+  if [[ $PHONE_BOOK_CANISTER_ID == '' ]]; then
+    echo "The PHONE BOOK canister id could not be found."
+    exit 1
+  fi
 
-show_elapsed_time
+  show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "* Build/Install PHONE BOOK Canister  *"
-echo $'**************************************'
-echo -e $NOCOLOR
+  echo -e $LIGHTBLUE
+  echo $'\n**************************************'
+  echo "* Build/Install PHONE BOOK Canister  *"
+  echo $'**************************************'
+  echo -e $NOCOLOR
 
-echo "Building and installing the PHONE BOOK canister"
-
-dfx build --network $IC_NETWORK phonebook
-
-if [[ $IC_NETWORK == 'local' ]]; then
+  echo "Building and installing the PHONE BOOK canister"
+  dfx build --network $IC_NETWORK phonebook
   dfx canister --network $IC_NETWORK install phonebook --mode=reinstall --argument "(principal \"$ADMIN_PRINCIPAL\")"
-else
-  echo "Skipping phone book canister installation. Already installed on mainnet."
+
+  show_elapsed_time
+
+
+  echo -e $LIGHTBLUE
+  echo $'\n**************************************'
+  echo "******* Add PHONE BOOK Entry *********"
+  echo $'**************************************'
+  echo -e $NOCOLOR
+
+  # Note: The mainnet phone book canister is a well-known
+  # canister id: ngrpb-5qaaa-aaaaj-adz7a-cai
+  # Only admins can add a phonebook entry.
+
+  echo "Inserting phone book entry, mapping the collection id to the NFT canister id."
+  dfx canister call phonebook insert "(\"$COLLECTION_ID\", vec {principal \"$NFT_CANISTER_ID\"})"
+
+  echo "Listing phone book entries."
+  dfx canister call phonebook list
+
+  show_elapsed_time
 fi
-
-show_elapsed_time
-
-
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "******* Add PHONE BOOK Entry *********"
-echo $'**************************************'
-echo -e $NOCOLOR
-
-echo "Inserting phone book entry, mapping the collection id to the NFT canister id."
-dfx canister call phonebook insert "(\"$COLLECTION_ID\", vec {principal \"$NFT_CANISTER_ID\"})"
-
-echo "Listing phone book entries."
-dfx canister call phonebook list
-
-show_elapsed_time
 
 
 # echo $'\n\n**************************************'

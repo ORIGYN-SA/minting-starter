@@ -234,11 +234,11 @@ The location is the relative path and should work when combined with the root UR
 **Mainnet**
 
 -   Direct:
-    -   https://fgbfc-aqaaa-aaaak-acv3a-cai.raw.ic0.app/collection/info
-    -   https://fgbfc-aqaaa-aaaak-acv3a-cai.raw.ic0.app/-/bm-0/-/brain.matters.nft0.png
+    -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/collection/info
+    -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/-/bm-0/-/brain.matters.nft0.png
 -   Proxy:
-    -   https://exos.origyn.network/-/fgbfc-aqaaa-aaaak-acv3a-cai/collection/info
-    -   https://exos.origyn.network/-/fgbfc-aqaaa-aaaak-acv3a-cai/-/bm-0/-/brain.matters.nft0.png
+    -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/collection/info
+    -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-0/-/brain.matters.nft0.png
 -   Proxy + Phonebook (no phonebook entry has been made for this example):
     -   https://exos.origyn.network/-/bm/collection/info
     -   https://exos.origyn.network/-/bm/-/bm-0/-/brain.matters.nft0.png
