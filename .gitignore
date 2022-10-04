@@ -17,6 +17,9 @@ dapps-latest-build.zip
 # dfx temporary files
 .dfx/
 
+# vessl temporary files
+.vessel/
+
 # mint script output files
 **/__*/
 
