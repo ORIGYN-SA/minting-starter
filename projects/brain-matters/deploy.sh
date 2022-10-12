@@ -291,6 +291,7 @@ echo -e $NOCOLOR
 echo "Calling the csm stage function to upload the NFT files"
 
 node csm-stage.js \
+--environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
 
@@ -306,6 +307,7 @@ echo -e $NOCOLOR
 echo "Calling the csm mint function to mint the NFTs in the collection"
 
 node csm-mint.js \
+--environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
 # --range "0-7" #only mint token indexes 0 through 7
