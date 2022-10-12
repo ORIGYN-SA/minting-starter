@@ -2,7 +2,6 @@
 .vscode/**/*
 !.vscode/launch.json
 .idea/
-.vessel/
 
 # Github Access Token
 gittoken.key

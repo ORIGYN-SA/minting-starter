@@ -98,6 +98,8 @@ bash ./projects/brain-matters/deploy.sh
 
 If the script runs successfully, it will create a new "\_\_staged" folder in the same folder as the "deploy.sh" script.
 
+## Test the Local Deployment
+
 To verify your deployment, see the "Testing Deployments" section below.
 
 ## Sample Command Line Output

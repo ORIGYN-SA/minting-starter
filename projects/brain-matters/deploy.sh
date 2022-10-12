@@ -27,9 +27,6 @@ echo "******** Set User Variables **********"
 echo $'**************************************'
 echo -e $NOCOLOR
 
-# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-# Edit these user variables as needed
-
 # "local" or "ic" (mainnet)
 IC_NETWORK="local"
 
@@ -38,24 +35,8 @@ IC_NETWORK="local"
 # identity first, then provide the name of your imported identity here.
 IDENTITY_NAME="local_nft_deployer"
 
-# NFT collection settings
-COLLECTION_ID="bm"
-DISPLAY_NAME="Brain Matters"
-NAMESPACE="brain.matters"
-TOKEN_PREFIX="bm-"
-ASSET_MAPPINGS="primary:nft*.png, hidden:mystery-bm.gif"
-SOULBOUND="false"
-
-# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
 echo "IC_NETWORK: $IC_NETWORK"
 echo "IDENTITY_NAME: $IDENTITY_NAME"
-echo "COLLECTION_ID: $COLLECTION_ID"
-echo "DISPLAY_NAME: $DISPLAY_NAME"
-echo "NAMESPACE: $NAMESPACE"
-echo "TOKEN_PREFIX: $TOKEN_PREFIX"
-echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
-echo "SOULBOUND: $SOULBOUND"
 
 echo -e $LIGHTPURPLE
 echo $'\n**************************************'
@@ -90,6 +71,16 @@ PROJECT_PATH="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_PATH="$(cd -P -- "$(dirname -- "$PROJECT_PATH/../../..")" && pwd -P)"
 DAPPS_PATH="$PROJECT_PATH/assets/collection/dapps"
 SCRIPTS_PATH="$REPO_PATH/scripts"
+ORIGYN_NFT_REPO_PATH="$REPO_PATH/origyn_nft"
+
+if [[ $IC_NETWORK == 'ic' ]]; then
+  ORIGYN_ENV='production'
+elif [[ $IC_NETWORK == 'local' ]]; then
+  ORIGYN_ENV='local'
+else
+  echo "Error: Invalid value for IC_NETWORK. Valid values are 'ic' or 'local'."
+  exit 1
+fi
 
 IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
 
@@ -98,7 +89,8 @@ echo "REPO_PATH: $REPO_PATH"
 echo "PROJECT_PATH: $PROJECT_PATH"
 echo "DAPPS_PATH: $DAPPS_PATH"
 echo "SCRIPTS_PATH: $SCRIPTS_PATH"
-echo "IC_NETWORK: $IC_NETWORK"
+echo "ORIGYN_NFT_REPO_PATH: $ORIGYN_NFT_REPO_PATH"
+echo "ORIGYN_ENV: $ORIGYN_ENV"
 echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 
 if [[ -f "$IDENTITY_PEM_FILE_PATH" ]]; then
@@ -167,6 +159,10 @@ echo "******** Import/Use Identity *********"
 echo $'**************************************'
 echo -e $NOCOLOR
 
+echo "Changing directory to $ORIGYN_NFT_REPO_PATH"
+cd $ORIGYN_NFT_REPO_PATH
+echo "Present working directory: $(pwd)"
+
 bash "$SCRIPTS_PATH/create-local-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
 
 echo "Getting principal for $IDENTITY_NAME identity"
@@ -219,7 +215,7 @@ show_elapsed_time
 
 echo -e $LIGHTBLUE
 echo $'\n**************************************'
-echo "**** Build/Install NFT Canister ******"
+echo "******* Build/Install Canister *******"
 echo $'**************************************'
 echo -e $NOCOLOR
 
@@ -235,60 +231,6 @@ else
 fi
 
 show_elapsed_time
-
-if [[ $IC_NETWORK == 'local' ]]; then
-  echo -e $LIGHTPURPLE
-  echo $'\n**************************************'
-  echo "**** Ensure PHONE BOOK Canister ******"
-  echo $'**************************************'
-  echo -e $NOCOLOR
-
-  # Note: if ic network, the phone book canister is already created
-  echo "Creating the PHONE BOOK canister on the $IC_NETWORK network."
-  dfx canister --network $IC_NETWORK create phonebook
-  PHONE_BOOK_CANISTER_ID=$(dfx canister --network $IC_NETWORK id phonebook)
-
-  echo "PHONE_BOOK_CANISTER_ID: $PHONE_BOOK_CANISTER_ID"
-
-  if [[ $PHONE_BOOK_CANISTER_ID == '' ]]; then
-    echo "The PHONE BOOK canister id could not be found."
-    exit 1
-  fi
-
-  show_elapsed_time
-
-
-  echo -e $LIGHTBLUE
-  echo $'\n**************************************'
-  echo "* Build/Install PHONE BOOK Canister  *"
-  echo $'**************************************'
-  echo -e $NOCOLOR
-
-  echo "Building and installing the PHONE BOOK canister"
-  dfx build --network $IC_NETWORK phonebook
-  dfx canister --network $IC_NETWORK install phonebook --mode=reinstall --argument "(principal \"$ADMIN_PRINCIPAL\")"
-
-  show_elapsed_time
-
-
-  echo -e $LIGHTBLUE
-  echo $'\n**************************************'
-  echo "******* Add PHONE BOOK Entry *********"
-  echo $'**************************************'
-  echo -e $NOCOLOR
-
-  # Note: The mainnet phone book canister is a well-known
-  # canister id: ngrpb-5qaaa-aaaaj-adz7a-cai
-  # Only admins can add a phonebook entry.
-
-  echo "Inserting phone book entry, mapping the collection id to the NFT canister id."
-  dfx canister call phonebook insert "(\"$COLLECTION_ID\", vec {principal \"$NFT_CANISTER_ID\"})"
-
-  echo "Listing phone book entries."
-  dfx canister call phonebook list
-
-  show_elapsed_time
-fi
 
 
 # echo $'\n\n**************************************'
@@ -319,14 +261,16 @@ echo "Calling the csm config function to create NFT metadata"
 
 node csm-config.js \
 --folderPath "$PROJECT_PATH/assets" \
---nftCanisterId "$NFT_CANISTER_ID" \
---creatorPrincipal "$ADMIN_PRINCIPAL" \
---collectionDisplayName "$DISPLAY_NAME" \
---namespace "$NAMESPACE" \
---collectionId "$COLLECTION_ID" \
---tokenPrefix "$TOKEN_PREFIX" \
---assetMappings "$ASSET_MAPPINGS" \
---soulbound "$SOULBOUND"
+--environment $ORIGYN_ENV \
+--nftCanisterId $NFT_CANISTER_ID \
+--creatorPrincipal $ADMIN_PRINCIPAL \
+--collectionDisplayName "Brain Matters" \
+--namespace "brain.matters" \
+--collectionId "bm" \
+--tokenPrefix "bm-" \
+--assetMappings "primary:nft*.png, hidden:mystery-bm.gif" \
+--useProxy "false" \
+--soulbound "false"
 
 show_elapsed_time
 
@@ -347,7 +291,6 @@ echo -e $NOCOLOR
 echo "Calling the csm stage function to upload the NFT files"
 
 node csm-stage.js \
---environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
 
@@ -360,10 +303,9 @@ echo "************* CSM - Mint **************"
 echo $'**************************************'
 echo -e $NOCOLOR
 
-echo "Calling the csm mint function to mint the NFTs int the collection"
+echo "Calling the csm mint function to mint the NFTs in the collection"
 
 node csm-mint.js \
---environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
 # --range "0-7" #only mint token indexes 0 through 7

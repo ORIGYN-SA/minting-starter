@@ -48,7 +48,13 @@ dfx.json not found, using default.
 Please enter a passphrase for your identity: [hidden]
 Decryption complete.
 0.00000000 ICP
+```
 
+Sent 1.001 ICP from my Plug wallet to my dfx identity's account id.
+
+![image](./images/deposit1.png)
+
+```console
 ➜ dfx ledger --network ic balance
 dfx.json not found, using default.
 Please enter a passphrase for your identity: [hidden]
@@ -105,7 +111,13 @@ dfx.json not found, using default.
 Please enter a passphrase for your identity: [hidden]
 Decryption complete.
 ()
+```
 
+Sent 1.1 more ICP from my Plug wallet to my dfx identity's account id.
+
+![image](./images/deposit2.png)
+
+```console
 ➜ dfx ledger --network ic balance
 dfx.json not found, using default.
 Please enter a passphrase for your identity: [hidden]
@@ -176,3 +188,27 @@ Please enter a passphrase for your identity: [hidden]
 Decryption complete.
 4.764 TC (trillion cycles).
 ```
+
+You may have noticed that 4 trillion cycles were deducted from the cycles wallet after creating an empty canister.
+
+By default 4 TC get transferred to the new canister. You can check that with the canister status command.
+
+Here is the status of the same canister after fully deploying the wasm module and staging/minting the sample NFT collection.
+
+```console
+➜ dfx canister --network ic status ap5ok-kqaaa-aaaak-acvha-cai
+dfx.json not found, using default.
+Please enter a passphrase for your identity: [hidden]
+Decryption complete.
+Canister status call result for ap5ok-kqaaa-aaaak-acvha-cai.
+Status: Running
+Controllers: k4fy2-6qaaa-aaaak-acu7a-cai sil2l-jnboi-ckxt5-hrc2f-pmauv-yhxdm-vujiq-rmz3k-6g6lt-pe2vn-nae
+Memory allocation: 0
+Compute allocation: 0
+Freezing threshold: 2_592_000
+Memory Size: Nat(52096683)
+Balance: 3_796_806_025_838 Cycles
+Module hash: 0x5c59f74621142a31d2778958be1ec73dc52e22097f612f0403d6b4e7767fa3ee
+```
+
+The difference between the default 4 TC cycles transferred to the canister upon creation and the remaining cycles after deployment is -203,193,974,162 cycles (about 27 cents).

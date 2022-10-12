@@ -210,6 +210,7 @@ configArgs {
   folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
   assetMappings: 'primary:nft*.png, hidden:mystery-bm.gif',
   nftOwnerId: 'ap5ok-kqaaa-aaaak-acvha-cai',
+  useProxy: 'false',
   soulbound: 'false',
   nftQuantities: ''
 }
@@ -1090,7 +1091,7 @@ Elapsed: 0 hr 5 min 35 sec (Mon Sep 19 22:24:17 MDT 2022)
 **************************************
 
 
-Calling the csm mint function to mint the NFTs int the collection
+Calling the csm mint function to mint the NFTs in the collection
 mintArgs {
   folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
   keyFilePath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/jt-mainnet-ed25519.pem',
