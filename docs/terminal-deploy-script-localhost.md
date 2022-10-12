@@ -1090,7 +1090,7 @@ Elapsed: 0 hr 2 min 33 sec (Mon Sep 19 23:00:03 MDT 2022)
 ************* CSM - Mint **************
 **************************************
 
-Calling the csm mint function to mint the NFTs int the collection
+Calling the csm mint function to mint the NFTs in the collection
 mintArgs {
   folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
   keyFilePath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem',

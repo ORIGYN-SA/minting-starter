@@ -303,7 +303,7 @@ echo "************* CSM - Mint **************"
 echo $'**************************************'
 echo -e $NOCOLOR
 
-echo "Calling the csm mint function to mint the NFTs int the collection"
+echo "Calling the csm mint function to mint the NFTs in the collection"
 
 node csm-mint.js \
 --folderPath "$PROJECT_PATH/assets" \
