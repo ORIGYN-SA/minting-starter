@@ -7,3 +7,6 @@
 [submodule "icx-proxy"]
 	path = icx-proxy
 	url = https://github.com/ORIGYN-SA/icx-proxy
+[submodule "phone_book"]
+	path = phone_book
+	url = https://github.com/ORIGYN-SA/phone_book
