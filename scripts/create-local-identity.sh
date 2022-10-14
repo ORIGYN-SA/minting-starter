@@ -14,6 +14,13 @@ CURRENT_IDENTITY="$(dfx identity whoami)"
 
 if [[ $CURRENT_IDENTITY == $IDENTITY ]]; then
   echo "Identity \"$IDENTITY\" already imported and in use"
+
+  if [[ -f "$PEM_FILE_PATH" ]]; then
+    echo "Found existing pem file $PEM_FILE_PATH"
+  else
+    echo "Exporting private key file for existing identity at $PEM_FILE_PATH..."
+    dfx identity export $IDENTITY > $PEM_FILE_PATH
+  fi
 else
   echo "Identity \"$IDENTITY\" not imported"
 
