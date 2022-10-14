@@ -101,22 +101,36 @@ echo "SCRIPTS_PATH: $SCRIPTS_PATH"
 echo "IC_NETWORK: $IC_NETWORK"
 echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 
-if [[ -f "$IDENTITY_PEM_FILE_PATH" ]]; then
-  echo "Found $IDENTITY_PEM_FILE_PATH"
-elif [[ $IC_NETWORK == 'ic' ]]; then
-  echo -e $YELLOW
-  echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-  echo "WARNING: Exporting identity private key to pem file at:"
-  echo "$IDENTITY_PEM_FILE_PATH."
-  echo "For you security, please permanently delete this file after running this script."
-  echo "(This is needed by node scripts to create an actor reference with your identity"
-  echo "to call functions on the NFT canister.)"
-  echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-  echo -e $NOCOLOR
-  read -p "Press return/enter to export the private key of your dfx identity and continue..."
-fi
 
-dfx identity export "$IDENTITY_NAME" > "$IDENTITY_PEM_FILE_PATH"
+echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "******** Import/Use Identity *********"
+echo $'**************************************'
+echo -e $NOCOLOR
+
+if [[ $IC_NETWORK == 'ic' ]]; then
+  if [[ -f "$IDENTITY_PEM_FILE_PATH" ]]; then
+    echo "Found $IDENTITY_PEM_FILE_PATH"
+  else
+    echo -e $YELLOW
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo "WARNING: Exporting identity private key to pem file at:"
+    echo "$IDENTITY_PEM_FILE_PATH."
+    echo "For you security, please permanently delete this file after running this script."
+    echo "(This is needed by node scripts to create an actor reference with your identity"
+    echo "to call functions on the NFT canister.)"
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo -e $NOCOLOR
+    read -p "Press return/enter to export the private key of your dfx identity and continue..."
+    dfx identity export "$IDENTITY_NAME" > "$IDENTITY_PEM_FILE_PATH"
+  fi
+else #local
+  bash "$SCRIPTS_PATH/create-local-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
+
+  echo "Getting principal for $IDENTITY_NAME identity"
+  ADMIN_PRINCIPAL=$(dfx identity get-principal)
+  echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
+fi
 
 show_elapsed_time
 
@@ -157,21 +171,6 @@ cp ./dapps-latest-build/*/* $DAPPS_PATH
 
 echo "Removing unzipped folder"
 rm -rf dapps-latest-build
-
-show_elapsed_time
-
-
-echo -e $LIGHTPURPLE
-echo $'\n**************************************'
-echo "******** Import/Use Identity *********"
-echo $'**************************************'
-echo -e $NOCOLOR
-
-bash "$SCRIPTS_PATH/create-local-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
-
-echo "Getting principal for $IDENTITY_NAME identity"
-ADMIN_PRINCIPAL=$(dfx identity get-principal)
-echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 
 show_elapsed_time
 
