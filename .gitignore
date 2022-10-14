@@ -24,4 +24,4 @@ dapps-latest-build.zip
 # frontend code
 node_modules
 **/*.pem
-projects/brain-matters/assets/collection/dapps/**
+
