@@ -41,7 +41,7 @@ When creating an NFT collection, you can practice on your local computer before 
 To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [dfx.json](dfx.json).
 
 ```console
-DFX_VERSION=0.11.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+DFX_VERSION=0.11.2 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
 
 Open a separate terminal dedicated to running dfx. (Debug output from code running in the NFT canister will be displayed in this terminal.)
@@ -97,8 +97,6 @@ bash ./projects/brain-matters/deploy.sh
 ```
 
 If the script runs successfully, it will create a new "\_\_staged" folder in the same folder as the "deploy.sh" script.
-
-## Test the Local Deployment
 
 To verify your deployment, see the "Testing Deployments" section below.
 

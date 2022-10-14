@@ -2,6 +2,7 @@
 .vscode/**/*
 !.vscode/launch.json
 .idea/
+.vessel/
 
 # Github Access Token
 gittoken.key
@@ -22,5 +23,5 @@ dapps-latest-build.zip
 
 # frontend code
 node_modules
-
 **/*.pem
+
