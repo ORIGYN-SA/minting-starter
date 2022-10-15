@@ -23,5 +23,8 @@ dapps-latest-build.zip
 
 # frontend code
 node_modules
+
+# user secrets
 **/*.pem
+canister_ids.json
 
