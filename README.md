@@ -80,14 +80,6 @@ The csm library expects this folder structure when scanning for files.
             starting at the root of the collection folder.
         -   Example: [projects/brain-matters/assets/nfts/0/collection.json](projects/brain-matters/assets/nfts/0/collection.json).
 
-## Generate a token
-
-If you already have a token that has access to the dApps repo you can skip this step
-
--   First, make sure you have access to this [repo](https://github.com/ORIGYN-SA/DApps)
--   [Generate a token](https://github.com/settings/tokens) with repo and write:packages permissions
--   Save the token
-
 ## Deploy the Sample NFT Collection
 
 To generate metadata from local files, stage (upload) the files to an NFT canister and mint the NFTs, run:
@@ -217,7 +209,7 @@ All staged files will have "location" attribute in the generated metadata file h
 
 The location is the relative path and should work when combined with the root URL.
 
-### Eample URLs
+### Example URLs
 
 **Localhost**
 
