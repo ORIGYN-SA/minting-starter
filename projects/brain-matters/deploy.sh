@@ -126,11 +126,11 @@ if [[ $IC_NETWORK == 'ic' ]]; then
   fi
 else #local
   bash "$SCRIPTS_PATH/create-local-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
-
-  echo "Getting principal for $IDENTITY_NAME identity"
-  ADMIN_PRINCIPAL=$(dfx identity get-principal)
-  echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 fi
+
+echo "Getting principal for $IDENTITY_NAME identity"
+ADMIN_PRINCIPAL=$(dfx identity get-principal)
+echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 
 show_elapsed_time
 
@@ -153,24 +153,31 @@ echo $'**************************************'
 echo -e $NOCOLOR
 
 echo "Downloading and unzipping latest dapps"
-bash "$SCRIPTS_PATH/build-dapps.sh"
-
-echo "Removing temporary zip file"
-rm dapps-latest-build.zip
 
 echo "Ensuring path exists: $DAPPS_PATH"
 if [ ! -d ${DAPPS_PATH} ]; then
   mkdir -p ${DAPPS_PATH}
 fi
 
+DAPPS_LATEST="https://github.com/ORIGYN-SA/DApps/releases/download/dapps-latest-build/dist.zip"
+echo "Downloading latest dapps build from: $DAPPS_LATEST"
+curl -LS -H 'Accept: application/octet-stream' $DAPPS_LATEST -o "dist.zip" || { echo "Error: Invalid repo, token or network issue!";  exit 1; }
+echo "Download complete"
+
+echo "Unzipping latest dapps build"
+unzip -o dist.zip -d ./
+
+echo "Removing temporary zip file"
+rm ./dist.zip
+
 echo "Removing all txt files from the unzipped files"
-find ./dapps-latest-build -name "*.txt" -type f -delete
+find ./dist -name "*.txt" -type f -delete
 
 echo "Copying unzipped files to $DAPPS_PATH"
-cp ./dapps-latest-build/*/* $DAPPS_PATH
+cp ./dist/* "$DAPPS_PATH"
 
-echo "Removing unzipped folder"
-rm -rf dapps-latest-build
+echo "Removing temporary unzipped files"
+rm -rf ./dist
 
 show_elapsed_time
 
