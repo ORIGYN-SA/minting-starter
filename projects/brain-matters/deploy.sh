@@ -126,11 +126,11 @@ if [[ $IC_NETWORK == 'ic' ]]; then
   fi
 else #local
   bash "$SCRIPTS_PATH/create-local-identity.sh" "$IDENTITY_NAME" "$IDENTITY_PEM_FILE_PATH"
-
-  echo "Getting principal for $IDENTITY_NAME identity"
-  ADMIN_PRINCIPAL=$(dfx identity get-principal)
-  echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 fi
+
+echo "Getting principal for $IDENTITY_NAME identity"
+ADMIN_PRINCIPAL=$(dfx identity get-principal)
+echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 
 show_elapsed_time
 
