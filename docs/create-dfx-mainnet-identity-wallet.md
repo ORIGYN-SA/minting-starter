@@ -97,13 +97,11 @@ dfx canister --network ic call {your-wallet-canister-id} authorize '(principal "
 ## Create a New Canister on the Mainnet
 
 ```console
-cd ./origyn_nft
-
 dfx canister --network ic create origyn_nft_reference
 ```
 
 After running this command, the canister id displayed in the console should match the canister id
-in ./origyn_nft/canister_ids.json.
+in ./canister_ids.json.
 
 For example:
 
