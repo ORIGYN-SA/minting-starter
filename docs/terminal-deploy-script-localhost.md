@@ -3,7 +3,7 @@
 ```console
 ➜ bash ./projects/brain-matters/deploy.sh
 
-Mon Sep 19 22:57:30 MDT 2022
+Sat Oct 15 12:27:59 MDT 2022
 
 
 **************************************
@@ -12,6 +12,12 @@ Mon Sep 19 22:57:30 MDT 2022
 
 IC_NETWORK: local
 IDENTITY_NAME: local_nft_deployer
+COLLECTION_ID: bm
+DISPLAY_NAME: Brain Matters
+NAMESPACE: brain.matters
+TOKEN_PREFIX: bm-
+ASSET_MAPPINGS: primary:nft*.png, hidden:mystery-bm.gif
+SOULBOUND: false
 
 
 **************************************
@@ -21,23 +27,34 @@ IDENTITY_NAME: local_nft_deployer
 IC_NETWORK is valid
 IDENTITY_NAME is valid
 
-Elapsed: 0 hr 0 min 0 sec (Mon Sep 19 22:57:30 MDT 2022)
+Elapsed: 0 hr 0 min 0 sec (Sat Oct 15 12:27:59 MDT 2022)
 
 
 **************************************
 ******* Set Dynamic Variables ********
 **************************************
 
-Present working directory: /Users/jt/origyn/test/minting-starter
-REPO_PATH: /Users/jt/origyn/test/minting-starter
-PROJECT_PATH: /Users/jt/origyn/test/minting-starter/projects/brain-matters
-DAPPS_PATH: /Users/jt/origyn/test/minting-starter/projects/brain-matters/assets/collection/dapps
-SCRIPTS_PATH: /Users/jt/origyn/test/minting-starter/scripts
-ORIGYN_NFT_REPO_PATH: /Users/jt/origyn/test/minting-starter/origyn_nft
-ORIGYN_ENV: local
-IDENTITY_PEM_FILE_PATH: /Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem
+Present working directory: /Users/jt/test/minting-starter
+REPO_PATH: /Users/jt/test/minting-starter
+PROJECT_PATH: /Users/jt/test/minting-starter/projects/brain-matters
+DAPPS_PATH: /Users/jt/test/minting-starter/projects/brain-matters/assets/collection/dapps
+SCRIPTS_PATH: /Users/jt/test/minting-starter/scripts
+IC_NETWORK: local
+IDENTITY_PEM_FILE_PATH: /Users/jt/test/minting-starter/projects/brain-matters/local_nft_deployer.pem
 
-Elapsed: 0 hr 0 min 0 sec (Mon Sep 19 22:57:30 MDT 2022)
+
+**************************************
+******** Import/Use Identity *********
+**************************************
+
+IDENTITY: "local_nft_deployer"
+Using identity: "local_nft_deployer".
+Identity "local_nft_deployer" already imported and in use
+Found existing pem file /Users/jt/test/minting-starter/projects/brain-matters/local_nft_deployer.pem
+Getting principal for local_nft_deployer identity
+The local_nft_deployer principal is i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae
+
+Elapsed: 0 hr 0 min 0 sec (Sat Oct 15 12:27:59 MDT 2022)
 
 
 **************************************
@@ -52,7 +69,7 @@ up to date, audited 508 packages in 1s
 
 found 0 vulnerabilities
 
-Elapsed: 0 hr 0 min 2 sec (Mon Sep 19 22:57:32 MDT 2022)
+Elapsed: 0 hr 0 min 1 sec (Sat Oct 15 12:28:00 MDT 2022)
 
 
 **************************************
@@ -60,47 +77,32 @@ Elapsed: 0 hr 0 min 2 sec (Mon Sep 19 22:57:32 MDT 2022)
 **************************************
 
 Downloading and unzipping latest dapps
-https://api.github.com/repos/ORIGYN-SA/DApps/releases/assets/75929467
-Downloading asset...
+Ensuring path exists: /Users/jt/test/minting-starter/projects/brain-matters/assets/collection/dapps
+Downloading latest dapps build from: https://github.com/ORIGYN-SA/DApps/releases/download/dapps-latest-build/dist.zip
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-100 1909k  100 1909k    0     0  2241k      0 --:--:-- --:--:-- --:--:-- 5424k
-/Users/jt/origyn/test/minting-starter/scripts/build-dapps.sh done.
-Archive:  dapps-latest-build.zip
-   creating: dapps-latest-build/dist/
-  inflating: dapps-latest-build/dist/ledger.html
-  inflating: dapps-latest-build/dist/marketplace.html
-  inflating: dapps-latest-build/dist/library.html
-  inflating: dapps-latest-build/dist/wallet.html
-  inflating: dapps-latest-build/dist/marketplace.js.LICENSE.txt
-  inflating: dapps-latest-build/dist/nftData.js.LICENSE.txt
-  inflating: dapps-latest-build/dist/wallet.js.LICENSE.txt
-  inflating: dapps-latest-build/dist/nftData.html
-  inflating: dapps-latest-build/dist/library.js.LICENSE.txt
-  inflating: dapps-latest-build/dist/ledger.js.LICENSE.txt
+100 2207k  100 2207k    0     0  2636k      0 --:--:-- --:--:-- --:--:-- 46.2M
+Download complete
+Unzipping latest dapps build
+Archive:  dist.zip
+   creating: ./dist/
+  inflating: ./dist/nftData.html     
+  inflating: ./dist/ledger.js.LICENSE.txt  
+  inflating: ./dist/nftData.js.LICENSE.txt  
+  inflating: ./dist/library.html     
+  inflating: ./dist/wallet.js.LICENSE.txt  
+  inflating: ./dist/marketplace.html  
+  inflating: ./dist/ledger.html      
+  inflating: ./dist/marketplace.js.LICENSE.txt  
+  inflating: ./dist/wallet.html      
+  inflating: ./dist/library.js.LICENSE.txt  
 Removing temporary zip file
-Ensuring path exists: /Users/jt/origyn/test/minting-starter/projects/brain-matters/assets/collection/dapps
 Removing all txt files from the unzipped files
-Copying unzipped files to /Users/jt/origyn/test/minting-starter/projects/brain-matters/assets/collection/dapps
-Removing unzipped folder
+Copying unzipped files to /Users/jt/test/minting-starter/projects/brain-matters/assets/collection/dapps
+Removing temporary unzipped files
 
-Elapsed: 0 hr 0 min 3 sec (Mon Sep 19 22:57:33 MDT 2022)
-
-
-**************************************
-******** Import/Use Identity *********
-**************************************
-
-Changing directory to /Users/jt/origyn/test/minting-starter/origyn_nft
-Present working directory: /Users/jt/origyn/test/minting-starter/origyn_nft
-IDENTITY: "local_nft_deployer"
-Using identity: "local_nft_deployer".
-Identity "local_nft_deployer" already imported and in use
-Getting principal for local_nft_deployer identity
-The local_nft_deployer principal is 6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae
-
-Elapsed: 0 hr 0 min 3 sec (Mon Sep 19 22:57:33 MDT 2022)
+Elapsed: 0 hr 0 min 2 sec (Sat Oct 15 12:28:01 MDT 2022)
 
 
 **************************************
@@ -116,7 +118,7 @@ Checking availability of the canister on the network...
 Setting wallet for identity 'local_nft_deployer' on network 'local' to id 'rwlgt-iiaaa-aaaaa-aaaaa-cai'
 Wallet set successfully.
 
-Elapsed: 0 hr 0 min 7 sec (Mon Sep 19 22:57:37 MDT 2022)
+Elapsed: 0 hr 0 min 6 sec (Sat Oct 15 12:28:05 MDT 2022)
 
 
 **************************************
@@ -128,11 +130,11 @@ Creating canister origyn_nft_reference...
 origyn_nft_reference canister created with canister id: rrkah-fqaaa-aaaaa-aaaaq-cai
 NFT_CANISTER_ID: rrkah-fqaaa-aaaaa-aaaaq-cai
 
-Elapsed: 0 hr 0 min 10 sec (Mon Sep 19 22:57:40 MDT 2022)
+Elapsed: 0 hr 0 min 9 sec (Sat Oct 15 12:28:08 MDT 2022)
 
 
 **************************************
-******* Build/Install Canister *******
+**** Build/Install NFT Canister ******
 **************************************
 
 Building and installing the NFT canister
@@ -163,18 +165,18 @@ Array.append has critical performance flaws; use a Buffer, and Buffer.append, in
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
 .vessel/ext/v0.1.0/src/Core.mo:136.29-136.41: warning [M0154], field append is deprecated:
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
-/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/governance.mo:44.13-44.16: warning [M0146], this pattern is never matched
-/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/ledger_interface.mo:0.1: warning [M0142], deprecated syntax: an imported library should be a module or named actor class
-/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:103.9-103.38: warning [M0145], this pattern of type
+/Users/jt/test/minting-starter/origyn_nft/src/origyn_nft_reference/governance.mo:49.13-49.16: warning [M0146], this pattern is never matched
+/Users/jt/test/minting-starter/origyn_nft/src/origyn_nft_reference/ledger_interface.mo:0.1: warning [M0142], deprecated syntax: an imported library should be a module or named actor class
+/Users/jt/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:100.9-100.38: warning [M0145], this pattern of type
   State__1 = {#v0_0_0 : {#data; #id}; #v0_1_0 : {#data : State; #id}}
 does not cover value
   #v0_1_0(#id) or
   #v0_0_0(_)
-/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:887.21-887.33: warning [M0154], field append is deprecated:
+/Users/jt/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:890.21-890.33: warning [M0154], field append is deprecated:
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
-/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:887.21-887.33: warning [M0154], field append is deprecated:
+/Users/jt/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:890.21-890.33: warning [M0154], field append is deprecated:
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
-/Users/jt/origyn/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:888.13-888.25: warning [M0154], field append is deprecated:
+/Users/jt/test/minting-starter/origyn_nft/src/origyn_nft_reference/main.mo:891.13-891.25: warning [M0154], field append is deprecated:
 Array.append has critical performance flaws; use a Buffer, and Buffer.append, instead.
 
 Creating UI canister on the local network.
@@ -190,28 +192,70 @@ Do you want to proceed? yes/No
 yes
 Reinstalling code for canister origyn_nft_reference, with canister ID rrkah-fqaaa-aaaaa-aaaaq-cai
 
-Elapsed: 0 hr 0 min 39 sec (Mon Sep 19 22:58:09 MDT 2022)
+Elapsed: 0 hr 0 min 41 sec (Sat Oct 15 12:28:40 MDT 2022)
+
+
+**************************************
+**** Ensure PHONE BOOK Canister ******
+**************************************
+
+Creating the PHONE BOOK canister on the local network.
+Creating canister phonebook...
+phonebook canister created with canister id: r7inp-6aaaa-aaaaa-aaabq-cai
+PHONE_BOOK_CANISTER_ID: r7inp-6aaaa-aaaaa-aaabq-cai
+
+Elapsed: 0 hr 0 min 43 sec (Sat Oct 15 12:28:42 MDT 2022)
+
+
+**************************************
+* Build/Install PHONE BOOK Canister  *
+**************************************
+
+Building and installing the PHONE BOOK canister
+Building canisters...
+WARNING!
+You are about to reinstall the phonebook canister
+This will OVERWRITE all the data and code in the canister.
+
+YOU WILL LOSE ALL DATA IN THE CANISTER.");
+
+
+Do you want to proceed? yes/No
+yes
+Reinstalling code for canister phonebook, with canister ID r7inp-6aaaa-aaaaa-aaabq-cai
+
+Elapsed: 0 hr 0 min 52 sec (Sat Oct 15 12:28:51 MDT 2022)
+
+
+**************************************
+******* Add PHONE BOOK Entry *********
+**************************************
+
+Inserting phone book entry, mapping the collection id to the NFT canister id.
+(opt vec { principal "rrkah-fqaaa-aaaaa-aaaaq-cai" })
+Listing phone book entries.
+(vec { record { "bm"; vec { principal "rrkah-fqaaa-aaaaa-aaaaq-cai" } } })
+
+Elapsed: 0 hr 0 min 55 sec (Sat Oct 15 12:28:54 MDT 2022)
 
 
 **************************************
 ************ CSM - Config ************
 **************************************
 
-Changing directory to /Users/jt/origyn/test/minting-starter/scripts
-Present working directory: /Users/jt/origyn/test/minting-starter/scripts
+Changing directory to /Users/jt/test/minting-starter/scripts
+Present working directory: /Users/jt/test/minting-starter/scripts
 Calling the csm config function to create NFT metadata
 configArgs {
-  environment: 'local',
   collectionId: 'bm',
   collectionDisplayName: 'Brain Matters',
   tokenPrefix: 'bm-',
   nftCanisterId: 'rrkah-fqaaa-aaaaa-aaaaq-cai',
-  creatorPrincipal: '6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae',
+  creatorPrincipal: 'i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae',
   namespace: 'brain.matters',
-  folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
+  folderPath: '/Users/jt/test/minting-starter/projects/brain-matters/assets',
   assetMappings: 'primary:nft*.png, hidden:mystery-bm.gif',
   nftOwnerId: 'rrkah-fqaaa-aaaaa-aaaaq-cai',
-  useProxy: 'false',
   soulbound: 'false',
   nftQuantities: ''
 }
@@ -223,7 +267,7 @@ Creating metadata for the collection
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/ledger.html
+/Users/jt/test/minting-starter/projects/brain-matters/__staged/collection/dapps/ledger.html
 
 regex matches 5
 
@@ -256,7 +300,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/library.html
+/Users/jt/test/minting-starter/projects/brain-matters/__staged/collection/dapps/library.html
 
 regex matches 5
 
@@ -289,7 +333,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/marketplace.html
+/Users/jt/test/minting-starter/projects/brain-matters/__staged/collection/dapps/marketplace.html
 
 regex matches 5
 
@@ -322,7 +366,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/nftData.html
+/Users/jt/test/minting-starter/projects/brain-matters/__staged/collection/dapps/nftData.html
 
 regex matches 5
 
@@ -355,7 +399,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/collection/dapps/wallet.html
+/Users/jt/test/minting-starter/projects/brain-matters/__staged/collection/dapps/wallet.html
 
 regex matches 5
 
@@ -439,17 +483,17 @@ Config file with metadata created
 Config Summary:
 
 Total Files Found: 26
-Total File Size: 23832417 (22.73 MB)
+Total File Size: 24247841 (23.12 MB)
 Total NFT Definition Count: 20
 Total NFT Count: 20
-Metadata File: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged/full_def.json'
+Metadata File: '/Users/jt/test/minting-starter/projects/brain-matters/__staged/full_def.json'
 
 Finished (config subcommand)
 
 **************************************
 
 
-Elapsed: 0 hr 0 min 40 sec (Mon Sep 19 22:58:10 MDT 2022)
+Elapsed: 0 hr 0 min 56 sec (Sat Oct 15 12:28:55 MDT 2022)
 
 Metadata file created at $PROJECT_PATH/__staged/full_def.json.
 
@@ -457,7 +501,7 @@ You may manually modify the metadata in full_def.json before continuing.
 
 Press return/enter to stage and mint your NFT collection...
 
-Elapsed: 0 hr 0 min 43 sec (Mon Sep 19 22:58:13 MDT 2022)
+Elapsed: 0 hr 0 min 57 sec (Sat Oct 15 12:28:56 MDT 2022)
 
 
 **************************************
@@ -466,14 +510,15 @@ Elapsed: 0 hr 0 min 43 sec (Mon Sep 19 22:58:13 MDT 2022)
 
 Calling the csm stage function to upload the NFT files
 stageArgs {
-  folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
-  keyFilePath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem'
+  environment: 'local',
+  folderPath: '/Users/jt/test/minting-starter/projects/brain-matters/assets',
+  keyFilePath: '/Users/jt/test/minting-starter/projects/brain-matters/local_nft_deployer.pem'
 }
 
 **************************************
 
 Started (stage subcommand)
-Loaded Ed25519 identity 6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae from .pem file /Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem.
+Loaded Ed25519 identity i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae from .pem file /Users/jt/test/minting-starter/projects/brain-matters/local_nft_deployer.pem.
 
 --------------------------------------
 
@@ -570,16 +615,16 @@ Staging asset: marketplace
 
 File path: collection/dapps/marketplace.html
 max chunk size 2048000
-file size 1527846
+file size 1527938
 chunk count 1
 
 chunk 0:
 start 0
-end 1527846
-size 1527846
-array size 1527846
+end 1527938
+size 1527938
+array size 1527938
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 13424803 (12.8 MB)
+Cumulative staged file size: 13424895 (12.8 MB)
 
 --------------------------------------
 
@@ -587,16 +632,16 @@ Staging asset: nftdata
 
 File path: collection/dapps/nftData.html
 max chunk size 2048000
-file size 1043828
+file size 1043876
 chunk count 1
 
 chunk 0:
 start 0
-end 1043828
-size 1043828
-array size 1043828
+end 1043876
+size 1043876
+array size 1043876
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 14468631 (13.8 MB)
+Cumulative staged file size: 14468771 (13.8 MB)
 
 --------------------------------------
 
@@ -604,16 +649,16 @@ Staging asset: wallet
 
 File path: collection/dapps/wallet.html
 max chunk size 2048000
-file size 1545120
+file size 1960404
 chunk count 1
 
 chunk 0:
 start 0
-end 1545120
-size 1545120
-array size 1545120
+end 1960404
+size 1960404
+array size 1960404
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 16013751 (15.27 MB)
+Cumulative staged file size: 16429175 (15.67 MB)
 
 --------------------------------------
 
@@ -636,7 +681,7 @@ end 381922
 size 381922
 array size 381922
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 16395673 (15.64 MB)
+Cumulative staged file size: 16811097 (16.03 MB)
 
 --------------------------------------
 
@@ -659,7 +704,7 @@ end 377679
 size 377679
 array size 377679
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 16773352 (16 MB)
+Cumulative staged file size: 17188776 (16.39 MB)
 
 --------------------------------------
 
@@ -682,7 +727,7 @@ end 377171
 size 377171
 array size 377171
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 17150523 (16.36 MB)
+Cumulative staged file size: 17565947 (16.75 MB)
 
 --------------------------------------
 
@@ -705,7 +750,7 @@ end 377667
 size 377667
 array size 377667
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 17528190 (16.72 MB)
+Cumulative staged file size: 17943614 (17.11 MB)
 
 --------------------------------------
 
@@ -728,7 +773,7 @@ end 386544
 size 386544
 array size 386544
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 17914734 (17.08 MB)
+Cumulative staged file size: 18330158 (17.48 MB)
 
 --------------------------------------
 
@@ -751,7 +796,7 @@ end 380577
 size 380577
 array size 380577
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 18295311 (17.45 MB)
+Cumulative staged file size: 18710735 (17.84 MB)
 
 --------------------------------------
 
@@ -774,7 +819,7 @@ end 379738
 size 379738
 array size 379738
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 18675049 (17.81 MB)
+Cumulative staged file size: 19090473 (18.21 MB)
 
 --------------------------------------
 
@@ -797,7 +842,7 @@ end 379964
 size 379964
 array size 379964
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 19055013 (18.17 MB)
+Cumulative staged file size: 19470437 (18.57 MB)
 
 --------------------------------------
 
@@ -820,7 +865,7 @@ end 356377
 size 356377
 array size 356377
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 19411390 (18.51 MB)
+Cumulative staged file size: 19826814 (18.91 MB)
 
 --------------------------------------
 
@@ -843,7 +888,7 @@ end 353472
 size 353472
 array size 353472
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 19764862 (18.85 MB)
+Cumulative staged file size: 20180286 (19.25 MB)
 
 --------------------------------------
 
@@ -866,7 +911,7 @@ end 351041
 size 351041
 array size 351041
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 20115903 (19.18 MB)
+Cumulative staged file size: 20531327 (19.58 MB)
 
 --------------------------------------
 
@@ -889,7 +934,7 @@ end 351524
 size 351524
 array size 351524
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 20467427 (19.52 MB)
+Cumulative staged file size: 20882851 (19.92 MB)
 
 --------------------------------------
 
@@ -912,7 +957,7 @@ end 391649
 size 391649
 array size 391649
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 20859076 (19.89 MB)
+Cumulative staged file size: 21274500 (20.29 MB)
 
 --------------------------------------
 
@@ -935,7 +980,7 @@ end 386938
 size 386938
 array size 386938
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 21246014 (20.26 MB)
+Cumulative staged file size: 21661438 (20.66 MB)
 
 --------------------------------------
 
@@ -958,7 +1003,7 @@ end 383569
 size 383569
 array size 383569
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 21629583 (20.63 MB)
+Cumulative staged file size: 22045007 (21.02 MB)
 
 --------------------------------------
 
@@ -981,7 +1026,7 @@ end 397065
 size 397065
 array size 397065
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 22026648 (21.01 MB)
+Cumulative staged file size: 22442072 (21.4 MB)
 
 --------------------------------------
 
@@ -1004,7 +1049,7 @@ end 472279
 size 472279
 array size 472279
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 22498927 (21.46 MB)
+Cumulative staged file size: 22914351 (21.85 MB)
 
 --------------------------------------
 
@@ -1027,7 +1072,7 @@ end 457211
 size 457211
 array size 457211
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 22956138 (21.89 MB)
+Cumulative staged file size: 23371562 (22.29 MB)
 
 --------------------------------------
 
@@ -1050,7 +1095,7 @@ end 421563
 size 421563
 array size 421563
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 23377701 (22.29 MB)
+Cumulative staged file size: 23793125 (22.69 MB)
 
 --------------------------------------
 
@@ -1073,9 +1118,9 @@ end 454716
 size 454716
 array size 454716
 result {"ok":{"canister":{"_arr":{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":1,"8":1,"9":1},"_isPrincipal":true}}}
-Cumulative staged file size: 23832417 (22.73 MB)
+Cumulative staged file size: 24247841 (23.12 MB)
 
-Total Staged File Size: 23832417 (22.73 MB)
+Total Staged File Size: 24247841 (23.12 MB)
 
 
 Finished (stage subcommand)
@@ -1083,17 +1128,18 @@ Finished (stage subcommand)
 **************************************
 
 
-Elapsed: 0 hr 2 min 33 sec (Mon Sep 19 23:00:03 MDT 2022)
+Elapsed: 0 hr 2 min 49 sec (Sat Oct 15 12:30:48 MDT 2022)
 
 
 **************************************
 ************* CSM - Mint **************
 **************************************
 
-Calling the csm mint function to mint the NFTs in the collection
+Calling the csm mint function to mint the NFTs int the collection
 mintArgs {
-  folderPath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets',
-  keyFilePath: '/Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem',
+  environment: 'local',
+  folderPath: '/Users/jt/test/minting-starter/projects/brain-matters/assets',
+  keyFilePath: '/Users/jt/test/minting-starter/projects/brain-matters/local_nft_deployer.pem',
   range: '',
   batchSize: ''
 }
@@ -1101,7 +1147,7 @@ mintArgs {
 **************************************
 
 Started (mint subcommand)
-Loaded Ed25519 identity 6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae from .pem file /Users/jt/origyn/test/minting-starter/projects/brain-matters/local_nft_deployer.pem.
+Loaded Ed25519 identity i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae from .pem file /Users/jt/test/minting-starter/projects/brain-matters/local_nft_deployer.pem.
 
 --------------------------------------
 
@@ -1127,5 +1173,5 @@ Finished (mint subcommand)
 Minting finished.
 
 
-Elapsed: 0 hr 2 min 38 sec (Mon Sep 19 23:00:08 MDT 2022)
+Elapsed: 0 hr 2 min 53 sec (Sat Oct 15 12:30:52 MDT 2022)
 ```
