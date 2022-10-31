@@ -486,7 +486,7 @@ Total Files Found: 26
 Total File Size: 24247841 (23.12 MB)
 Total NFT Definition Count: 20
 Total NFT Count: 20
-Metadata File: '/Users/jt/test/minting-starter/projects/brain-matters/__staged/full_def.json'
+Metadata File: '/Users/jt/test/minting-starter/projects/brain-matters/__staged/metadata.json'
 
 Finished (config subcommand)
 
@@ -495,9 +495,9 @@ Finished (config subcommand)
 
 Elapsed: 0 hr 0 min 56 sec (Sat Oct 15 12:28:55 MDT 2022)
 
-Metadata file created at $PROJECT_PATH/__staged/full_def.json.
+Metadata file created at $PROJECT_PATH/__staged/metadata.json.
 
-You may manually modify the metadata in full_def.json before continuing.
+You may manually modify the metadata in metadata.json before continuing.
 
 Press return/enter to stage and mint your NFT collection...
 
