@@ -43,7 +43,7 @@ COLLECTION_ID="bm"
 DISPLAY_NAME="Brain Matters"
 NAMESPACE="brain.matters"
 TOKEN_PREFIX="bm-"
-ASSET_MAPPINGS="primary:nft*.png, hidden:mystery-bm.gif"
+ASSET_MAPPINGS="primary:nft*.png, preview:nft*.png, hidden:mystery-bm.gif"
 SOULBOUND="false"
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -225,7 +225,7 @@ show_elapsed_time
 
 echo -e $LIGHTBLUE
 echo $'\n**************************************'
-echo "**** Build/Install NFT Canister ******"
+echo "***** Build/Install NFT Canister *****"
 echo $'**************************************'
 echo -e $NOCOLOR
 
@@ -297,16 +297,18 @@ if [[ $IC_NETWORK == 'local' ]]; then
 fi
 
 
-# echo $'\n\n**************************************'
-# echo "************* Preconfig **************""
-# echo $'**************************************\n'
+# echo -e $LIGHTPURPLE
+# echo $'\n**************************************'
+# echo "************* Pre-Config *************"
+# echo $'**************************************'
+# echo -e $NOCOLOR
 
-# Run a custom preconfig script here if you create one.
-# A preconfig script may read an HTML template and replace
+# Run a custom pre-config script here if you create one.
+# A pre-config script might read an HTML template and replace
 # placeholders for each NFT, then write the files to NFT folders.
 
-# echo "Running preconfig script"
-# node "$PROJECT_FOLDER/preconfig"
+# echo "Running pre-config script"
+# node "$PROJECT_PATH/pre-config.js"
 
 #show_elapsed_time
 
@@ -317,13 +319,9 @@ echo "************ CSM - Config ************"
 echo $'**************************************'
 echo -e $NOCOLOR
 
-echo "Changing directory to $SCRIPTS_PATH"
-cd $SCRIPTS_PATH
-echo "Present working directory: $(pwd)"
-
 echo "Calling the csm config function to create NFT metadata"
 
-node csm-config.js \
+node ./scripts/csm-config.js \
 --folderPath "$PROJECT_PATH/assets" \
 --nftCanisterId "$NFT_CANISTER_ID" \
 --creatorPrincipal "$ADMIN_PRINCIPAL" \
@@ -336,12 +334,26 @@ node csm-config.js \
 
 show_elapsed_time
 
-echo $'\nMetadata file created at $PROJECT_PATH/__staged/full_def.json.'
-echo $'\nYou may manually modify the metadata in full_def.json before continuing.\n'
+echo ""
+echo "Metadata file created at $PROJECT_PATH/__staged/metadata.json."
+echo $'\nYou may manually modify the metadata in metadata.json before continuing.\n'
 
 read -p "Press return/enter to stage and mint your NFT collection..."
 
 show_elapsed_time
+
+
+# echo -e $LIGHTBLUE
+# echo $'\n**************************************'
+# echo "************ Post-Config *************"
+# echo $'**************************************'
+# echo -e $NOCOLOR
+
+# echo "Running post-config script"
+# node "$PROJECT_PATH/post-config.js"
+# echo "Post-config script completed"
+
+# show_elapsed_time
 
 
 echo -e $LIGHTBLUE
@@ -352,7 +364,7 @@ echo -e $NOCOLOR
 
 echo "Calling the csm stage function to upload the NFT files"
 
-node csm-stage.js \
+node ./scripts/csm-stage.js \
 --environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
@@ -368,7 +380,7 @@ echo -e $NOCOLOR
 
 echo "Calling the csm mint function to mint the NFTs int the collection"
 
-node csm-mint.js \
+node ./scripts/csm-mint.js \
 --environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"

@@ -62,13 +62,13 @@ The project contains the following required folders:
     -   collection
         -   dapps
     -   nfts
-        -   0
         -   1
         -   2
+        -   3
 
 The csm library expects this folder structure when scanning for files.
 
--   The "nfts" folder should only contain folders that are sequentially numbered starting at "0".
+-   The "nfts" folder should only contain folders that are sequentially numbered starting at "1".
     -   Each numbered folder represents a single NFT definition.
         -   By default, only one NFT per definition will be created.
         -   This can be overriden by passing the --nftQuantities argument to csm-config.js in the deploy.sh script.
@@ -82,11 +82,19 @@ The csm library expects this folder structure when scanning for files.
 
 ## Deploy the Sample NFT Collection
 
-To generate metadata from local files, stage (upload) the files to an NFT canister and mint the NFTs, run:
+To generate metadata from local files, stage (upload) the files to an NFT canister and mint the NFTs, run one of the following scripts (while dfx is still running):
 
-```console
-bash ./projects/brain-matters/deploy.sh
-```
+**Simple example with only images**
+
+  ```console
+  bash ./projects/brain-matters/deploy.sh
+  ```
+
+**Full example with an HTML experience page, a pre-config script and a post-config script**
+
+  ```console
+  bash ./projects/brain-matters-full/deploy.sh
+  ```
 
 If the script runs successfully, it will create a new "\_\_staged" folder in the same folder as the "deploy.sh" script.
 
@@ -102,8 +110,7 @@ Here is [sample terminal output](./docs/terminal-deploy-script-localhost.md) for
 
 -   Fork this GitHub repository.
 -   Replace the files in the assets folders with your own files.
--   Find this code in the deploy.sh script: "node csm-config.js"
-    -   Change the argument values with your own.
+-   Find the "Set User Variables" section in the deploy.sh script and change the values to your own.
 -   Follow the same instructions above to run the deploy.sh script and test locally.
 
 ## Deploying to the Internet Computer Mainnet
@@ -205,7 +212,7 @@ The canister id will be located here: [canister_ids.json](canister_ids.json) at 
 
 Collection Info: \/collection\/info
 
-All staged files will have "location" attribute in the generated metadata file here: [projects/brain-matters/\_\_staged/full_def.json](projects/brain-matters/__staged/full_def.json).
+All staged files will have "location" attribute in the generated metadata file here: [projects/brain-matters/\_\_staged/metadata.json](projects/brain-matters/__staged/metadata.json).
 
 The location is the relative path and should work when combined with the root URL.
 
@@ -215,22 +222,28 @@ The location is the relative path and should work when combined with the root UR
 
 -   Direct:
     -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/info
-    -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-0/-/brain.matters.nft0.png
+    -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-1/-/brain.matters.nft1.png
+    -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-1/-/brain.matters.nft1.html
 -   Proxy:
     -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/collection/info
-    -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/-/bm-0/-/brain.matters.nft0.png
+    -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/-/bm-1/-/brain.matters.nft1.png
+    -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/-/bm-1/-/brain.matters.nft1.html
 -   Proxy + Phonebook:
     -   http://localhost:3000/-/bm/collection/info
-    -   http://localhost:3000/-/bm/-/bm-0/-/brain.matters.nft0.png
+    -   http://localhost:3000/-/bm/-/bm-1/-/brain.matters.nft1.png
+    -   http://localhost:3000/-/bm/-/bm-1/-/brain.matters.nft1.html
 
 **Mainnet**
 
 -   Direct:
     -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/collection/info
-    -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/-/bm-0/-/brain.matters.nft0.png
+    -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/-/bm-1/-/brain.matters.nft1.png
+    -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/-/bm-1/-/brain.matters.nft1.html
 -   Proxy:
     -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/collection/info
-    -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-0/-/brain.matters.nft0.png
+    -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-1/-/brain.matters.nft1.png
+    -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-1/-/brain.matters.nft1.html
 -   Proxy + Phonebook (no phonebook entry has been made for this example):
     -   https://exos.origyn.network/-/bm/collection/info
-    -   https://exos.origyn.network/-/bm/-/bm-0/-/brain.matters.nft0.png
+    -   https://exos.origyn.network/-/bm/-/bm-1/-/brain.matters.nft1.png
+    -   https://exos.origyn.network/-/bm/-/bm-1/-/brain.matters.nft1.html

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brain Matters - NFT ~TOKEN_ID~</title>
+    <style>
+      body {
+        text-align: center;
+      }
+
+      #list a {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      #list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      #list a {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        list-style: none;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #list span {
+        display: block;
+        font-family: arial;
+      }
+
+      #list img {
+        width: 100px;
+        height: 100px;
+      }
+
+      #nft~TOKEN_ID~ {
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Brain Matters - NFT ~TOKEN_ID~</h1>
+    <img id="nft~TOKEN_ID~" src="nft~TOKEN_ID~.png" />
+
+    <h2>Other NFTs</h2>
+    <div id="list">
+      <a href="~FILE_PATH~">
+        <span>NFT ~LIST_INDEX~</span>
+        <img src="~IMAGE_PATH~" />
+      </a>
+    </div>
+  </body>
+</html>
