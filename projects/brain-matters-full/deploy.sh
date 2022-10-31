@@ -343,8 +343,15 @@ echo $'**************************************'
 echo -e $NOCOLOR
 
 echo "Running post-config script"
-node "$PROJECT_PATH/post-config.js"
 echo "Post-config script completed"
+
+show_elapsed_time
+
+echo ""
+echo "The post-config script has updated $PROJECT_PATH/__staged/metadata.json."
+echo $'\nYou may also manually modify the metadata in metadata.json before continuing.\n'
+
+read -p "Press return/enter to stage and mint your NFT collection..."
 
 show_elapsed_time
 
