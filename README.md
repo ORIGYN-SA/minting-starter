@@ -115,7 +115,8 @@ Here is [sample terminal output](./docs/terminal-deploy-script-localhost.md) for
 
 ## Deploying to the Internet Computer Mainnet
 
--   Create a dfx identity, a cycles wallet canister and an NFT canister on the mainnet by following [these instructions](./docs/create-dfx-mainnet-identity-wallet.md).
+-   Create a dfx identity, a cycles wallet canister and an empty NFT canister on the mainnet by following [these instructions](./docs/create-dfx-mainnet-identity-wallet.md).
+    -   Here is the [output from a terminal session](./docs/terminal-dfx-mainnet-identity.md)
 -   In deploy.sh
     -   Change IC_NETWORK to "ic".
     -   Change IDENTITY_NAME to the id of your mainnet identity.
