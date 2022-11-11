@@ -47,15 +47,47 @@
     </style>
   </head>
   <body>
-    <h1>Brain Matters - NFT ~TOKEN_ID~</h1>
-    <img id="nft~TOKEN_ID~" src="nft~TOKEN_ID~.png" />
+    <div id="main" style="display:none">
+      <h1>Brain Matters - NFT ~TOKEN_ID~</h1>
+      <img id="nft~TOKEN_ID~" src="nft~TOKEN_ID~.png" />
 
-    <h2>Other NFTs</h2>
-    <div id="list">
-      <a href="~FILE_PATH~">
-        <span>NFT ~LIST_INDEX~</span>
-        <img src="~IMAGE_PATH~" />
-      </a>
+      <h2>Other NFTs</h2>
+      <div id="list">
+        <a href="~FILE_PATH~">
+          <span>NFT ~LIST_INDEX~</span>
+          <img src="~IMAGE_PATH~" />
+        </a>
+      </div>
     </div>
+
+    <script>
+      var main = document.getElementById('main');
+      var url = new URL(document.baseURI.toLowerCase());
+
+      var rootUrl = '';
+      if (['prptl.io', 'exos.origyn.network', 'localhost:3000'].includes(url.host)) {
+        // https://prptl.io/-/{canister_id}
+        // https://prptl.io/-/{collection_id}
+        // http://localhost:3000/-/{canister_id}
+        // http://localhost:3000/-/{collection_id}
+        rootUrl = url.origin + url.pathname.split('/').slice(0, 3).join('/');
+      } else {
+        // https://{canister_id}.raw.ic0.app
+        // http://{canister_id}.localhost:8000
+        rootUrl = url.origin;
+      }
+      
+      var images = main.querySelectorAll('img');
+      for (var image of images) {
+        image.src = rootUrl + image.src.substring(url.origin.length);
+      }
+
+      var anchors = main.querySelectorAll('a');
+      for (var anchor of anchors) {
+        anchor.href = rootUrl + anchor.href.substring(url.origin.length);
+      }
+
+      main.style.display = 'block';
+    </script>
   </body>
 </html>

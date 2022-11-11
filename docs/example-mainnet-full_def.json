@@ -29,55 +29,55 @@
       "collection/mystery-bm.gif": {
         "title": "mystery-bm.gif",
         "libraryId": "brain.matters.mystery-bm.gif",
-        "resourceUrl": "https://exos.origyn.network/-/bm/collection/-/brain.matters.mystery-bm.gif",
+        "resourceUrl": "https://prptl.io/-/bm/collection/-/brain.matters.mystery-bm.gif",
         "filePath": "collection/mystery-bm.gif"
       },
       "collection/dapps/ledger.html": {
         "title": "ledger dApp",
         "libraryId": "ledger",
-        "resourceUrl": "https://exos.origyn.network/-/bm/collection/-/ledger",
+        "resourceUrl": "https://prptl.io/-/bm/collection/-/ledger",
         "filePath": "collection/dapps/ledger.html"
       },
       "collection/dapps/library.html": {
         "title": "library dApp",
         "libraryId": "library",
-        "resourceUrl": "https://exos.origyn.network/-/bm/collection/-/library",
+        "resourceUrl": "https://prptl.io/-/bm/collection/-/library",
         "filePath": "collection/dapps/library.html"
       },
       "collection/dapps/marketplace.html": {
         "title": "marketplace dApp",
         "libraryId": "marketplace",
-        "resourceUrl": "https://exos.origyn.network/-/bm/collection/-/marketplace",
+        "resourceUrl": "https://prptl.io/-/bm/collection/-/marketplace",
         "filePath": "collection/dapps/marketplace.html"
       },
       "collection/dapps/nftdata.html": {
         "title": "nftdata dApp",
         "libraryId": "nftdata",
-        "resourceUrl": "https://exos.origyn.network/-/bm/collection/-/nftdata",
+        "resourceUrl": "https://prptl.io/-/bm/collection/-/nftdata",
         "filePath": "collection/dapps/nftData.html"
       },
       "collection/dapps/wallet.html": {
         "title": "wallet dApp",
         "libraryId": "wallet",
-        "resourceUrl": "https://exos.origyn.network/-/bm/collection/-/wallet",
+        "resourceUrl": "https://prptl.io/-/bm/collection/-/wallet",
         "filePath": "collection/dapps/wallet.html"
       },
       "nfts/0/nft0.png": {
         "title": "Brain Matters - 0",
         "libraryId": "brain.matters.nft0.png",
-        "resourceUrl": "https://exos.origyn.network/-/bm/-/bm-0/-/brain.matters.nft0.png",
+        "resourceUrl": "https://prptl.io/-/bm/-/bm-0/-/brain.matters.nft0.png",
         "filePath": "nfts/0/nft0.png"
       },
       "nfts/1/nft1.png": {
         "title": "Brain Matters - 1",
         "libraryId": "brain.matters.nft1.png",
-        "resourceUrl": "https://exos.origyn.network/-/bm/-/bm-1/-/brain.matters.nft1.png",
+        "resourceUrl": "https://prptl.io/-/bm/-/bm-1/-/brain.matters.nft1.png",
         "filePath": "nfts/1/nft1.png"
       },
       "nfts/2/nft2.png": {
         "title": "Brain Matters - 2",
         "libraryId": "brain.matters.nft2.png",
-        "resourceUrl": "https://exos.origyn.network/-/bm/-/bm-2/-/brain.matters.nft2.png",
+        "resourceUrl": "https://prptl.io/-/bm/-/bm-2/-/brain.matters.nft2.png",
         "filePath": "nfts/2/nft2.png"
       }
     },
@@ -171,7 +171,7 @@
                       {
                         "name": "location",
                         "value": {
-                          "Text": "https://exos.origyn.network/-/bm/collection/-/brain.matters.mystery-bm.gif"
+                          "Text": "https://prptl.io/-/bm/collection/-/brain.matters.mystery-bm.gif"
                         },
                         "immutable": true
                       },
@@ -238,7 +238,7 @@
                       {
                         "name": "location",
                         "value": {
-                          "Text": "https://exos.origyn.network/-/bm/collection/-/ledger"
+                          "Text": "https://prptl.io/-/bm/collection/-/ledger"
                         },
                         "immutable": true
                       },
@@ -305,7 +305,7 @@
                       {
                         "name": "location",
                         "value": {
-                          "Text": "https://exos.origyn.network/-/bm/collection/-/library"
+                          "Text": "https://prptl.io/-/bm/collection/-/library"
                         },
                         "immutable": true
                       },
@@ -372,7 +372,7 @@
                       {
                         "name": "location",
                         "value": {
-                          "Text": "https://exos.origyn.network/-/bm/collection/-/marketplace"
+                          "Text": "https://prptl.io/-/bm/collection/-/marketplace"
                         },
                         "immutable": true
                       },
@@ -439,7 +439,7 @@
                       {
                         "name": "location",
                         "value": {
-                          "Text": "https://exos.origyn.network/-/bm/collection/-/nftdata"
+                          "Text": "https://prptl.io/-/bm/collection/-/nftdata"
                         },
                         "immutable": true
                       },
@@ -506,7 +506,7 @@
                       {
                         "name": "location",
                         "value": {
-                          "Text": "https://exos.origyn.network/-/bm/collection/-/wallet"
+                          "Text": "https://prptl.io/-/bm/collection/-/wallet"
                         },
                         "immutable": true
                       },
@@ -773,7 +773,7 @@
                         {
                           "name": "location",
                           "value": {
-                            "Text": "https://exos.origyn.network/-/bm/-/bm-0/-/brain.matters.nft0.png"
+                            "Text": "https://prptl.io/-/bm/-/bm-0/-/brain.matters.nft0.png"
                           },
                           "immutable": true
                         },
@@ -840,7 +840,7 @@
                         {
                           "name": "location",
                           "value": {
-                            "Text": "https://exos.origyn.network/-/bm/collection/-/brain.matters.mystery-bm.gif"
+                            "Text": "https://prptl.io/-/bm/collection/-/brain.matters.mystery-bm.gif"
                           },
                           "immutable": true
                         },
@@ -1079,7 +1079,7 @@
                         {
                           "name": "location",
                           "value": {
-                            "Text": "https://exos.origyn.network/-/bm/-/bm-1/-/brain.matters.nft1.png"
+                            "Text": "https://prptl.io/-/bm/-/bm-1/-/brain.matters.nft1.png"
                           },
                           "immutable": true
                         },
@@ -1325,7 +1325,7 @@
                         {
                           "name": "location",
                           "value": {
-                            "Text": "https://exos.origyn.network/-/bm/-/bm-2/-/brain.matters.nft2.png"
+                            "Text": "https://prptl.io/-/bm/-/bm-2/-/brain.matters.nft2.png"
                           },
                           "immutable": true
                         },
@@ -1392,7 +1392,7 @@
                         {
                           "name": "location",
                           "value": {
-                            "Text": "https://exos.origyn.network/-/bm/collection/-/brain.matters.mystery-bm.gif"
+                            "Text": "https://prptl.io/-/bm/collection/-/brain.matters.mystery-bm.gif"
                           },
                           "immutable": true
                         },

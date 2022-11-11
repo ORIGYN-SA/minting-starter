@@ -206,8 +206,8 @@ The canister id will be located here: [.dfx/local/canister_ids.json](.dfx/local/
 The canister id will be located here: [canister_ids.json](canister_ids.json) at "origyn_nft_reference" > "ic".
 
 -   Direct (Fully decentralized): https://{canister id}.raw.ic0.app/
--   Proxy: https://exos.origyn.network/-/{canister-id}/
--   Proxy + Phonebook: https://exos.origyn.network/-/{collection-id}/
+-   Proxy: https://prptl.io/-/{canister-id}/
+-   Proxy + Phonebook: https://prptl.io/-/{collection-id}/
 
 ### Relative URLs
 
@@ -241,10 +241,10 @@ The location is the relative path and should work when combined with the root UR
     -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/-/bm-1/-/brain.matters.nft1.png
     -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/-/bm-1/-/brain.matters.nft1.html
 -   Proxy:
-    -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/collection/info
-    -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-1/-/brain.matters.nft1.png
-    -   https://exos.origyn.network/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-1/-/brain.matters.nft1.html
+    -   https://prptl.io/-/ap5ok-kqaaa-aaaak-acvha-cai/collection/info
+    -   https://prptl.io/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-1/-/brain.matters.nft1.png
+    -   https://prptl.io/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-1/-/brain.matters.nft1.html
 -   Proxy + Phonebook (no phonebook entry has been made for this example):
-    -   https://exos.origyn.network/-/bm/collection/info
-    -   https://exos.origyn.network/-/bm/-/bm-1/-/brain.matters.nft1.png
-    -   https://exos.origyn.network/-/bm/-/bm-1/-/brain.matters.nft1.html
+    -   https://prptl.io/-/bm/collection/info
+    -   https://prptl.io/-/bm/-/bm-1/-/brain.matters.nft1.png
+    -   https://prptl.io/-/bm/-/bm-1/-/brain.matters.nft1.html
