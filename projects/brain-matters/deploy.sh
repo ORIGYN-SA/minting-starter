@@ -36,7 +36,7 @@ IC_NETWORK="local"
 # If local network, creates/imports/uses identity if it does exist.
 # If ic network (mainnet), make sure you manually import your existing
 # identity first, then provide the name of your imported identity here.
-IDENTITY_NAME="local_nft_deployer"
+IDENTITY_NAME="local_deployer"
 
 # NFT collection settings
 COLLECTION_ID="bm"
@@ -233,12 +233,8 @@ echo "Building and installing the NFT canister"
 
 dfx build --network $IC_NETWORK origyn_nft_reference
 
-if [[ $IC_NETWORK == 'ic' ]]; then
-  gzip -k ./.dfx/ic/canisters/origyn_nft_reference/origyn_nft_reference.wasm
-  dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/ic/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = null})"
-else
-  dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = null})"
-fi
+gzip -k ./.dfx/ic/canisters/origyn_nft_reference/origyn_nft_reference.wasm
+dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/ic/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt 2048000000})"
 
 show_elapsed_time
 
