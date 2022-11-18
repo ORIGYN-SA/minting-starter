@@ -109,6 +109,7 @@ echo $'**************************************'
 echo -e $NOCOLOR
 
 if [[ $IC_NETWORK == 'ic' ]]; then
+  dfx identity use $IDENTITY_NAME
   if [[ -f "$IDENTITY_PEM_FILE_PATH" ]]; then
     echo "Found $IDENTITY_PEM_FILE_PATH"
   else
