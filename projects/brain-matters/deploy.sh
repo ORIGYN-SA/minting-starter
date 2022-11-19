@@ -329,6 +329,26 @@ node ./scripts/csm-config.js \
 --assetMappings "$ASSET_MAPPINGS" \
 --soulbound "$SOULBOUND"
 
+# Override royalty defaults
+# Note: the broker principal is set during the sale
+# --originatorPrincipal "your-principal-id" \
+# # Warning; Overriding nodePrincipal will invalidate your certification with the node provider.
+# --nodePrincipal "a3lu7-uiaaa-aaaaj-aadnq-cai" \
+# # Warning Overriding networkPrincipal will prevent the canister from joining the Origyn network.
+# --networkPrincipal "a3lu7-uiaaa-aaaaj-aadnq-cai" \
+
+# --primaryOriginatorRate ".01" \
+# --primaryBrokerRate ".03" \
+# --primaryNodeRate ".035" \
+# --primaryNetworkRate ".005" \
+# --primaryCustomRates "custom-name1:0.001:principal-id-1, custom-name2:0.002:principal-id-2" \
+
+# --secondaryOriginatorRate ".01" \
+# --secondaryBrokerRate ".03" \
+# --secondaryNodeRate ".035" \
+# --secondaryNetworkRate ".005" \
+# --secondaryCustomRates "custom-name1:0.001:principal-id-1, custom-name2:0.002:principal-id-2"
+
 show_elapsed_time
 
 echo ""
