@@ -234,8 +234,8 @@ echo "Building and installing the NFT canister"
 
 dfx build --network $IC_NETWORK origyn_nft_reference
 
-gzip -k ./.dfx/ic/canisters/origyn_nft_reference/origyn_nft_reference.wasm
-dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/ic/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt 2048000000})"
+gzip -k ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm
+dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt 2048000000})"
 
 show_elapsed_time
 
