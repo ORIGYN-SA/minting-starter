@@ -20,13 +20,14 @@ console.log('metadataFile', metadataFile);
 const allMetadata = JSON.parse(fs.readFileSync(metadataFile).toString());
 
 // Make every other token a soulbound NFT.
-for (let i = 2; i <= 20; i += 2) {
-  const nft = findNft(allMetadata, `bm-${i}`);
-  const is_soulbound = findNftProperty(nft, 'is_soulbound');
+// Just an an example. Put your own code here instead.
+// for (let i = 2; i <= 20; i += 2) {
+//   const nft = findNft(allMetadata, `bm-${i}`);
+//   const is_soulbound = findNftProperty(nft, 'is_soulbound');
 
-  is_soulbound.value.Bool = true;
-  is_soulbound.immutable = true;
-}
+//   is_soulbound.value.Bool = true;
+//   is_soulbound.immutable = true;
+// }
 
 // Save the changes
 fs.writeFileSync(metadataFile, JSON.stringify(allMetadata, null, 2));
