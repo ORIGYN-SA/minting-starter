@@ -42,7 +42,7 @@ IDENTITY_NAME="local_deployer"
 COLLECTION_ID="bm"
 DISPLAY_NAME="Brain Matters"
 NAMESPACE="brain.matters"
-TOKEN_PREFIX="bm-"
+TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
 ASSET_MAPPINGS="primary:nft*.png, preview:nft*.png, hidden:mystery-bm.gif"
 SOULBOUND="false"
 
@@ -53,7 +53,7 @@ echo "IDENTITY_NAME: $IDENTITY_NAME"
 echo "COLLECTION_ID: $COLLECTION_ID"
 echo "DISPLAY_NAME: $DISPLAY_NAME"
 echo "NAMESPACE: $NAMESPACE"
-echo "TOKEN_PREFIX: $TOKEN_PREFIX"
+echo "TOKEN_WORDS: $TOKEN_WORDS"
 echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
 echo "SOULBOUND: $SOULBOUND"
 
@@ -177,6 +177,11 @@ find ./dist -name "*.txt" -type f -delete
 echo "Copying unzipped files to $DAPPS_PATH"
 cp ./dist/* "$DAPPS_PATH"
 
+if [[ -f "$DAPPS_PATH/nftData.html" ]]; then
+  echo "Renaming nftData.html to data.html"
+  mv $DAPPS_PATH/nftData.html $DAPPS_PATH/data.html
+fi
+
 echo "Removing temporary unzipped files"
 rm -rf ./dist
 
@@ -234,7 +239,7 @@ echo "Building and installing the NFT canister"
 
 dfx build --network $IC_NETWORK origyn_nft_reference
 
-gzip -k ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm
+gzip -kf ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm
 dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt 2048000000})"
 
 show_elapsed_time
@@ -325,7 +330,9 @@ node ./scripts/csm-config.js \
 --collectionDisplayName "$DISPLAY_NAME" \
 --namespace "$NAMESPACE" \
 --collectionId "$COLLECTION_ID" \
---tokenPrefix "$TOKEN_PREFIX" \
+--tokenWords "$TOKEN_WORDS" \
+--minWords "3" \
+--maxWords "3" \
 --assetMappings "$ASSET_MAPPINGS" \
 --soulbound "$SOULBOUND"
 
@@ -349,13 +356,8 @@ node ./scripts/csm-config.js \
 # --secondaryNetworkRate ".005" \
 # --secondaryCustomRates "custom-name1:0.001:principal-id-1, custom-name2:0.002:principal-id-2"
 
-show_elapsed_time
-
 echo ""
 echo "Metadata file created at $PROJECT_PATH/__staged/metadata.json."
-echo $'\nYou may manually modify the metadata in metadata.json before continuing.\n'
-
-read -p "Press return/enter to stage and mint your NFT collection..."
 
 show_elapsed_time
 
@@ -372,6 +374,14 @@ show_elapsed_time
 
 # show_elapsed_time
 
+echo ""
+echo "You may continue to stage your NFTs now or manually run scripts/csm-stage.js later."
+echo "You may also manually modify metadata.json before continuing."
+
+read -p "Press return/enter to stage your NFT collection..."
+
+show_elapsed_time
+
 
 echo -e $LIGHTBLUE
 echo $'\n**************************************'
@@ -385,6 +395,14 @@ node ./scripts/csm-stage.js \
 --environment "$IC_NETWORK" \
 --folderPath "$PROJECT_PATH/assets" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
+
+show_elapsed_time
+
+echo ""
+echo "Metadata and files have been staged."
+echo "You may continue to mint your NFTs now or manually run scripts/csm-mint.js later."
+
+read -p "Press return/enter to mint your NFT collection..."
 
 show_elapsed_time
 
