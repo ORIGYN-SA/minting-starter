@@ -10,6 +10,7 @@ To create your own collection, fork this project and add your own project folder
 
 -   Git
 -   Node 16 (higher versions will cause errors)
+-   dfx 11.2
 -   Vessel
 
     Follow step 1 in these instructions: https://github.com/dfinity/vessel.
@@ -21,6 +22,23 @@ To create your own collection, fork this project and add your own project folder
     ```
     vessel --help
     ```
+
+## Quick Start
+
+Run from the project root directory:
+
+```console
+git submodule update --init --recursive
+vessel install
+npm i
+dfx start --clean
+```
+
+Open new terminal:
+
+```console
+bash projects/brain-matters-full/deploy.sh
+```
 
 ## Update Git submodules
 
