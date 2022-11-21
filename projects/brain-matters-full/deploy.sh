@@ -365,6 +365,7 @@ echo $'**************************************'
 echo -e $NOCOLOR
 
 echo "Running post-config script"
+node "$PROJECT_PATH/post-config.js"
 echo "Post-config script completed"
 
 show_elapsed_time
