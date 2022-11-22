@@ -317,6 +317,12 @@ echo "************ CSM - Config ************"
 echo $'**************************************'
 echo -e $NOCOLOR
 
+echo "Building csm library"
+cd csm
+npm i
+npm run build
+cd ..
+
 echo "Calling the csm config function to create NFT metadata"
 
 node ./scripts/csm-config.js \
@@ -371,7 +377,6 @@ echo "Post-config script completed"
 show_elapsed_time
 
 echo ""
-echo "The post-config script has updated $PROJECT_PATH/__staged/metadata.json."
 echo "You may continue to stage your NFTs now or manually run scripts/csm-stage.js later."
 echo "You may also manually modify metadata.json before continuing."
 
