@@ -321,6 +321,12 @@ echo "************ CSM - Config ************"
 echo $'**************************************'
 echo -e $NOCOLOR
 
+echo "Building csm library"
+cd csm
+npm i
+npm run build
+cd ..
+
 echo "Calling the csm config function to create NFT metadata"
 
 node ./scripts/csm-config.js \

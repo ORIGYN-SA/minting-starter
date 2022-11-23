@@ -42,7 +42,7 @@ IDENTITY_NAME="local_deployer"
 COLLECTION_ID="bm"
 DISPLAY_NAME="Brain Matters"
 NAMESPACE="brain.matters"
-TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
+TOKEN_PREFIX="bm-"
 ASSET_MAPPINGS="primary:nft*.png, preview:nft*.png, experience:nft*.html, hidden:mystery-bm.gif"
 SOULBOUND="false"
 
@@ -53,7 +53,7 @@ echo "IDENTITY_NAME: $IDENTITY_NAME"
 echo "COLLECTION_ID: $COLLECTION_ID"
 echo "DISPLAY_NAME: $DISPLAY_NAME"
 echo "NAMESPACE: $NAMESPACE"
-echo "TOKEN_WORDS: $TOKEN_WORDS"
+echo "TOKEN_PREFIX: $TOKEN_PREFIX"
 echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
 echo "SOULBOUND: $SOULBOUND"
 
@@ -317,6 +317,12 @@ echo "************ CSM - Config ************"
 echo $'**************************************'
 echo -e $NOCOLOR
 
+echo "Building csm library"
+cd csm
+npm i
+npm run build
+cd ..
+
 echo "Calling the csm config function to create NFT metadata"
 
 node ./scripts/csm-config.js \
@@ -326,9 +332,7 @@ node ./scripts/csm-config.js \
 --collectionDisplayName "$DISPLAY_NAME" \
 --namespace "$NAMESPACE" \
 --collectionId "$COLLECTION_ID" \
---tokenWords "$TOKEN_WORDS" \
---minWords "3" \
---maxWords "3" \
+--tokenPrefix "$TOKEN_PREFIX" \
 --assetMappings "$ASSET_MAPPINGS" \
 --soulbound "$SOULBOUND"
 
@@ -371,7 +375,6 @@ echo "Post-config script completed"
 show_elapsed_time
 
 echo ""
-echo "The post-config script has updated $PROJECT_PATH/__staged/metadata.json."
 echo "You may continue to stage your NFTs now or manually run scripts/csm-stage.js later."
 echo "You may also manually modify metadata.json before continuing."
 
