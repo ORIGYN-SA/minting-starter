@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Brain Matters - NFT ~TOKEN_ID~</title>
+    <title>Brain Matters - ~TOKEN_ID~</title>
     <style>
       body {
         text-align: center;
@@ -41,20 +41,21 @@
         height: 100px;
       }
 
-      #nft~TOKEN_ID~ {
+      #nft~TOKEN_IX~ {
         border: 1px solid #ccc;
       }
     </style>
   </head>
   <body>
     <div id="main" style="display:none">
-      <h1>Brain Matters - NFT ~TOKEN_ID~</h1>
-      <img id="nft~TOKEN_ID~" src="nft~TOKEN_ID~.png" />
+      <h1>Brain Matters</h1>
+      <h2>Token ID: ~TOKEN_ID~</h2>
+      <img id="nft~TOKEN_IX~" src="nft~TOKEN_IX~.png" />
 
       <h2>Other NFTs</h2>
       <div id="list">
         <a href="~FILE_PATH~">
-          <span>NFT ~LIST_INDEX~</span>
+          <span>~LIST_INDEX~</span>
           <img src="~IMAGE_PATH~" />
         </a>
       </div>

@@ -17,7 +17,8 @@ const htmlTemplate = fs.readFileSync(templatePath).toString();
 
 // generate html pages with replaced placeholders into __temp
 for (let i = 1; i <= 20; i++) {
-    let nftHtml = htmlTemplate.replaceAll('~TOKEN_ID~', i);
+    let nftHtml = htmlTemplate.replaceAll('~TOKEN_IX~', i);
+    nftHtml = nftHtml.replaceAll('~TOKEN_ID~', `~TOKEN_${i}_ID~`);
 
     const startOfLink = nftHtml.indexOf('<a');
     const endOfLink = nftHtml.indexOf('</a>', startOfLink) + 4;
@@ -32,7 +33,7 @@ for (let i = 1; i <= 20; i++) {
         listHtml += listTemplate
           .replaceAll('~FILE_PATH~', `../${j}/nft${j}.html`)
           .replaceAll('~IMAGE_PATH~', `../${j}/nft${j}.png`)
-          .replaceAll('~LIST_INDEX~', j) + '\n      ';
+          .replaceAll('~LIST_INDEX~', `~TOKEN_${j}_ID~`) + '\n      ';
       }
 
       nftHtml = nftHtml.substring(0, startOfLink) + listHtml.trimEnd() + nftHtml.substring(endOfLink);

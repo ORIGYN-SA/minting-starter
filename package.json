@@ -3,9 +3,10 @@
     "version": "1.1.2",
     "type": "module",
     "devDependencies": {
-        "@dfinity/agent": "^0.12.1",
-        "@dfinity/identity": "^0.12.1",
-        "@dfinity/principal": "^0.12.1",
+        "@dfinity/agent": "^0.14.1",
+        "@dfinity/candid": "^0.14.1",
+        "@dfinity/identity": "^0.14.1",
+        "@dfinity/principal": "^0.14.1",
         "@origyn-sa/csm": "file:csm",
         "@peculiar/webcrypto": "^1.4.0",
         "@types/node-fetch": "^2.6.2",
@@ -14,7 +15,7 @@
         "hdkey": "^2.0.1",
         "mime-types": "^2.1.35",
         "minimist": "^1.2.6",
-        "node-fetch": "^3.2.9",
+        "node-fetch": "^3.2.10",
         "pem-file": "^1.0.1",
         "sha256": "^0.2.0"
     },
