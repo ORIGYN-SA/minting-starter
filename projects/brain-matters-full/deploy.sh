@@ -240,7 +240,7 @@ echo "Building and installing the NFT canister"
 dfx build --network $IC_NETWORK origyn_nft_reference
 
 gzip -kf ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm
-dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt 2048000000})"
+dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt (2048000000:nat)})"
 
 show_elapsed_time
 
@@ -317,6 +317,12 @@ echo "************ CSM - Config ************"
 echo $'**************************************'
 echo -e $NOCOLOR
 
+echo "Building csm library"
+cd csm
+npm i
+npm run build
+cd ..
+
 echo "Calling the csm config function to create NFT metadata"
 
 node ./scripts/csm-config.js \
@@ -365,12 +371,12 @@ echo $'**************************************'
 echo -e $NOCOLOR
 
 echo "Running post-config script"
+node "$PROJECT_PATH/post-config.js"
 echo "Post-config script completed"
 
 show_elapsed_time
 
 echo ""
-echo "The post-config script has updated $PROJECT_PATH/__staged/metadata.json."
 echo "You may continue to stage your NFTs now or manually run scripts/csm-stage.js later."
 echo "You may also manually modify metadata.json before continuing."
 

@@ -240,7 +240,7 @@ echo "Building and installing the NFT canister"
 dfx build --network $IC_NETWORK origyn_nft_reference
 
 gzip -kf ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm
-dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt 2048000000})"
+dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt (2048000000:nat)})"
 
 show_elapsed_time
 
@@ -320,6 +320,12 @@ echo $'\n**************************************'
 echo "************ CSM - Config ************"
 echo $'**************************************'
 echo -e $NOCOLOR
+
+echo "Building csm library"
+cd csm
+npm i
+npm run build
+cd ..
 
 echo "Calling the csm config function to create NFT metadata"
 
