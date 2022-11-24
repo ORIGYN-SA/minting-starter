@@ -42,7 +42,7 @@ IDENTITY_NAME="local_deployer"
 COLLECTION_ID="bm"
 DISPLAY_NAME="Brain Matters"
 NAMESPACE="brain.matters"
-TOKEN_PREFIX="bm-"
+TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
 ASSET_MAPPINGS="primary:nft*.png, preview:nft*.png, experience:nft*.html, hidden:mystery-bm.gif"
 SOULBOUND="false"
 
@@ -53,7 +53,7 @@ echo "IDENTITY_NAME: $IDENTITY_NAME"
 echo "COLLECTION_ID: $COLLECTION_ID"
 echo "DISPLAY_NAME: $DISPLAY_NAME"
 echo "NAMESPACE: $NAMESPACE"
-echo "TOKEN_PREFIX: $TOKEN_PREFIX"
+echo "TOKEN_WORDS: $TOKEN_WORDS"
 echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
 echo "SOULBOUND: $SOULBOUND"
 
@@ -332,7 +332,9 @@ node ./scripts/csm-config.js \
 --collectionDisplayName "$DISPLAY_NAME" \
 --namespace "$NAMESPACE" \
 --collectionId "$COLLECTION_ID" \
---tokenPrefix "$TOKEN_PREFIX" \
+--tokenWords "$TOKEN_WORDS" \
+--minWords "3" \
+--maxWords "3" \
 --assetMappings "$ASSET_MAPPINGS" \
 --soulbound "$SOULBOUND"
 
