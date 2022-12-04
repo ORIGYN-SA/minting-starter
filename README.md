@@ -8,10 +8,10 @@ To create your own collection, fork this project and add your own project folder
 
 ## Prerequisites
 
--   Git
--   Node 16 (higher versions will cause errors)
--   dfx 11.2
--   Vessel
+- Git
+- Node 16 (higher versions will cause errors)
+- dfx 11.2
+- Vessel
 
     Follow step 1 in these instructions: https://github.com/dfinity/vessel.
 
@@ -37,7 +37,7 @@ dfx start --clean
 Open new terminal:
 
 ```console
-bash projects/brain-matters-full/deploy.sh
+bash projects/brain-matters/deploy.sh
 ```
 
 ## Update Git submodules
@@ -76,27 +76,27 @@ There is a sample NFT collection in [projects/brain-matters](projects/brain-matt
 
 The project contains the following required folders:
 
--   assets
-    -   collection
-        -   dapps
-    -   nfts
-        -   1
-        -   2
-        -   3
+- assets
+  - collection
+    - dapps
+  - nfts
+    - 1
+    - 2
+    - 3
 
 The csm library expects this folder structure when scanning for files.
 
--   The "nfts" folder should only contain folders that are sequentially numbered starting at "1".
-    -   Each numbered folder represents a single NFT definition.
-        -   By default, only one NFT per definition will be created.
-        -   This can be overriden by passing the --nftQuantities argument to csm-config.js in the deploy.sh script.
--   Any files in the collection folder will become part of the collection level metadata.
--   Any files in the numbered NFT folders will become part of that NFT's metadata.
-    -   You can reference a single file in the collection from multiple numbered NFT folders
-        to prevent duplicate file uploads.
-        -   Place a file named "collection.json" in the numbered NFT folders containing an array of relative file paths
-            starting at the root of the collection folder.
-        -   Example: [projects/brain-matters/assets/nfts/0/collection.json](projects/brain-matters/assets/nfts/0/collection.json).
+- The "nfts" folder should only contain folders that are sequentially numbered starting at "1".
+  - Each numbered folder represents a single NFT definition.
+    - By default, only one NFT per definition will be created.
+    - This can be overriden by passing the --nftQuantities argument to csm-config.js in the deploy.sh script.
+- Any files in the collection folder will become part of the collection level metadata.
+- Any files in the numbered NFT folders will become part of that NFT's metadata.
+  - You can reference a single file in the collection from multiple numbered NFT folders
+    to prevent duplicate file uploads.
+    - Place a file named "collection.json" in the numbered NFT folders containing an array of relative file paths
+      starting at the root of the collection folder.
+    - Example: [projects/brain-matters/assets/nfts/0/collection.json](projects/brain-matters/assets/nfts/0/collection.json).
 
 ## Deploy the Sample NFT Collection
 
@@ -111,7 +111,7 @@ To generate metadata from local files, stage (upload) the files to an NFT canist
 **Full example with an HTML experience page, a pre-config script and a post-config script**
 
   ```console
-  bash ./projects/brain-matters-full/deploy.sh
+  bash ./projects/brain-matters/deploy.sh
   ```
 
 If the script runs successfully, it will create a new "\_\_staged" folder in the same folder as the "deploy.sh" script.
@@ -126,19 +126,19 @@ Here is [sample terminal output](./docs/terminal-deploy-script-localhost.md) for
 
 ## Creating Your Own NFT Collection
 
--   Fork this GitHub repository.
--   Replace the files in the assets folders with your own files.
--   Find the "Set User Variables" section in the deploy.sh script and change the values to your own.
--   Follow the same instructions above to run the deploy.sh script and test locally.
+- Fork this GitHub repository.
+- Replace the files in the assets folders with your own files.
+- Find the "Set User Variables" section in the deploy.sh script and change the values to your own.
+- Follow the same instructions above to run the deploy.sh script and test locally.
 
 ## Deploying to the Internet Computer Mainnet
 
--   Create a dfx identity, a cycles wallet canister and an empty NFT canister on the mainnet by following [these instructions](./docs/create-dfx-mainnet-identity-wallet.md).
-    -   Here is the [output from a terminal session](./docs/terminal-dfx-mainnet-identity.md)
--   In deploy.sh
-    -   Change IC_NETWORK to "ic".
-    -   Change IDENTITY_NAME to the id of your mainnet identity.
--   Run the deploy.sh script.
+- Create a dfx identity, a cycles wallet canister and an empty NFT canister on the mainnet by following [these instructions](./docs/create-dfx-mainnet-identity-wallet.md).
+    - Here is the [output from a terminal session](./docs/terminal-dfx-mainnet-identity.md)
+- In deploy.sh
+    - Change IC_NETWORK to "ic".
+    - Change IDENTITY_NAME to the id of your mainnet identity.
+- Run the deploy.sh script.
 
 Here is [sample terminal output](./docs/terminal-deploy-script-mainnet.md) for a successful mint on mainnet.
 
@@ -152,16 +152,16 @@ If your NFT collection has large media files, you may want to test it locally wi
 
 ## Prerequisites
 
--   Rust+Cargo
+- Rust+Cargo
     https://www.rust-lang.org/tools/install
 
--   IC CDK Optimizer
+- IC CDK Optimizer
 
     ```
     cargo install ic-cdk-optimizer --version 0.3.1
     ```
 
--   CMake
+- CMake
 
     > MacOS
 
@@ -207,25 +207,25 @@ To verify that your NFT collection was deployed correctly, you can view your on-
 
 NFTs and collections can be access in three ways.
 
--   Direct: HTTP requests are sent directly to the canister using the canister id. This option is fully decentralized, so it's always online, even if the proxy can't be reached. However, large files take longer to download and video streaming may be slow, resulting in a poor user experience.
--   Proxy: HTTP requests are sent to a reverse-proxy which requests files from the canister and caches them so they can be served to the user quickly and videso can stream smoothly.
--   Proxy + Phonebook: The canister id in the URL can be replaced with a user friendly collection id. The reverse-proxy will lookup the canister id in the phonebook canister. The URL will only work after a phonebook entry has been created mapping the collection id to the canister id.
+- Direct: HTTP requests are sent directly to the canister using the canister id. This option is fully decentralized, so it's always online, even if the proxy can't be reached. However, large files take longer to download and video streaming may be slow, resulting in a poor user experience.
+- Proxy: HTTP requests are sent to a reverse-proxy which requests files from the canister and caches them so they can be served to the user quickly and videso can stream smoothly.
+- Proxy + Phonebook: The canister id in the URL can be replaced with a user friendly collection id. The reverse-proxy will lookup the canister id in the phonebook canister. The URL will only work after a phonebook entry has been created mapping the collection id to the canister id.
 
 **Localhost**
 
 The canister id will be located here: [.dfx/local/canister_ids.json](.dfx/local/canister_ids.json) at "origyn_nft_reference" > "local".
 
--   Direct: http://{canister-id}.localhost:8000/
--   Proxy: http://localhost:3000/-/{canister-id}/
--   Proxy + Phonebook: http://localhost:3000/-/{collection-id}/
+- Direct: http://{canister-id}.localhost:8000/
+- Proxy: http://localhost:3000/-/{canister-id}/
+- Proxy + Phonebook: http://localhost:3000/-/{collection-id}/
 
 **Mainnet**
 
 The canister id will be located here: [canister_ids.json](canister_ids.json) at "origyn_nft_reference" > "ic".
 
--   Direct (Fully decentralized): https://{canister id}.raw.ic0.app/
--   Proxy: https://prptl.io/-/{canister-id}/
--   Proxy + Phonebook: https://prptl.io/-/{collection-id}/
+- Direct (Fully decentralized): https://{canister id}.raw.ic0.app/
+- Proxy: https://prptl.io/-/{canister-id}/
+- Proxy + Phonebook: https://prptl.io/-/{collection-id}/
 
 ### Relative URLs
 
@@ -237,32 +237,58 @@ The location is the relative path and should work when combined with the root UR
 
 ### Example URLs
 
-**Localhost**
+Combine a root URL and a root-relative URL to get a full example of an absolute URL.
 
--   Direct:
-    -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/info
-    -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-1/-/brain.matters.nft1.png
-    -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-1/-/brain.matters.nft1.html
--   Proxy:
-    -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/collection/info
-    -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/-/bm-1/-/brain.matters.nft1.png
-    -   http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai/-/bm-1/-/brain.matters.nft1.html
--   Proxy + Phonebook:
-    -   http://localhost:3000/-/bm/collection/info
-    -   http://localhost:3000/-/bm/-/bm-1/-/brain.matters.nft1.png
-    -   http://localhost:3000/-/bm/-/bm-1/-/brain.matters.nft1.html
+**Root URLs**
 
-**Mainnet**
+- Canister ID
+  - Localhost
+    - http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000
+  - Mainnet
+    - https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app
 
--   Direct:
-    -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/collection/info
-    -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/-/bm-1/-/brain.matters.nft1.png
-    -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app/-/bm-1/-/brain.matters.nft1.html
--   Proxy:
-    -   https://prptl.io/-/ap5ok-kqaaa-aaaak-acvha-cai/collection/info
-    -   https://prptl.io/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-1/-/brain.matters.nft1.png
-    -   https://prptl.io/-/ap5ok-kqaaa-aaaak-acvha-cai/-/bm-1/-/brain.matters.nft1.html
--   Proxy + Phonebook (no phonebook entry has been made for this example):
-    -   https://prptl.io/-/bm/collection/info
-    -   https://prptl.io/-/bm/-/bm-1/-/brain.matters.nft1.png
-    -   https://prptl.io/-/bm/-/bm-1/-/brain.matters.nft1.html
+- Proxy
+  - Localhost (must have the proxy running locally first)
+    - http://localhost:3000/-/rrkah-fqaaa-aaaaa-aaaaq-cai
+  - Mainnet
+    - https://prptl.io/-/ap5ok-kqaaa-aaaak-acvha-cai
+
+- Proxy + Phonebook
+  - Localhost (must have the proxy running locally first)
+    - http://localhost:3000/-/bm
+  - Mainnet
+    - https://prptl.io/-/bm
+
+**Root-Relative URLs**
+
+- Collection Level
+  - Standard Info URLs
+    - /collection/info
+    - /collection/ledger_info
+    - /collection/library
+
+  - Origyn DApp URLs
+    - /collection/-/wallet
+    - /collection/-/marketplace
+    - /collection/-/library
+    - /collection/-/ledger
+    - /collection/-/data
+
+- NFT Level
+  - Standard Info URL
+    - /-/token-id/info
+    - /-/token-id/ledger_info
+    - /-/token-id/library
+
+  - Standard Asset Type URLs ("token-id" is the token ID of an NFT)
+    - /-/token-id/primary
+    - /-/token-id/preview
+    - /-/token-id/hidden
+    - /-/token-id/ex
+
+  - Direct Asset URLs ("token-id" is the token ID of an NFT)
+    - /-/token-id/-/primary1.png
+    - /-/token-id/-/preview1.png
+    - /-/token-id/-/mystery-bm.gif
+    - /-/token-id/-/experience1.html
+    

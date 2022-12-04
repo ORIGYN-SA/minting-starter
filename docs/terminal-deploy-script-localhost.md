@@ -1,7 +1,7 @@
 # Sample Output from Running deploy.sh for localhost
 
 ```console
-➜ bash ./projects/brain-matters-full/deploy.sh
+➜ bash ./projects/brain-matters/deploy.sh
 
 Mon Oct 31 08:04:54 MDT 2022
 
@@ -14,7 +14,6 @@ IC_NETWORK: local
 IDENTITY_NAME: local_nft_deployer
 COLLECTION_ID: bm
 DISPLAY_NAME: Brain Matters
-NAMESPACE: brain.matters
 TOKEN_PREFIX: bm-
 ASSET_MAPPINGS: primary:nft*.png, preview:nft*.png, experience:nft*.html, hidden:mystery-bm.gif
 SOULBOUND: false
@@ -36,11 +35,11 @@ Elapsed: 0 hr 0 min 0 sec (Mon Oct 31 08:04:54 MDT 2022)
 
 Present working directory: /Users/jt/origyn/src/minting-starter
 REPO_PATH: /Users/jt/origyn/src/minting-starter
-PROJECT_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matters-full
-DAPPS_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/assets/collection/dapps
+PROJECT_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matters
+DAPPS_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matters/assets/collection/dapps
 SCRIPTS_PATH: /Users/jt/origyn/src/minting-starter/scripts
 IC_NETWORK: local
-IDENTITY_PEM_FILE_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/local_nft_deployer.pem
+IDENTITY_PEM_FILE_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matters/local_nft_deployer.pem
 
 
 **************************************
@@ -50,7 +49,7 @@ IDENTITY_PEM_FILE_PATH: /Users/jt/origyn/src/minting-starter/projects/brain-matt
 IDENTITY: "local_nft_deployer"
 Using identity: "local_nft_deployer".
 Identity "local_nft_deployer" already imported and in use
-Found existing pem file /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/local_nft_deployer.pem
+Found existing pem file /Users/jt/origyn/src/minting-starter/projects/brain-matters/local_nft_deployer.pem
 Getting principal for local_nft_deployer identity
 The local_nft_deployer principal is i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae
 
@@ -77,7 +76,7 @@ Elapsed: 0 hr 0 min 1 sec (Mon Oct 31 08:04:55 MDT 2022)
 **************************************
 
 Downloading and unzipping latest dapps
-Ensuring path exists: /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/assets/collection/dapps
+Ensuring path exists: /Users/jt/origyn/src/minting-starter/projects/brain-matters/assets/collection/dapps
 Downloading latest dapps build from: https://github.com/ORIGYN-SA/DApps/releases/download/dapps-latest-build/dist.zip
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -99,7 +98,7 @@ Archive:  dist.zip
   inflating: ./dist/library.js.LICENSE.txt  
 Removing temporary zip file
 Removing all txt files from the unzipped files
-Copying unzipped files to /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/assets/collection/dapps
+Copying unzipped files to /Users/jt/origyn/src/minting-starter/projects/brain-matters/assets/collection/dapps
 Removing temporary unzipped files
 
 Elapsed: 0 hr 0 min 2 sec (Mon Oct 31 08:04:56 MDT 2022)
@@ -256,12 +255,12 @@ Elapsed: 0 hr 0 min 49 sec (Mon Oct 31 08:05:43 MDT 2022)
 Calling the csm config function to create NFT metadata
 configArgs {
   collectionId: 'bm',
-  collectionDisplayName: 'Brain Matters',
+  displayName: 'Brain Matters',
+  description: 'A collection of 20 unique Brain Matters NFTs',
   tokenPrefix: 'bm-',
   nftCanisterId: 'rrkah-fqaaa-aaaaa-aaaaq-cai',
   creatorPrincipal: 'i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae',
-  namespace: 'brain.matters',
-  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__temp',
+  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/__temp',
   assetMappings: 'primary:nft*.png, preview:nft*.png, experience:nft*.html, hidden:mystery-bm.gif',
   brokerRoyalty: '',
   customRoyalty: '',
@@ -278,7 +277,7 @@ Creating metadata for the collection
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/collection/dapps/ledger.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/ledger.html
 
 regex matches 5
 
@@ -311,7 +310,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/collection/dapps/library.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/library.html
 
 regex matches 5
 
@@ -344,7 +343,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/collection/dapps/marketplace.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/marketplace.html
 
 regex matches 5
 
@@ -377,7 +376,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/collection/dapps/nftData.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/nftData.html
 
 regex matches 5
 
@@ -410,7 +409,7 @@ uniqueRelUrls
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/collection/dapps/wallet.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/collection/dapps/wallet.html
 
 regex matches 5
 
@@ -449,7 +448,7 @@ Creating metadata for 1 NFTs from NFT definition 1
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/1/nft1.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/1/nft1.html
 
 regex matches 41
 
@@ -751,7 +750,7 @@ Creating metadata for 1 NFTs from NFT definition 2
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/2/nft2.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/2/nft2.html
 
 regex matches 41
 
@@ -1053,7 +1052,7 @@ Creating metadata for 1 NFTs from NFT definition 3
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/3/nft3.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/3/nft3.html
 
 regex matches 41
 
@@ -1355,7 +1354,7 @@ Creating metadata for 1 NFTs from NFT definition 4
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/4/nft4.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/4/nft4.html
 
 regex matches 41
 
@@ -1657,7 +1656,7 @@ Creating metadata for 1 NFTs from NFT definition 5
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/5/nft5.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/5/nft5.html
 
 regex matches 41
 
@@ -1959,7 +1958,7 @@ Creating metadata for 1 NFTs from NFT definition 6
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/6/nft6.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/6/nft6.html
 
 regex matches 41
 
@@ -2261,7 +2260,7 @@ Creating metadata for 1 NFTs from NFT definition 7
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/7/nft7.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/7/nft7.html
 
 regex matches 41
 
@@ -2563,7 +2562,7 @@ Creating metadata for 1 NFTs from NFT definition 8
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/8/nft8.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/8/nft8.html
 
 regex matches 41
 
@@ -2865,7 +2864,7 @@ Creating metadata for 1 NFTs from NFT definition 9
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/9/nft9.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/9/nft9.html
 
 regex matches 41
 
@@ -3167,7 +3166,7 @@ Creating metadata for 1 NFTs from NFT definition 10
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/10/nft10.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/10/nft10.html
 
 regex matches 41
 
@@ -3469,7 +3468,7 @@ Creating metadata for 1 NFTs from NFT definition 11
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/11/nft11.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/11/nft11.html
 
 regex matches 41
 
@@ -3771,7 +3770,7 @@ Creating metadata for 1 NFTs from NFT definition 12
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/12/nft12.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/12/nft12.html
 
 regex matches 41
 
@@ -4073,7 +4072,7 @@ Creating metadata for 1 NFTs from NFT definition 13
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/13/nft13.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/13/nft13.html
 
 regex matches 41
 
@@ -4375,7 +4374,7 @@ Creating metadata for 1 NFTs from NFT definition 14
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/14/nft14.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/14/nft14.html
 
 regex matches 41
 
@@ -4677,7 +4676,7 @@ Creating metadata for 1 NFTs from NFT definition 15
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/15/nft15.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/15/nft15.html
 
 regex matches 41
 
@@ -4979,7 +4978,7 @@ Creating metadata for 1 NFTs from NFT definition 16
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/16/nft16.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/16/nft16.html
 
 regex matches 41
 
@@ -5281,7 +5280,7 @@ Creating metadata for 1 NFTs from NFT definition 17
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/17/nft17.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/17/nft17.html
 
 regex matches 41
 
@@ -5583,7 +5582,7 @@ Creating metadata for 1 NFTs from NFT definition 18
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/18/nft18.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/18/nft18.html
 
 regex matches 41
 
@@ -5885,7 +5884,7 @@ Creating metadata for 1 NFTs from NFT definition 19
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/19/nft19.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/19/nft19.html
 
 regex matches 41
 
@@ -6187,7 +6186,7 @@ Creating metadata for 1 NFTs from NFT definition 20
 --------------------------------------
 
 Replacing relative URLs with NFT URLs in file:
-/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/nfts/20/nft20.html
+/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/nfts/20/nft20.html
 
 regex matches 41
 
@@ -6497,7 +6496,7 @@ Total Files Found: 46
 Total File Size: 24327127 (23.2 MB)
 Total NFT Definition Count: 20
 Total NFT Count: 20
-Metadata File: '/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/metadata.json'
+Metadata File: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/metadata.json'
 
 Finished (config subcommand)
 
@@ -6506,7 +6505,7 @@ Finished (config subcommand)
 
 Elapsed: 0 hr 0 min 50 sec (Mon Oct 31 08:05:44 MDT 2022)
 
-Metadata file created at /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/metadata.json.
+Metadata file created at /Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/metadata.json.
 
 Elapsed: 0 hr 0 min 50 sec (Mon Oct 31 08:05:44 MDT 2022)
 
@@ -6520,7 +6519,7 @@ Post-config script completed
 
 Elapsed: 0 hr 0 min 50 sec (Mon Oct 31 08:05:44 MDT 2022)
 
-The post-config script has updated /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__staged/metadata.json.
+The post-config script has updated /Users/jt/origyn/src/minting-starter/projects/brain-matters/__staged/metadata.json.
 
 You may also manually modify the metadata in metadata.json before continuing.
 
@@ -6536,14 +6535,14 @@ Elapsed: 0 hr 1 min 3 sec (Mon Oct 31 08:05:57 MDT 2022)
 Calling the csm stage function to upload the NFT files
 stageArgs {
   environment: 'local',
-  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__temp',
-  keyFilePath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/local_nft_deployer.pem'
+  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/__temp',
+  keyFilePath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/local_nft_deployer.pem'
 }
 
 **************************************
 
 Started (stage subcommand)
-Loaded Ed25519 identity i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae from .pem file /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/local_nft_deployer.pem.
+Loaded Ed25519 identity i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae from .pem file /Users/jt/origyn/src/minting-starter/projects/brain-matters/local_nft_deployer.pem.
 
 --------------------------------------
 
@@ -7503,8 +7502,8 @@ Elapsed: 0 hr 3 min 35 sec (Mon Oct 31 08:08:29 MDT 2022)
 Calling the csm mint function to mint the NFTs int the collection
 mintArgs {
   environment: 'local',
-  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/__temp',
-  keyFilePath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters-full/local_nft_deployer.pem',
+  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/__temp',
+  keyFilePath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/local_nft_deployer.pem',
   range: '',
   batchSize: ''
 }
@@ -7512,7 +7511,7 @@ mintArgs {
 **************************************
 
 Started (mint subcommand)
-Loaded Ed25519 identity i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae from .pem file /Users/jt/origyn/src/minting-starter/projects/brain-matters-full/local_nft_deployer.pem.
+Loaded Ed25519 identity i25gj-fe73i-6oyeh-yq4fz-snpgl-64bnj-c4xel-vc7lt-tqdwh-y2o57-cae from .pem file /Users/jt/origyn/src/minting-starter/projects/brain-matters/local_nft_deployer.pem.
 
 --------------------------------------
 
