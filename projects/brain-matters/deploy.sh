@@ -41,9 +41,9 @@ IDENTITY_NAME="local_deployer"
 # NFT collection settings
 COLLECTION_ID="bm"
 DISPLAY_NAME="Brain Matters"
-NAMESPACE="brain.matters"
+DESCRIPTION="A collection of 20 unique Brain Matters NFTs"
 TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
-ASSET_MAPPINGS="primary:nft*.png, preview:nft*.png, hidden:mystery-bm.gif"
+ASSET_MAPPINGS="primary:primary*.png, preview:preview*.png, experience:experience*.html, hidden:mystery-bm.gif"
 SOULBOUND="false"
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -52,7 +52,7 @@ echo "IC_NETWORK: $IC_NETWORK"
 echo "IDENTITY_NAME: $IDENTITY_NAME"
 echo "COLLECTION_ID: $COLLECTION_ID"
 echo "DISPLAY_NAME: $DISPLAY_NAME"
-echo "NAMESPACE: $NAMESPACE"
+echo "DESCRIPTION: $DESCRIPTION"
 echo "TOKEN_WORDS: $TOKEN_WORDS"
 echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
 echo "SOULBOUND: $SOULBOUND"
@@ -298,24 +298,20 @@ if [[ $IC_NETWORK == 'local' ]]; then
   show_elapsed_time
 fi
 
-
-# echo -e $LIGHTPURPLE
-# echo $'\n**************************************'
-# echo "************* Pre-Config *************"
-# echo $'**************************************'
-# echo -e $NOCOLOR
-
-# Run a custom pre-config script here if you create one.
-# A pre-config script might read an HTML template and replace
-# placeholders for each NFT, then write the files to NFT folders.
-
-# echo "Running pre-config script"
-# node "$PROJECT_PATH/pre-config.js"
-
-#show_elapsed_time
-
-
 echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "************* Pre-Config *************"
+echo $'**************************************'
+echo -e $NOCOLOR
+
+echo "Running pre-config script"
+node --trace-uncaught "$PROJECT_PATH/pre-config.js"
+echo "Pre-config script completed"
+
+show_elapsed_time
+
+
+echo -e $LIGHTBLUE
 echo $'\n**************************************'
 echo "************ CSM - Config ************"
 echo $'**************************************'
@@ -329,18 +325,18 @@ cd ..
 
 echo "Calling the csm config function to create NFT metadata"
 
-node ./scripts/csm-config.js \
---folderPath "$PROJECT_PATH/assets" \
+node --trace-uncaught ./scripts/csm-config.js \
+--folderPath "$PROJECT_PATH/__temp" \
 --nftCanisterId "$NFT_CANISTER_ID" \
 --creatorPrincipal "$ADMIN_PRINCIPAL" \
---collectionDisplayName "$DISPLAY_NAME" \
---namespace "$NAMESPACE" \
+--displayName "$DISPLAY_NAME" \
+--description "$DESCRIPTION" \
 --collectionId "$COLLECTION_ID" \
 --tokenWords "$TOKEN_WORDS" \
 --minWords "3" \
 --maxWords "3" \
 --assetMappings "$ASSET_MAPPINGS" \
---soulbound "$SOULBOUND"
+--soulbound "$SOULBOUND" 
 
 # Override royalty defaults
 # Note: the broker principal is set during the sale
@@ -368,17 +364,17 @@ echo "Metadata file created at $PROJECT_PATH/__staged/metadata.json."
 show_elapsed_time
 
 
-# echo -e $LIGHTBLUE
-# echo $'\n**************************************'
-# echo "************ Post-Config *************"
-# echo $'**************************************'
-# echo -e $NOCOLOR
+echo -e $LIGHTPURPLE
+echo $'\n**************************************'
+echo "************ Post-Config *************"
+echo $'**************************************'
+echo -e $NOCOLOR
 
-# echo "Running post-config script"
-# node "$PROJECT_PATH/post-config.js"
-# echo "Post-config script completed"
+echo "Running post-config script"
+node --trace-uncaught "$PROJECT_PATH/post-config.js"
+echo "Post-config script completed"
 
-# show_elapsed_time
+show_elapsed_time
 
 echo ""
 echo "You may continue to stage your NFTs now or manually run scripts/csm-stage.js later."
@@ -397,9 +393,9 @@ echo -e $NOCOLOR
 
 echo "Calling the csm stage function to upload the NFT files"
 
-node ./scripts/csm-stage.js \
+node --trace-uncaught ./scripts/csm-stage.js \
 --environment "$IC_NETWORK" \
---folderPath "$PROJECT_PATH/assets" \
+--folderPath "$PROJECT_PATH/__temp" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
 
 show_elapsed_time
@@ -421,9 +417,9 @@ echo -e $NOCOLOR
 
 echo "Calling the csm mint function to mint the NFTs int the collection"
 
-node ./scripts/csm-mint.js \
+node --trace-uncaught ./scripts/csm-mint.js \
 --environment "$IC_NETWORK" \
---folderPath "$PROJECT_PATH/assets" \
+--folderPath "$PROJECT_PATH/__temp" \
 --keyFilePath "$IDENTITY_PEM_FILE_PATH"
 # --range "0-7" #only mint token indexes 0 through 7
 

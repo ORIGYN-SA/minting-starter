@@ -3,11 +3,11 @@
     "args": {
       "environment": "local",
       "collectionId": "bm",
-      "collectionDisplayName": "Brain Matters",
+      "displayName": "Brain Matters",
+      "description": "A collection of 20 unique Brain Matters NFTs",
       "tokenPrefix": "bm-",
       "nftCanisterId": "rrkah-fqaaa-aaaaa-aaaaq-cai",
       "creatorPrincipal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae",
-      "namespace": "brain.matters",
       "folderPath": "/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets",
       "assetMappings": "primary:nft*.png, hidden:mystery-bm.gif",
       "nftOwnerId": "rrkah-fqaaa-aaaaa-aaaaq-cai",

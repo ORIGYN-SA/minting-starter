@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brain Matters NFT Collection</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: arial;
+      }
+
+      #info-links {
+        display: flex;
+        margin: 0;
+        justify-content: center;
+      }
+      
+      #info-links * {
+        margin: 10px;
+      }
+
+      #info-links span {
+        font-weight: bold;
+      }
+
+      #list a {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      #list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      #list a {
+        width: 250px;
+        height: 250px;
+        margin: 10px;
+        list-style: none;
+        text-align: center;
+        border: 1px solid #aaa;
+        background-color: #fdfaf3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+      }
+
+      #list span {
+        display: block;
+        font-family: arial;
+      }
+
+      #list div {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      #list div img {
+        width: 200px;
+        height: 200px;
+      }
+
+      #primary-image {
+        border: 2px solid #aaa;
+        width: 100%;
+        max-width: 800px;
+      }
+    </style>
+    <script>
+      // redirect from direct file URL to the short URL for the experience asset
+      if (/\/experience\d+.html/.test(window.location.href.toLowerCase())) {
+        window.location.href = '../ex';
+      }
+    </script>
+  </head>
+  <body>
+    <div id="main" style="display:none">
+      <h1>The Origyn <i>Brain Matters</i> NFT Collection by Origyn</h1>
+      <div id="info-links">
+        <span>JSON Data:</span>
+        <a href="/collection/info" target="_blank">Collection Info</a>
+        <a href="/collection/ledger_info" target="_blank">Collection Ledger</a>
+        <a href="/collection/library" target="_blank">Collection Library</a>
+      </div>
+
+      <div id="info-links">
+        <span>DApps:</span>
+        <a href="/collection/-/wallet" target="_blank">Wallet</a>
+        <a href="/collection/-/marketplace" target="_blank">Marketplace</a>
+        <a href="/collection/-/library" target="_blank">Library</a>
+        <a href="/collection/-/ledger" target="_blank">Ledger</a>
+        <a href="/collection/-/data" target="_blank">Data</a>
+      </div>
+
+      <h2>NFT Token ID: {token}</h2>
+      <div id="info-links">
+        <a href="/-/{token}/primary" target="_blank">Full Size Image</a>
+        <a href="/-/{token}/info" target="_blank">NFT Info</a>
+        <a href="/-/{token}/ledger_info" target="_blank">NFT Ledger</a>
+        <a href="/-/{token}/library" target="_blank">NFT Library</a>
+      </div>
+
+      <img id="primary-image" src="/-/{token}/primary" />
+
+      <h2>Other NFTs</h2>
+      <div id="list">
+        <a href="/-/{list-token}/ex">
+          <span>{list-token}</span>
+          <div>
+            <img src="/-/{list-token}/preview" />
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      var url = new URL(document.baseURI.toLowerCase());
+
+      function getRootUrl() {
+        if (['prptl.io', 'exos.origyn.network', 'localhost:3000'].includes(url.host)) {
+          // https://prptl.io/-/{canister_id}
+          // https://prptl.io/-/{collection_id}
+          // http://localhost:3000/-/{canister_id}
+          // http://localhost:3000/-/{collection_id}
+          return url.origin + url.pathname.split('/').slice(0, 3).join('/');
+        } else {
+          // https://{canister_id}.raw.ic0.app
+          // http://{canister_id}.localhost:8000
+          return url.origin;
+        }
+      }
+
+      const rootUrl = getRootUrl();
+      var main = document.getElementById('main');
+
+      // update all images and anchors by
+      // combining the root url with root-relative urls
+      var images = main.querySelectorAll('img');
+      for (var image of images) {
+        image.src = rootUrl + image.src.substring(url.origin.length);;
+      }
+      var anchors = main.querySelectorAll('a');
+      for (var anchor of anchors) {
+        anchor.href = rootUrl + anchor.href.substring(url.origin.length);;
+      }
+
+      // display the UI now that the URLs are resolved
+      main.style.display = 'block';
+    </script>
+  </body>
+</html>
