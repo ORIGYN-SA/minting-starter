@@ -53,7 +53,6 @@ IC_NETWORK: ic
 IDENTITY_NAME: jt-mainnet-ed25519
 COLLECTION_ID: bm
 DISPLAY_NAME: Brain Matters
-NAMESPACE: brain.matters
 TOKEN_PREFIX: bm-
 ASSET_MAPPINGS: primary:nft*.png, hidden:mystery-bm.gif
 SOULBOUND: false
@@ -227,11 +226,10 @@ Present working directory: /Users/jt/test/minting-starter/scripts
 Calling the csm config function to create NFT metadata
 configArgs {
   collectionId: 'bm',
-  collectionDisplayName: 'Brain Matters',
+  displayName: 'Brain Matters',
   tokenPrefix: 'bm-',
   nftCanisterId: 'r3zy2-paaaa-aaaak-ac2da-cai',
   creatorPrincipal: 'sil2l-jnboi-ckxt5-hrc2f-pmauv-yhxdm-vujiq-rmz3k-6g6lt-pe2vn-nae',
-  namespace: 'brain.matters',
   folderPath: '/Users/jt/test/minting-starter/projects/brain-matters/assets',
   assetMappings: 'primary:nft*.png, hidden:mystery-bm.gif',
   nftOwnerId: 'r3zy2-paaaa-aaaak-ac2da-cai',
