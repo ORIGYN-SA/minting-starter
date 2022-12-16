@@ -13,7 +13,7 @@ Mon Oct 31 08:04:54 MDT 2022
 IC_NETWORK: local
 IDENTITY_NAME: local_nft_deployer
 COLLECTION_ID: bm
-DISPLAY_NAME: Brain Matters
+DISPLAY_NAME: Brain Matters Collection
 TOKEN_PREFIX: bm-
 ASSET_MAPPINGS: primary:nft*.png, preview:nft*.png, experience:nft*.html, hidden:mystery-bm.gif
 SOULBOUND: false
@@ -255,7 +255,7 @@ Elapsed: 0 hr 0 min 49 sec (Mon Oct 31 08:05:43 MDT 2022)
 Calling the csm config function to create NFT metadata
 configArgs {
   collectionId: 'bm',
-  displayName: 'Brain Matters',
+  displayName: 'Brain Matters Collection',
   description: 'A collection of 20 unique Brain Matters NFTs',
   tokenPrefix: 'bm-',
   nftCanisterId: 'rrkah-fqaaa-aaaaa-aaaaq-cai',

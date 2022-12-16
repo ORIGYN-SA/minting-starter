@@ -268,7 +268,7 @@ Combine a root URL and a root-relative URL to get a full example of an absolute 
     - /collection/library
 
   - Origyn DApp URLs
-    - /collection/-/wallet
+    - /collection/-/vault
     - /collection/-/marketplace
     - /collection/-/library
     - /collection/-/ledger
