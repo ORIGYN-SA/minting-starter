@@ -52,7 +52,7 @@ Sat Oct 15 12:19:08 MDT 2022
 IC_NETWORK: ic
 IDENTITY_NAME: jt-mainnet-ed25519
 COLLECTION_ID: bm
-DISPLAY_NAME: Brain Matters
+DISPLAY_NAME: Brain Matters Collection
 TOKEN_PREFIX: bm-
 ASSET_MAPPINGS: primary:nft*.png, hidden:mystery-bm.gif
 SOULBOUND: false
@@ -226,12 +226,16 @@ Present working directory: /Users/jt/test/minting-starter/scripts
 Calling the csm config function to create NFT metadata
 configArgs {
   collectionId: 'bm',
-  displayName: 'Brain Matters',
+  displayName: 'Brain Matters Collection',
+  description: 'A collection of 20 unique Brain Matters NFTs',
   tokenPrefix: 'bm-',
   nftCanisterId: 'r3zy2-paaaa-aaaak-ac2da-cai',
   creatorPrincipal: 'sil2l-jnboi-ckxt5-hrc2f-pmauv-yhxdm-vujiq-rmz3k-6g6lt-pe2vn-nae',
-  folderPath: '/Users/jt/test/minting-starter/projects/brain-matters/assets',
-  assetMappings: 'primary:nft*.png, hidden:mystery-bm.gif',
+  folderPath: '/Users/jt/origyn/src/minting-starter/projects/brain-matters/__temp',
+  assetMappings: 'primary:nft*.png, preview:nft*.png, experience:nft*.html, hidden:mystery-bm.gif',
+  brokerRoyalty: '',
+  customRoyalty: '',
+  origynatorRoyalty: '',
   nftOwnerId: 'r3zy2-paaaa-aaaak-ac2da-cai',
   soulbound: 'false',
   nftQuantities: ''
