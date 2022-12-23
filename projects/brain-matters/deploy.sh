@@ -147,45 +147,45 @@ npm i
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "********* Copy Latest dApps **********"
-echo $'**************************************'
-echo -e $NOCOLOR
+# echo -e $LIGHTBLUE
+# echo $'\n**************************************'
+# echo "********* Copy Latest dApps **********"
+# echo $'**************************************'
+# echo -e $NOCOLOR
 
-echo "Downloading and unzipping latest dapps"
+# echo "Downloading and unzipping latest dapps"
 
-echo "Ensuring path exists: $DAPPS_PATH"
-if [ ! -d ${DAPPS_PATH} ]; then
-  mkdir -p ${DAPPS_PATH}
-fi
+# echo "Ensuring path exists: $DAPPS_PATH"
+# if [ ! -d ${DAPPS_PATH} ]; then
+#   mkdir -p ${DAPPS_PATH}
+# fi
 
-DAPPS_LATEST="https://github.com/ORIGYN-SA/DApps/releases/download/dapps-latest-build/dist.zip"
-echo "Downloading latest dapps build from: $DAPPS_LATEST"
-curl -LS -H 'Accept: application/octet-stream' $DAPPS_LATEST -o "dist.zip" || { echo "Error: Invalid repo, token or network issue!";  exit 1; }
-echo "Download complete"
+# DAPPS_LATEST="https://github.com/ORIGYN-SA/DApps/releases/download/dapps-latest-build/dist.zip"
+# echo "Downloading latest dapps build from: $DAPPS_LATEST"
+# curl -LS -H 'Accept: application/octet-stream' $DAPPS_LATEST -o "dist.zip" || { echo "Error: Invalid repo, token or network issue!";  exit 1; }
+# echo "Download complete"
 
-echo "Unzipping latest dapps build"
-unzip -o dist.zip -d ./
+# echo "Unzipping latest dapps build"
+# unzip -o dist.zip -d ./
 
-echo "Removing temporary zip file"
-rm ./dist.zip
+# echo "Removing temporary zip file"
+# rm ./dist.zip
 
-echo "Removing all txt files from the unzipped files"
-find ./dist -name "*.txt" -type f -delete
+# echo "Removing all txt files from the unzipped files"
+# find ./dist -name "*.txt" -type f -delete
 
-echo "Copying unzipped files to $DAPPS_PATH"
-cp ./dist/* "$DAPPS_PATH"
+# echo "Copying unzipped files to $DAPPS_PATH"
+# cp ./dist/* "$DAPPS_PATH"
 
-if [[ -f "$DAPPS_PATH/nftData.html" ]]; then
-  echo "Renaming nftData.html to data.html"
-  mv $DAPPS_PATH/nftData.html $DAPPS_PATH/data.html
-fi
+# if [[ -f "$DAPPS_PATH/nftData.html" ]]; then
+#   echo "Renaming nftData.html to data.html"
+#   mv $DAPPS_PATH/nftData.html $DAPPS_PATH/data.html
+# fi
 
-echo "Removing temporary unzipped files"
-rm -rf ./dist
+# echo "Removing temporary unzipped files"
+# rm -rf ./dist
 
-show_elapsed_time
+# show_elapsed_time
 
 
 if [[ $IC_NETWORK == 'local' ]]; then
