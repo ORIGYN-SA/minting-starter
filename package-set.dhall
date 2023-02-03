@@ -8,23 +8,32 @@ let Package =
 
 let additions =
     [
-   { name = "candy_0_1_10"
-    , repo = "https://github.com/aramakme/candy_library.git"
-    , version = "v0.1.10"
-    , dependencies = ["base"]
-   },
-   {
-       name="principalmo",
-       repo = "https://github.com/aviate-labs/principal.mo.git",
-       version = "v0.2.5",
-       dependencies = ["base"]
-   },
-   { name = "crypto"
-    , repo = "https://github.com/aviate-labs/crypto.mo"
-    , version = "v0.2.0"
-    , dependencies = [ "base", "encoding" ]
+  { name = "candy_0_1_10"
+  , repo = "https://github.com/icdevs/candy_library.git"
+  , version = "v0.1.10"
+  , dependencies = ["base"]
   },
-   { name = "encoding"
+  { name = "candy_0_1_12"
+  , repo = "https://github.com/icdevs/candy_library.git"
+  , version = "v0.1.12"
+  , dependencies = ["base"]
+  },
+  { name = "candy"
+  , repo = "https://github.com/icdevs/candy_library.git"
+  , version = "v0.1.12"
+  , dependencies = ["base"]
+  },
+  { name="principalmo"
+  , repo = "https://github.com/aviate-labs/principal.mo.git"
+  , version = "v0.2.5"
+  , dependencies = ["base"]
+  },
+  { name = "crypto"
+  , repo = "https://github.com/aviate-labs/crypto.mo"
+  , version = "v0.2.0"
+  , dependencies = [ "base", "encoding" ]
+  },
+  { name = "encoding"
   , repo = "https://github.com/aviate-labs/encoding.mo"
   , version = "v0.3.2"
   , dependencies = [ "array", "base" ]
@@ -39,19 +48,17 @@ let additions =
   , version = "v0.1.0"
   , dependencies = [ "array", "base" ]
   },
-  {
-    name = "ext",
-    repo = "https://github.com/skilesare/extendable-token",
-    version = "v0.1.0",
-    dependencies = ["ext"]
-},
-{
-    name = "httpparser",     
-    repo = "https://github.com/skilesare/http-parser.mo",
-    version = "v0.1.0",
-    dependencies = ["base"]
-},
-{ name = "http"
+  { name = "ext"
+  , repo = "https://github.com/skilesare/extendable-token"
+  , version = "v0.1.0"
+  , dependencies = ["ext"]
+  },
+  { name = "httpparser"
+  , repo = "https://github.com/skilesare/http-parser.mo"
+  , version = "v0.1.0"
+  , dependencies = ["base"]
+  },
+  { name = "http"
   , repo = "https://github.com/aviate-labs/http.mo"
   , version = "v0.1.0"
   , dependencies = [ "base" ]
@@ -84,6 +91,11 @@ let additions =
   { name = "map_6_0_0"
   , repo = "https://github.com/ZhenyaUsenko/motoko-hash-map"
   , version = "v6.0.0"
+  , dependencies = [ "base"]
+  },
+  { name = "map_7_0_0"
+  , repo = "https://github.com/ZhenyaUsenko/motoko-hash-map"
+  , version = "v7.0.0"
   , dependencies = [ "base"]
   },
   { name = "map"
