@@ -8,7 +8,11 @@
           "main": "phone_book/src/phone_book.mo",
           "type": "motoko",
           "dependencies": []
-      }
+      },
+      "storage_canister_1": {
+            "main": "origyn_nft/src/origyn_storage_reference/main.mo",
+            "type": "motoko"
+        }
   },
   "defaults": {
       "build": {
