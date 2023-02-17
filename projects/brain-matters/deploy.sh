@@ -244,39 +244,39 @@ dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall
 
 show_elapsed_time
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "****** Deploy Storage Canister *******"
-echo $'**************************************'
-echo -e $NOCOLOR
+# echo -e $LIGHTBLUE
+# echo $'\n**************************************'
+# echo "****** Deploy Storage Canister *******"
+# echo $'**************************************'
+# echo -e $NOCOLOR
 
-echo "Would you like to deploy a storage canister?"
-echo "If you opt out you can deploy it later by running deploy-storage.sh script"
-echo "Enter yes / no :"
+# echo "Would you like to deploy a storage canister?"
+# echo "If you opt out you can deploy it later by running deploy-storage.sh script"
+# echo "Enter yes / no :"
 
-read storage
+# read storage
 
-if [ $storage = "yes" ]; then
+# if [ $storage = "yes" ]; then
 
-  echo ""  
-  echo "Building and installing the Storage canister"
-  echo "" 
+#   echo ""  
+#   echo "Building and installing the Storage canister"
+#   echo "" 
 
-  dfx deploy storage_canister_1 --network $IC_NETWORK --argument "(record{gateway_canister=principal \"$NFT_CANISTER_ID\"; network=null; storage_space=opt 2048000000})"
+#   dfx deploy storage_canister_1 --network $IC_NETWORK --argument "(record{gateway_canister=principal \"$NFT_CANISTER_ID\"; network=null; storage_space=opt 2048000000})"
   
-  echo ""
-  STORAGE_CAN_NUM=$(dfx canister --network $IC_NETWORK id storage_canister_1)
-  echo ""
-  echo "Adding storage canister to gateway"
-  # Add storage canister(s) to NFT canister or gateway
-  dfx canister call origyn_nft_reference manage_storage_nft_origyn "(variant {add_storage_canisters = vec {record {principal \"$STORAGE_CAN_NUM\"; 2048000000; record {0; 0; 1}}}})"
-else
-  echo -e $YELLOW"Ok, we will not install a storage canister"
-  echo -e $NOCOLOR
+#   echo ""
+#   STORAGE_CAN_NUM=$(dfx canister --network $IC_NETWORK id storage_canister_1)
+#   echo ""
+#   echo "Adding storage canister to gateway"
+#   # Add storage canister(s) to NFT canister or gateway
+#   dfx canister call origyn_nft_reference manage_storage_nft_origyn "(variant {add_storage_canisters = vec {record {principal \"$STORAGE_CAN_NUM\"; 2048000000; record {0; 0; 1}}}})"
+# else
+#   echo -e $YELLOW"Ok, we will not install a storage canister"
+#   echo -e $NOCOLOR
 
-fi
+# fi
 
-show_elapsed_time
+# show_elapsed_time
 
 if [[ $IC_NETWORK == 'local' ]]; then
   echo -e $LIGHTPURPLE
