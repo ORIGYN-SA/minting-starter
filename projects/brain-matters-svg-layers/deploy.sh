@@ -40,10 +40,10 @@ IDENTITY_NAME="local_deployer"
 
 # NFT collection settings
 COLLECTION_ID="bm"
-DISPLAY_NAME="Brain Matters"
-DESCRIPTION="A collection of 20 unique Brain Matters NFTs"
+DISPLAY_NAME="Brain Matters - Layered SVG"
+DESCRIPTION="A collection of 16 unique digital certificates"
 TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
-ASSET_MAPPINGS="primary:primary*.png, preview:preview*.png, experience:experience*.html, hidden:mystery-bm.gif"
+ASSET_MAPPINGS="primary:primary*.svg, preview:primary*.svg, experience:experience*.html"
 SOULBOUND="false"
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -373,7 +373,7 @@ node --trace-uncaught ./scripts/csm-config.js \
 --minWords "3" \
 --maxWords "3" \
 --assetMappings "$ASSET_MAPPINGS" \
---soulbound "$SOULBOUND" 
+--soulbound "$SOULBOUND"
 
 # Override royalty defaults
 # Note: the broker principal is set during the sale
