@@ -10,7 +10,7 @@ To create your own collection, fork this project and add your own project folder
 
 -   Git
 -   Node 16 (higher versions will cause errors)
--   dfx 12.1
+-   dfx 13.1
 -   Vessel
 
     Follow step 1 in these instructions: https://github.com/dfinity/vessel.
@@ -59,7 +59,7 @@ When creating an NFT collection, you can practice on your local computer before 
 To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [dfx.json](dfx.json).
 
 ```console
-DFX_VERSION=0.12.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+DFX_VERSION=0.13.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
 
 Open a separate terminal dedicated to running dfx. (Debug output from code running in the NFT canister will be displayed in this terminal.)

@@ -45,14 +45,25 @@
                 <a href="/-/{token}/library" target="_blank">NFT Library</a>
             </div>
 
-            <img id="primary-image" src="/-/{token}/primary" />
+            <object
+                id="featured"
+                type="image/svg+xml"
+                data="/-/{token}/primary"
+            >
+                Your browser doesn't support SVGs.
+            </object>
 
             <h2>Other NFTs</h2>
             <div id="list">
                 <a href="/-/{list-token}/ex">
                     <span>{list-token}</span>
                     <div>
-                        <img src="/-/{list-token}/preview" />
+                        <object
+                            type="image/svg+xml"
+                            data="/-/{list-token}/preview"
+                        >
+                            Your browser doesn't support SVGs.
+                        </object>
                     </div>
                 </a>
             </div>
