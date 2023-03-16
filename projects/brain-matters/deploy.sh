@@ -6,7 +6,6 @@ set -e
 NOCOLOR='\033[0m'
 GREEN='\033[0;32m'
 LIGHTBLUE='\033[1;34m'
-LIGHTPURPLE='\033[1;35m'
 YELLOW='\033[1;33m'
 
 echo ""
@@ -31,17 +30,19 @@ echo -e $NOCOLOR
 # Edit these user variables as needed
 
 # "local" or "ic" (mainnet)
-IC_NETWORK="local"
+IC_NETWORK="ic"
 
 # If local network, creates/imports/uses identity if it does exist.
 # If ic network (mainnet), make sure you manually import your existing
 # identity first, then provide the name of your imported identity here.
-IDENTITY_NAME="local_deployer"
+IDENTITY_NAME="dapps"
 
 # NFT collection settings
-COLLECTION_ID="bm"
+COLLECTION_ID="brain-matters"
 DISPLAY_NAME="Brain Matters"
 DESCRIPTION="A collection of 20 unique Brain Matters NFTs"
+TOKEN_COUNT=20
+TOKEN_WORD_COUNT=3 # number of words in a token id, for example: pons-meninges-thalamus
 TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
 ASSET_MAPPINGS="primary:primary*.png, preview:preview*.png, experience:experience*.html, hidden:mystery-bm.gif"
 SOULBOUND="false"
@@ -57,7 +58,7 @@ echo "TOKEN_WORDS: $TOKEN_WORDS"
 echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
 echo "SOULBOUND: $SOULBOUND"
 
-echo -e $LIGHTPURPLE
+echo -e $LIGHTBLUE
 echo $'\n**************************************'
 echo "********* Input Validation ***********"
 echo $'**************************************'
@@ -90,6 +91,7 @@ PROJECT_PATH="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_PATH="$(cd -P -- "$(dirname -- "$PROJECT_PATH/../../..")" && pwd -P)"
 DAPPS_PATH="$PROJECT_PATH/assets/collection/dapps"
 SCRIPTS_PATH="$REPO_PATH/scripts"
+TOKEN_IDS_PATH="$PROJECT_PATH/token-ids.json"
 
 IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
 
@@ -98,11 +100,45 @@ echo "REPO_PATH: $REPO_PATH"
 echo "PROJECT_PATH: $PROJECT_PATH"
 echo "DAPPS_PATH: $DAPPS_PATH"
 echo "SCRIPTS_PATH: $SCRIPTS_PATH"
+echo "TOKEN_IDS_PATH: $TOKEN_IDS_PATH"
 echo "IC_NETWORK: $IC_NETWORK"
 echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 
 
-echo -e $LIGHTPURPLE
+echo -e $LIGHTBLUE
+echo $'\n**************************************'
+echo "******** Generate Tokens IDs *********"
+echo $'**************************************'
+echo -e $NOCOLOR
+
+if [ -e "$TOKEN_IDS_PATH" ]; then
+  echo "Skipping token ID generation."
+  echo "File \"$TOKEN_IDS_PATH\" already exists."
+  echo "To regenerate all new token IDs, delete the file before running this deploy script."
+  echo "WARNING: Regenerating the file will result in different token IDs when redeploying a canister"
+else
+  echo "Generating Token IDs and saving to $TOKEN_IDS_PATH"
+  echo
+  node ./scripts/bash-gen-tokens.js $TOKEN_IDS_PATH $TOKEN_WORD_COUNT $TOKEN_COUNT $TOKEN_WORDS
+fi
+
+show_elapsed_time
+
+
+echo -e $LIGHTBLUE
+echo $'\n**************************************'
+echo "************* Pre-Config *************"
+echo $'**************************************'
+echo -e $NOCOLOR
+
+echo "Running pre-config script"
+node --trace-uncaught "$PROJECT_PATH/pre-config.js"
+echo "Pre-config script completed"
+
+show_elapsed_time
+
+
+echo -e $LIGHTBLUE
 echo $'\n**************************************'
 echo "******** Import/Use Identity *********"
 echo $'**************************************'
@@ -136,7 +172,7 @@ echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 show_elapsed_time
 
 
-echo -e $LIGHTPURPLE
+echo -e $LIGHTBLUE
 echo $'\n**************************************'
 echo "******** Install Node Modules ********"
 echo $'**************************************'
@@ -208,7 +244,7 @@ if [[ $IC_NETWORK == 'local' ]]; then
   show_elapsed_time
 fi
 
-echo -e $LIGHTPURPLE
+echo -e $LIGHTBLUE
 echo $'\n**************************************'
 echo "******** Ensure NFT Canister *********"
 echo $'**************************************'
@@ -282,7 +318,7 @@ show_elapsed_time
 # show_elapsed_time
 
 if [[ $IC_NETWORK == 'local' ]]; then
-  echo -e $LIGHTPURPLE
+  echo -e $LIGHTBLUE
   echo $'\n**************************************'
   echo "**** Ensure PHONE BOOK Canister ******"
   echo $'**************************************'
@@ -335,18 +371,6 @@ if [[ $IC_NETWORK == 'local' ]]; then
   show_elapsed_time
 fi
 
-echo -e $LIGHTPURPLE
-echo $'\n**************************************'
-echo "************* Pre-Config *************"
-echo $'**************************************'
-echo -e $NOCOLOR
-
-echo "Running pre-config script"
-node --trace-uncaught "$PROJECT_PATH/pre-config.js"
-echo "Pre-config script completed"
-
-show_elapsed_time
-
 
 echo -e $LIGHTBLUE
 echo $'\n**************************************'
@@ -369,11 +393,18 @@ node --trace-uncaught ./scripts/csm-config.js \
 --displayName "$DISPLAY_NAME" \
 --description "$DESCRIPTION" \
 --collectionId "$COLLECTION_ID" \
---tokenWords "$TOKEN_WORDS" \
---minWords "3" \
---maxWords "3" \
 --assetMappings "$ASSET_MAPPINGS" \
---soulbound "$SOULBOUND" 
+--soulbound "$SOULBOUND" \
+--primaryOriginatorRate ".01" \
+--primaryBrokerRate ".03" \
+--primaryNodeRate ".035" \
+--primaryNetworkRate ".005" \
+--primaryCustomRates "artist:0.001:zevfd-yumga-hdmnw-uk7fw-qdetm-l7jk7-rbalg-mvgk4-wqhab-xhmhq-jqe" \
+--secondaryOriginatorRate ".01" \
+--secondaryBrokerRate ".03" \
+--secondaryNodeRate ".035" \
+--secondaryNetworkRate ".005" \
+--secondaryCustomRates "artist:0.001:zevfd-yumga-hdmnw-uk7fw-qdetm-l7jk7-rbalg-mvgk4-wqhab-xhmhq-jqe"
 
 # Override royalty defaults
 # Note: the broker principal is set during the sale
@@ -401,7 +432,7 @@ echo "Metadata file created at $PROJECT_PATH/__staged/metadata.json."
 show_elapsed_time
 
 
-echo -e $LIGHTPURPLE
+echo -e $LIGHTBLUE
 echo $'\n**************************************'
 echo "************ Post-Config *************"
 echo $'**************************************'
@@ -446,7 +477,7 @@ read -p "Press return/enter to mint your NFT collection..."
 show_elapsed_time
 
 
-echo -e $LIGHTPURPLE
+echo -e $LIGHTBLUE
 echo $'\n**************************************'
 echo "************* CSM - Mint **************"
 echo $'**************************************'

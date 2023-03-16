@@ -1,8 +1,4 @@
-import {
-    registerLogger,
-    parseConfigArgs,
-    config,
-} from '@origyn-sa/csm';
+import { registerLogger, parseConfigArgs, config } from '@origyn/csm';
 
 // output logs from the csm library to the console
 registerLogger((message) => {
@@ -13,4 +9,3 @@ registerLogger((message) => {
 const configArgs = parseConfigArgs(process.argv);
 console.log('configArgs', configArgs);
 config(configArgs);
-

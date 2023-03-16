@@ -3,7 +3,7 @@
  * node ./scripts/get-identity.js "./projects/brain-matters/local-test-identity.pem"
  */
 
-import { getIdentity } from '@origyn-sa/csm';
+import { getIdentity } from '@origyn/csm';
 
 const filePath = process.argv[2];
 console.log(`File path: ${filePath}`);

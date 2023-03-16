@@ -28,3 +28,5 @@ node_modules
 **/*.pem
 canister_ids.json
 
+projects/brain-matters/assets/collection/dapps/*
+projects/brain-matters-svg-layers/assets/collection/dapps/*

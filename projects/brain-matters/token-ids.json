@@ -1,0 +1,22 @@
+[
+  "epithalamus-amygdala-diencephalon",
+  "pons-neocortex-meninges",
+  "thalamus-neocortex-brainstem",
+  "amygdala-cerebellum-diencephalon",
+  "diencephalon-pons-fornix",
+  "hippocampus-brainstem-meninges",
+  "meninges-hypothalamus-thalamus",
+  "meninges-neocortex-hippocampus",
+  "hippocampus-neocortex-medulla",
+  "hippocampus-neocortex-thalamus",
+  "hypothalamus-amygdala-diencephalon",
+  "medulla-brainstem-meninges",
+  "hypothalamus-brainstem-hippocampus",
+  "fornix-neocortex-hypothalamus",
+  "brainstem-cerebellum-medulla",
+  "brainstem-pons-epithalamus",
+  "epithalamus-hippocampus-thalamus",
+  "hypothalamus-cerebellum-medulla",
+  "diencephalon-hypothalamus-fornix",
+  "neocortex-brainstem-cerebellum"
+]
