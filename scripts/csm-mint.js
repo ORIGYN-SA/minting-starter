@@ -1,8 +1,4 @@
-import {
-    registerLogger,
-    parseMintArgs,
-    mint,
-} from '@origyn-sa/csm';
+import { registerLogger, parseMintArgs, mint } from '@origyn/csm';
 
 // output logs from the csm library to the console
 registerLogger((message) => {

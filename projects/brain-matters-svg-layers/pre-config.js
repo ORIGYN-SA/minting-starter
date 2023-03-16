@@ -5,19 +5,30 @@ import path from 'path';
 const projectDir = './projects/brain-matters-svg-layers';
 const assetsDir = path.join(projectDir, 'assets');
 const tempDir = path.join(projectDir, '__temp');
+const tokenIdsFile = 'token-ids.json';
+const tokenIdsPath = path.join(projectDir, tokenIdsFile);
 
 // copy assets to __temp
 fse.ensureDirSync(tempDir);
 fse.emptyDirSync(tempDir);
 fse.copySync(assetsDir, tempDir, { overwrite: true });
+fse.copyFileSync(tokenIdsPath, path.join(tempDir, tokenIdsFile));
 
 // get experience page HTML template from file
 const templatePath = path.join(projectDir, 'experience-template.html');
 const htmlTemplate = fs.readFileSync(templatePath).toString();
 
+const contents = fs.readFileSync(tokenIdsPath).toString();
+const tokenIds = JSON.parse(contents);
+if ((tokenIds?.length || 0) < 16) {
+    throw new Error(`Expected 16 token IDs in file "${tokenIdsPath}"`);
+} else {
+    console.log(`Loaded ${tokenIds?.length || 0} tokenIds`);
+}
+
 // generate html pages with replaced placeholders into __temp
-for (let i = 1; i <= 16; i++) {
-    let experienceHtml = htmlTemplate.replaceAll('{token}', `{token-${i}}`);
+for (let index = 0; index < 16; index++) {
+    let experienceHtml = htmlTemplate.replaceAll('{token}', tokenIds[index]);
 
     const startOfList = experienceHtml.indexOf('id="list"');
     const startOfLink = experienceHtml.indexOf('<a', startOfList);
@@ -29,9 +40,9 @@ for (let i = 1; i <= 16; i++) {
         listTemplate = experienceHtml.substring(startOfLink, endOfLink);
 
         let listHtml = '';
-        for (let j = 1; j <= 16; j++) {
+        for (let j = 0; j < 16; j++) {
             listHtml +=
-                listTemplate.replaceAll('{list-token}', `{token-${j}}`) +
+                listTemplate.replaceAll('{list-token}', `${tokenIds[j]}`) +
                 '\n      ';
         }
 
@@ -42,8 +53,8 @@ for (let i = 1; i <= 16; i++) {
     }
 
     // write each of the 16 experience pages to their corresponding folders
-    const nftFolder = path.join(tempDir, 'nfts', i.toString());
-    const nftFile = `experience${i}.html`;
+    const nftFolder = path.join(tempDir, 'nfts', (index + 1).toString());
+    const nftFile = `experience${index}.html`;
     fse.ensureDirSync(nftFolder);
     fs.writeFileSync(path.join(nftFolder, nftFile), experienceHtml);
 }

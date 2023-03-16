@@ -1,8 +1,4 @@
-import {
-    registerLogger,
-    parseStageArgs,
-    stage,
-} from '@origyn-sa/csm';
+import { registerLogger, parseStageArgs, stage } from '@origyn/csm';
 
 // output logs from the csm library to the console
 registerLogger((message) => {
@@ -13,4 +9,3 @@ registerLogger((message) => {
 const stageArgs = parseStageArgs(process.argv);
 console.log('stageArgs', stageArgs);
 await stage(stageArgs);
-

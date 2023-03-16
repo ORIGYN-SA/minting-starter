@@ -69,10 +69,10 @@
     dfx identity --network ic get-wallet
     ```
 
--   Verify that that your principal id is returned:
+-   Verify that that your wallet canister id is returned:
 
     ```console
-    dfx canister --network ic info {your-wallet-canister-id}
+    dfx identity --network ic get-wallet
     ```
 
 -   Verify that your wallet has cycles:
