@@ -30,12 +30,12 @@ echo -e $NOCOLOR
 # Edit these user variables as needed
 
 # "local" or "ic" (mainnet)
-IC_NETWORK="ic"
+IC_NETWORK="local"
 
 # If local network, creates/imports/uses identity if it does exist.
 # If ic network (mainnet), make sure you manually import your existing
 # identity first, then provide the name of your imported identity here.
-IDENTITY_NAME="dapps"
+IDENTITY_NAME="local_deployer"
 
 # NFT collection settings
 COLLECTION_ID="brain-matters"
