@@ -7,7 +7,7 @@
         "@dfinity/candid": "^0.14.1",
         "@dfinity/identity": "^0.14.1",
         "@dfinity/principal": "^0.14.1",
-        "@origyn/csm": "^1.0.0-beta.5",
+        "@origyn/csm": "file:csm",
         "@peculiar/webcrypto": "^1.4.0",
         "@types/node-fetch": "^2.6.2",
         "bip39": "^3.0.4",

@@ -30,12 +30,12 @@ echo -e $NOCOLOR
 # Edit these user variables as needed
 
 # "local" or "ic" (mainnet)
-IC_NETWORK="ic"
+IC_NETWORK="local"
 
 # If local network, creates/imports/uses identity if it does exist.
 # If ic network (mainnet), make sure you manually import your existing
 # identity first, then provide the name of your imported identity here.
-IDENTITY_NAME="dapps"
+IDENTITY_NAME="local_deployer"
 
 # NFT collection settings
 COLLECTION_ID="brain-matters"
@@ -45,6 +45,7 @@ TOKEN_COUNT=16
 TOKEN_WORD_COUNT=3 # number of words in a token id, for example: pons-meninges-thalamus
 TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
 ASSET_MAPPINGS="primary:primary*.svg, preview:primary*.svg, experience:experience*.html"
+SOCIALS="discord:https%3A%2F%2Fdiscord.com%2F, distrikt:https%3A%2F%2Fdistrikt.app%2F, dscvr:https%3A%2F%2Fdscvr.one%2F, medium:https%3A%2F%2Fmedium.com%2F, twitter:https%3A%2F%2Ftwitter.com%2F"
 SOULBOUND="false"
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -394,6 +395,7 @@ node --trace-uncaught ./scripts/csm-config.js \
 --description "$DESCRIPTION" \
 --collectionId "$COLLECTION_ID" \
 --assetMappings "$ASSET_MAPPINGS" \
+--socials "$SOCIALS" \
 --soulbound "$SOULBOUND"
 
 # Override royalty defaults
