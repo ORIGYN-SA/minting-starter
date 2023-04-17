@@ -45,6 +45,8 @@ TOKEN_COUNT=20
 TOKEN_WORD_COUNT=3 # number of words in a token id, for example: pons-meninges-thalamus
 TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
 ASSET_MAPPINGS="primary:primary*.png, preview:preview*.png, experience:experience*.html, hidden:mystery-bm.gif"
+# Social URLs must be encoded (ex. should not contain '/' char)
+SOCIALS="discord:https%3A%2F%2Fdiscord.com%2F, distrikt:https%3A%2F%2Fdistrikt.app%2F, dscvr:https%3A%2F%2Fdscvr.one%2F, medium:https%3A%2F%2Fmedium.com%2F, twitter:https%3A%2F%2Ftwitter.com%2F"
 SOULBOUND="false"
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -394,6 +396,7 @@ node --trace-uncaught ./scripts/csm-config.js \
 --description "$DESCRIPTION" \
 --collectionId "$COLLECTION_ID" \
 --assetMappings "$ASSET_MAPPINGS" \
+--socials "$SOCIALS" \
 --soulbound "$SOULBOUND" \
 --primaryOriginatorRate ".01" \
 --primaryBrokerRate ".03" \
