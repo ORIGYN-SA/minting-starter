@@ -45,6 +45,7 @@ TOKEN_COUNT=16
 TOKEN_WORD_COUNT=3 # number of words in a token id, for example: pons-meninges-thalamus
 TOKEN_WORDS="cerebellum,medulla,brainstem,thalamus,hypothalamus,amygdala,meninges,hippocampus,neocortex,epithalamus,fornix,pons,diencephalon"
 ASSET_MAPPINGS="primary:primary*.svg, preview:primary*.svg, experience:experience*.html"
+# Social URLs must be encoded (ex. should not contain '/' char)
 SOCIALS="discord:https%3A%2F%2Fdiscord.com%2F, distrikt:https%3A%2F%2Fdistrikt.app%2F, dscvr:https%3A%2F%2Fdscvr.one%2F, medium:https%3A%2F%2Fmedium.com%2F, twitter:https%3A%2F%2Ftwitter.com%2F"
 SOULBOUND="false"
 
@@ -280,7 +281,9 @@ echo "Building and installing the NFT canister"
 dfx build --network $IC_NETWORK origyn_nft_reference
 
 gzip -kf ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm
-dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt (2048000000:nat)})"
+yes yes | dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz
+dfx canister --network $IC_NETWORK call origyn_nft_reference manage_storage_nft_origyn '(variant {configure_storage = variant {heap = opt (500000000:nat)}})'
+dfx canister --network $IC_NETWORK call origyn_nft_reference collection_update_nft_origyn "(variant {UpdateOwner = principal \"$ADMIN_PRINCIPAL\"})"
 
 show_elapsed_time
 
@@ -348,7 +351,7 @@ if [[ $IC_NETWORK == 'local' ]]; then
 
   echo "Building and installing the PHONE BOOK canister"
   dfx build --network $IC_NETWORK phonebook
-  dfx canister --network $IC_NETWORK install phonebook --mode=reinstall --argument "(principal \"$ADMIN_PRINCIPAL\")"
+  yes yes | dfx canister --network $IC_NETWORK install phonebook --mode=reinstall --argument "(principal \"$ADMIN_PRINCIPAL\")"
 
   show_elapsed_time
 
@@ -396,7 +399,17 @@ node --trace-uncaught ./scripts/csm-config.js \
 --collectionId "$COLLECTION_ID" \
 --assetMappings "$ASSET_MAPPINGS" \
 --socials "$SOCIALS" \
---soulbound "$SOULBOUND"
+--soulbound "$SOULBOUND" \
+--primaryOriginatorRate ".01" \
+--primaryBrokerRate ".03" \
+--primaryNodeRate ".035" \
+--primaryNetworkRate ".005" \
+--primaryCustomRates "artist:0.001:zevfd-yumga-hdmnw-uk7fw-qdetm-l7jk7-rbalg-mvgk4-wqhab-xhmhq-jqe" \
+--secondaryOriginatorRate ".01" \
+--secondaryBrokerRate ".03" \
+--secondaryNodeRate ".035" \
+--secondaryNetworkRate ".005" \
+--secondaryCustomRates "artist:0.001:zevfd-yumga-hdmnw-uk7fw-qdetm-l7jk7-rbalg-mvgk4-wqhab-xhmhq-jqe"
 
 # Override royalty defaults
 # Note: the broker principal is set during the sale
