@@ -281,7 +281,9 @@ echo "Building and installing the NFT canister"
 dfx build --network $IC_NETWORK origyn_nft_reference
 
 gzip -kf ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm
-dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz --argument "(record {owner = principal \"$ADMIN_PRINCIPAL\"; storage_space = opt (2048000000:nat)})"
+yes yes | dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz
+dfx canister --network $IC_NETWORK call origyn_nft_reference manage_storage_nft_origyn '(variant {configure_storage = variant {heap = opt (500000000:nat)}})'
+dfx canister --network $IC_NETWORK call origyn_nft_reference collection_update_nft_origyn "(variant {UpdateOwner = principal \"$ADMIN_PRINCIPAL\"})"
 
 show_elapsed_time
 
@@ -349,7 +351,7 @@ if [[ $IC_NETWORK == 'local' ]]; then
 
   echo "Building and installing the PHONE BOOK canister"
   dfx build --network $IC_NETWORK phonebook
-  dfx canister --network $IC_NETWORK install phonebook --mode=reinstall --argument "(principal \"$ADMIN_PRINCIPAL\")"
+  yes yes | dfx canister --network $IC_NETWORK install phonebook --mode=reinstall --argument "(principal \"$ADMIN_PRINCIPAL\")"
 
   show_elapsed_time
 

@@ -7,38 +7,39 @@ let Package =
 
 
 let additions =
-  [
-  { name = "candy_0_1_10"
-  , repo = "https://github.com/icdevs/candy_library.git"
-  , version = "v0.1.10"
-  , dependencies = ["base"]
-  },
-  { name = "candy_0_1_12"
-  , repo = "https://github.com/icdevs/candy_library.git"
-  , version = "v0.1.12"
-  , dependencies = ["base"]
-  },
-  { name = "candy"
-  , repo = "https://github.com/icdevs/candy_library.git"
-  , version = "v0.1.12"
-  , dependencies = ["base"]
-  },
-  { name = "candy_0_2_0"
-  , repo = "https://github.com/icdevs/candy_library.git"
-  , version = "0.2.0"
-  , dependencies = ["base"]
-  },
-  { name="principalmo"
-  , repo = "https://github.com/aviate-labs/principal.mo.git"
-  , version = "v0.2.5"
-  , dependencies = ["base"]
-  },
-  { name = "crypto"
-  , repo = "https://github.com/aviate-labs/crypto.mo"
-  , version = "v0.2.0"
-  , dependencies = [ "base", "encoding" ]
-  },
-  { name = "encoding"
+ [
+   { name = "candy_0_1_10"
+   , repo = "https://github.com/icdevs/candy_library.git"
+   , version = "v0.1.10"
+   , dependencies = ["base"]
+   },
+   { name = "candy_0_1_12"
+    , repo = "https://github.com/icdevs/candy_library.git"
+    , version = "v0.1.12"
+    , dependencies = ["base"]
+   },
+    { name = "candy"
+    , repo = "https://github.com/icdevs/candy_library.git"
+    , version = "v0.1.12"
+    , dependencies = ["base"]
+   },
+   { name = "candy_0_2_0"
+    , repo = "https://github.com/icdevs/candy_library.git"
+    , version = "0.2.0"
+    , dependencies = ["base"]
+   },
+   {
+       name="principalmo",
+       repo = "https://github.com/aviate-labs/principal.mo.git",
+       version = "v0.2.5",
+       dependencies = ["base"]
+   },
+   { name = "crypto"
+   , repo = "https://github.com/aviate-labs/crypto.mo"
+   , version = "v0.2.0"
+   , dependencies = [ "base", "encoding" ]
+   },
+   { name = "encoding"
   , repo = "https://github.com/aviate-labs/encoding.mo"
   , version = "v0.3.2"
   , dependencies = [ "array", "base" ]
@@ -53,17 +54,19 @@ let additions =
   , version = "v0.1.0"
   , dependencies = [ "array", "base" ]
   },
-  { name = "ext"
-  , repo = "https://github.com/skilesare/extendable-token"
-  , version = "v0.1.0"
-  , dependencies = ["ext"]
-  },
-  { name = "httpparser"
-  , repo = "https://github.com/skilesare/http-parser.mo"
-  , version = "v0.1.0"
-  , dependencies = ["base"]
-  },
-  { name = "http"
+  {
+    name = "ext",
+    repo = "https://github.com/skilesare/extendable-token",
+    version = "v0.1.0",
+    dependencies = ["ext"]
+},
+{
+    name = "httpparser",     
+    repo = "https://github.com/skilesare/http-parser.mo",
+    version = "v0.1.0",
+    dependencies = ["base"]
+},
+{ name = "http"
   , repo = "https://github.com/aviate-labs/http.mo"
   , version = "v0.1.0"
   , dependencies = [ "base" ]
@@ -78,6 +81,7 @@ let additions =
   , version = "v0.1.0"
   , dependencies = [ "base", "parser-combinators" ]
   },
+  
   { name = "stablebuffer_0_2_0"
   , repo = "https://github.com/skilesare/StableBuffer"
   , version = "v0.2.0"
@@ -105,24 +109,26 @@ let additions =
   },
   { name = "canistergeek"
   , repo = "https://github.com/ORIGYN-SA/canistergeek-motoko"
-  , version = "v0.0.1"
+  , version = "nft_0_1_4"
   , dependencies = ["base", "candy_0_1_10" ]
   },
-  { name = "droute_client"
+
+   { name = "droute_client"
   , repo = "https://gitlab.origyn.ch/origyn/engineering/proprietary/droute-client"
   , version = "v0.1.0"
   , dependencies = ["base" ]
   },
-  { name = "icrc17_kyc"
+   { name = "icrc17_kyc"
   , repo = "https://gitlab.origyn.ch/origyn/engineering/kyc.mo"
   , version = "master"
   , dependencies = ["base" ]
   },
-  { name = "stableBTree"
-  , repo = "https://github.com/sardariuss/MotokoStableBTree"
-  , version = "main"
-  , dependencies = ["base", "matchers"]
-  } 
+   { name = "stableBTree"
+   , repo = "https://github.com/sardariuss/MotokoStableBTree"
+   , version = "main"
+   , dependencies = ["base", "matchers"]
+   }
+
   ] : List Package
 
 let
