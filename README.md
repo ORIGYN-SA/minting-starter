@@ -4,6 +4,15 @@ Starter project for minting an Origyn NFT collection from the local file system.
 
 To create your own collection, fork this project and add your own project folder.
 
+## Compatibility
+
+Each release of `minting-starter` is compatible with a specific version of the `Origyn NFT standard`. The table below shows the compatibility between the two.
+
+| Minting Starter Version | Origyn NFT Version |
+| ----------------------- | ------------------ |
+| 1.2.0                   | 0.1.4              |
+| 1.1.4                   | 0.1.3              |
+
 # Getting Started
 
 ## Prerequisites
