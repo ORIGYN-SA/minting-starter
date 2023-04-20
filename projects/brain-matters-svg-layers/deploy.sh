@@ -2,29 +2,14 @@
 # -e (exit on error)
 # -x (verbose debugging output)
 set -e
-
-NOCOLOR='\033[0m'
-GREEN='\033[0;32m'
-LIGHTBLUE='\033[1;34m'
-YELLOW='\033[1;33m'
+source ./scripts/utils.sh
 
 echo ""
 date
 
-START_TIME=`date +%s`
-show_elapsed_time() {
-  SECONDS=$((`date +%s` - START_TIME))
-  ELAPSED="Elapsed: $(($SECONDS / 3600)) hr $((($SECONDS / 60) % 60)) min $(($SECONDS % 60)) sec"
-  echo ""
-  echo -e $GREEN"$ELAPSED ($(date))"
-}
-
-
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "******** Set User Variables **********"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Set User Variables"
+############################################################
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 # Edit these user variables as needed
@@ -60,11 +45,9 @@ echo "TOKEN_WORDS: $TOKEN_WORDS"
 echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
 echo "SOULBOUND: $SOULBOUND"
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "********* Input Validation ***********"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Input Validation"
+############################################################
 
 if [[ $IC_NETWORK == "ic" || $IC_NETWORK == "local" ]]; then
   echo "IC_NETWORK is valid"
@@ -83,11 +66,9 @@ fi
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "******* Set Dynamic Variables ********"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Set Dynamic Variables"
+############################################################
 
 PROJECT_PATH="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_PATH="$(cd -P -- "$(dirname -- "$PROJECT_PATH/../../..")" && pwd -P)"
@@ -107,11 +88,9 @@ echo "IC_NETWORK: $IC_NETWORK"
 echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "******** Generate Tokens IDs *********"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Generate Tokens IDs"
+############################################################
 
 if [ -e "$TOKEN_IDS_PATH" ]; then
   echo "Skipping token ID generation."
@@ -127,11 +106,9 @@ fi
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "************* Pre-Config *************"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Pre-Config"
+############################################################
 
 echo "Running pre-config script"
 node --trace-uncaught "$PROJECT_PATH/pre-config.js"
@@ -140,11 +117,9 @@ echo "Pre-config script completed"
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "******** Import/Use Identity *********"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Import/Use Identity"
+############################################################
 
 if [[ $IC_NETWORK == 'ic' ]]; then
   dfx identity use $IDENTITY_NAME
@@ -174,67 +149,29 @@ echo "The $IDENTITY_NAME principal is $ADMIN_PRINCIPAL"
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "******** Install Node Modules ********"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Install Node Modules"
+############################################################
 
 npm i
 
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "********* Copy Latest dApps **********"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Copy dApps to project"
+############################################################
 
-# echo "Downloading and unzipping latest dapps"
-
-# echo "Ensuring path exists: $DAPPS_PATH"
-# if [ ! -d ${DAPPS_PATH} ]; then
-#   mkdir -p ${DAPPS_PATH}
-# fi
-
-# DAPPS_LATEST="https://github.com/ORIGYN-SA/DApps/releases/download/dapps-latest-build/dist.zip"
-# echo "Downloading latest dapps build from: $DAPPS_LATEST"
-# curl -LS -H 'Accept: application/octet-stream' $DAPPS_LATEST -o "dist.zip" || { echo "Error: Invalid repo, token or network issue!";  exit 1; }
-# echo "Download complete"
-
-# echo "Unzipping latest dapps build"
-# unzip -o dist.zip -d ./
-
-# echo "Removing temporary zip file"
-# rm ./dist.zip
-
-# echo "Removing all txt files from the unzipped files"
-# find ./dist -name "*.txt" -type f -delete
-
-#echo "Copying unzipped files to $DAPPS_PATH"
-# cp ./dist/* $DAPPS_PATH"
-echo "Copying dapps to $DAPPS_PATH"
-rm -rf "$DAPPS_PATH"
-cp -r "$REPO_PATH/dapps" "$DAPPS_PATH"
-
-# if [[ -f "$DAPPS_PATH/nftData.html" ]]; then
-#   echo "Renaming nftData.html to data.html"
-#   mv $DAPPS_PATH/nftData.html $DAPPS_PATH/data.html
-# fi
-
-# echo "Removing temporary unzipped files"
-# rm -rf ./dist
+echo "Merging dapps to $DAPPS_PATH"
+rsync -av "$REPO_PATH/dapps/" "$DAPPS_PATH"
 
 show_elapsed_time
 
 
 if [[ $IC_NETWORK == 'local' ]]; then
-  echo -e $LIGHTBLUE
-  echo $'\n**************************************'
-  echo "****** Create Identity Wallet ********"
-  echo $'**************************************'
-  echo -e $NOCOLOR
+  ############################################################
+  hdr "Create Identity Wallet"
+  ############################################################
 
   echo "Creating wallet for the imported identity"
   IDENTITY_WALLET=$(dfx identity get-wallet)
@@ -246,11 +183,9 @@ if [[ $IC_NETWORK == 'local' ]]; then
   show_elapsed_time
 fi
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "******** Ensure NFT Canister *********"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Ensure NFT Canister"
+############################################################
 
 if [[ $IC_NETWORK == 'local' ]]; then
   # Note: if ic network, the canister should already be created
@@ -270,11 +205,9 @@ fi
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "***** Build/Install NFT Canister *****"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Build/Install NFT Canister"
+############################################################
 
 echo "Building and installing the NFT canister"
 
@@ -287,11 +220,10 @@ dfx canister --network $IC_NETWORK call origyn_nft_reference collection_update_n
 
 show_elapsed_time
 
-# echo -e $LIGHTBLUE
-# echo $'\n**************************************'
-# echo "****** Deploy Storage Canister *******"
-# echo $'**************************************'
-# echo -e $NOCOLOR
+
+# ############################################################
+# hdr "Deploy Storage Canister"
+# ############################################################
 
 # echo "Would you like to deploy a storage canister?"
 # echo "If you opt out you can deploy it later by running deploy-storage.sh script"
@@ -322,11 +254,9 @@ show_elapsed_time
 # show_elapsed_time
 
 if [[ $IC_NETWORK == 'local' ]]; then
-  echo -e $LIGHTBLUE
-  echo $'\n**************************************'
-  echo "**** Ensure PHONE BOOK Canister ******"
-  echo $'**************************************'
-  echo -e $NOCOLOR
+  ############################################################
+  hdr "Ensure PHONE BOOK Canister"
+  ############################################################
 
   # Note: if ic network, the phone book canister is already created
   echo "Creating the PHONE BOOK canister on the $IC_NETWORK network."
@@ -343,11 +273,9 @@ if [[ $IC_NETWORK == 'local' ]]; then
   show_elapsed_time
 
 
-  echo -e $LIGHTBLUE
-  echo $'\n**************************************'
-  echo "* Build/Install PHONE BOOK Canister  *"
-  echo $'**************************************'
-  echo -e $NOCOLOR
+  ############################################################
+  hdr "Build/Install PHONE BOOK Canister"
+  ############################################################
 
   echo "Building and installing the PHONE BOOK canister"
   dfx build --network $IC_NETWORK phonebook
@@ -356,11 +284,9 @@ if [[ $IC_NETWORK == 'local' ]]; then
   show_elapsed_time
 
 
-  echo -e $LIGHTBLUE
-  echo $'\n**************************************'
-  echo "******* Add PHONE BOOK Entry *********"
-  echo $'**************************************'
-  echo -e $NOCOLOR
+  ############################################################
+  hdr "Add PHONE BOOK Entry"
+  ############################################################
 
   # Note: The mainnet phone book canister is a well-known
   # canister id: ngrpb-5qaaa-aaaaj-adz7a-cai
@@ -376,11 +302,9 @@ if [[ $IC_NETWORK == 'local' ]]; then
 fi
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "************ CSM - Config ************"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "CSM - Config"
+############################################################
 
 echo "Building csm library"
 cd csm
@@ -437,11 +361,9 @@ echo "Metadata file created at $PROJECT_PATH/__staged/metadata.json."
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "************ Post-Config *************"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "Post-Config"
+############################################################
 
 echo "Running post-config script"
 node --trace-uncaught "$PROJECT_PATH/post-config.js"
@@ -458,11 +380,9 @@ read -p "Press return/enter to stage your NFT collection..."
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "************ CSM - Stage **************"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "CSM - Stage"
+############################################################
 
 echo "Calling the csm stage function to upload the NFT files"
 
@@ -482,11 +402,9 @@ read -p "Press return/enter to mint your NFT collection..."
 show_elapsed_time
 
 
-echo -e $LIGHTBLUE
-echo $'\n**************************************'
-echo "************* CSM - Mint **************"
-echo $'**************************************'
-echo -e $NOCOLOR
+############################################################
+hdr "CSM - Mint"
+############################################################
 
 echo "Calling the csm mint function to mint the NFTs int the collection"
 
