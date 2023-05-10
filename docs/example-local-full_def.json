@@ -1,1572 +1,1572 @@
 {
-  "settings": {
-    "args": {
-      "environment": "local",
-      "collectionId": "bm",
-      "displayName": "Brain Matters",
-      "description": "A collection of 20 unique Brain Matters NFTs",
-      "tokenPrefix": "bm-",
-      "nftCanisterId": "rrkah-fqaaa-aaaaa-aaaaq-cai",
-      "creatorPrincipal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae",
-      "folderPath": "/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets",
-      "assetMappings": "primary:nft*.png, hidden:mystery-bm.gif",
-      "nftOwnerId": "rrkah-fqaaa-aaaaa-aaaaq-cai",
-      "useProxy": "false",
-      "soulbound": "false",
-      "nftQuantities": ""
+    "settings": {
+        "args": {
+            "environment": "local",
+            "collectionId": "bm",
+            "displayName": "Brain Matters",
+            "description": "A collection of 20 unique Brain Matters NFTs",
+            "tokenPrefix": "bm-",
+            "nftCanisterId": "rrkah-fqaaa-aaaaa-aaaaq-cai",
+            "creatorPrincipal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae",
+            "folderPath": "/Users/jt/origyn/test/minting-starter/projects/brain-matters/assets",
+            "assetMappings": "primary:nft*.png, hidden:mystery-bm.gif",
+            "nftOwnerId": "rrkah-fqaaa-aaaaa-aaaaq-cai",
+            "useProxy": "false",
+            "soulbound": "false",
+            "nftQuantities": ""
+        },
+        "assetTypeMapPatterns": {
+            "primary": "nft*.png",
+            "hidden": "mystery-bm.gif"
+        },
+        "stageFolder": "/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged",
+        "collectionFolder": "collection",
+        "nftsFolder": "nfts",
+        "nftDefinitionCount": 3,
+        "nftQuantities": [],
+        "totalNftCount": 3,
+        "fileMap": {
+            "collection/mystery-bm.gif": {
+                "title": "mystery-bm.gif",
+                "libraryId": "brain.matters.mystery-bm.gif",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/brain.matters.mystery-bm.gif",
+                "filePath": "collection/mystery-bm.gif"
+            },
+            "collection/dapps/ledger.html": {
+                "title": "ledger dApp",
+                "libraryId": "ledger",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/ledger",
+                "filePath": "collection/dapps/ledger.html"
+            },
+            "collection/dapps/library.html": {
+                "title": "library dApp",
+                "libraryId": "library",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/library",
+                "filePath": "collection/dapps/library.html"
+            },
+            "collection/dapps/marketplace.html": {
+                "title": "marketplace dApp",
+                "libraryId": "marketplace",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/marketplace",
+                "filePath": "collection/dapps/marketplace.html"
+            },
+            "collection/dapps/nftdata.html": {
+                "title": "nftdata dApp",
+                "libraryId": "nftdata",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/nftdata",
+                "filePath": "collection/dapps/nftData.html"
+            },
+            "collection/dapps/wallet.html": {
+                "title": "wallet dApp",
+                "libraryId": "wallet",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/wallet",
+                "filePath": "collection/dapps/wallet.html"
+            },
+            "nfts/0/nft0.png": {
+                "title": "Brain Matters - 0",
+                "libraryId": "brain.matters.nft0.png",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/-/bm-0/-/brain.matters.nft0.png",
+                "filePath": "nfts/0/nft0.png"
+            },
+            "nfts/1/nft1.png": {
+                "title": "Brain Matters - 1",
+                "libraryId": "brain.matters.nft1.png",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/-/bm-1/-/brain.matters.nft1.png",
+                "filePath": "nfts/1/nft1.png"
+            },
+            "nfts/2/nft2.png": {
+                "title": "Brain Matters - 2",
+                "libraryId": "brain.matters.nft2.png",
+                "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/-/bm-2/-/brain.matters.nft2.png",
+                "filePath": "nfts/2/nft2.png"
+            }
+        },
+        "collectionLibraries": [
+            {
+                "library_id": "brain.matters.mystery-bm.gif",
+                "library_file": "collection/mystery-bm.gif"
+            },
+            {
+                "library_id": "ledger",
+                "library_file": "collection/dapps/ledger.html"
+            },
+            {
+                "library_id": "library",
+                "library_file": "collection/dapps/library.html"
+            },
+            {
+                "library_id": "marketplace",
+                "library_file": "collection/dapps/marketplace.html"
+            },
+            {
+                "library_id": "nftdata",
+                "library_file": "collection/dapps/nftData.html"
+            },
+            {
+                "library_id": "wallet",
+                "library_file": "collection/dapps/wallet.html"
+            }
+        ],
+        "totalFileSize": 17150523
     },
-    "assetTypeMapPatterns": {
-      "primary": "nft*.png",
-      "hidden": "mystery-bm.gif"
+    "summary": {
+        "totalFilesFound": 9,
+        "totalFileSize": "17150523 (16.36 MB)",
+        "totalNftDefinitionCount": 3,
+        "totalNftCount": 3
     },
-    "stageFolder": "/Users/jt/origyn/test/minting-starter/projects/brain-matters/__staged",
-    "collectionFolder": "collection",
-    "nftsFolder": "nfts",
-    "nftDefinitionCount": 3,
-    "nftQuantities": [],
-    "totalNftCount": 3,
-    "fileMap": {
-      "collection/mystery-bm.gif": {
-        "title": "mystery-bm.gif",
-        "libraryId": "brain.matters.mystery-bm.gif",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/brain.matters.mystery-bm.gif",
-        "filePath": "collection/mystery-bm.gif"
-      },
-      "collection/dapps/ledger.html": {
-        "title": "ledger dApp",
-        "libraryId": "ledger",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/ledger",
-        "filePath": "collection/dapps/ledger.html"
-      },
-      "collection/dapps/library.html": {
-        "title": "library dApp",
-        "libraryId": "library",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/library",
-        "filePath": "collection/dapps/library.html"
-      },
-      "collection/dapps/marketplace.html": {
-        "title": "marketplace dApp",
-        "libraryId": "marketplace",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/marketplace",
-        "filePath": "collection/dapps/marketplace.html"
-      },
-      "collection/dapps/nftdata.html": {
-        "title": "nftdata dApp",
-        "libraryId": "nftdata",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/nftdata",
-        "filePath": "collection/dapps/nftData.html"
-      },
-      "collection/dapps/wallet.html": {
-        "title": "wallet dApp",
-        "libraryId": "wallet",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/wallet",
-        "filePath": "collection/dapps/wallet.html"
-      },
-      "nfts/0/nft0.png": {
-        "title": "Brain Matters - 0",
-        "libraryId": "brain.matters.nft0.png",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-0/-/brain.matters.nft0.png",
-        "filePath": "nfts/0/nft0.png"
-      },
-      "nfts/1/nft1.png": {
-        "title": "Brain Matters - 1",
-        "libraryId": "brain.matters.nft1.png",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-1/-/brain.matters.nft1.png",
-        "filePath": "nfts/1/nft1.png"
-      },
-      "nfts/2/nft2.png": {
-        "title": "Brain Matters - 2",
-        "libraryId": "brain.matters.nft2.png",
-        "resourceUrl": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-2/-/brain.matters.nft2.png",
-        "filePath": "nfts/2/nft2.png"
-      }
-    },
-    "collectionLibraries": [
-      {
-        "library_id": "brain.matters.mystery-bm.gif",
-        "library_file": "collection/mystery-bm.gif"
-      },
-      {
-        "library_id": "ledger",
-        "library_file": "collection/dapps/ledger.html"
-      },
-      {
-        "library_id": "library",
-        "library_file": "collection/dapps/library.html"
-      },
-      {
-        "library_id": "marketplace",
-        "library_file": "collection/dapps/marketplace.html"
-      },
-      {
-        "library_id": "nftdata",
-        "library_file": "collection/dapps/nftData.html"
-      },
-      {
-        "library_id": "wallet",
-        "library_file": "collection/dapps/wallet.html"
-      }
-    ],
-    "totalFileSize": 17150523
-  },
-  "summary": {
-    "totalFilesFound": 9,
-    "totalFileSize": "17150523 (16.36 MB)",
-    "totalNftDefinitionCount": 3,
-    "totalNftCount": 3
-  },
-  "collection": {
-    "meta": {
-      "metadata": {
-        "Class": [
-          {
-            "name": "id",
-            "value": {
-              "Text": ""
-            },
-            "immutable": true
-          },
-          {
-            "name": "brain.matters.hidden",
-            "value": {
-              "Text": "brain.matters.mystery-bm.gif"
-            },
-            "immutable": true
-          },
-          {
-            "name": "owner",
-            "value": {
-              "Text": "rrkah-fqaaa-aaaaa-aaaaq-cai"
-            },
-            "immutable": false
-          },
-          {
-            "name": "library",
-            "value": {
-              "Array": {
-                "thawed": [
-                  {
-                    "Class": [
-                      {
-                        "name": "library_id",
+    "collection": {
+        "meta": {
+            "metadata": {
+                "Class": [
+                    {
+                        "name": "id",
                         "value": {
-                          "Text": "brain.matters.mystery-bm.gif"
+                            "Text": ""
                         },
                         "immutable": true
-                      },
-                      {
-                        "name": "title",
+                    },
+                    {
+                        "name": "brain.matters.hidden",
                         "value": {
-                          "Text": "mystery-bm.gif"
+                            "Text": "brain.matters.mystery-bm.gif"
                         },
                         "immutable": true
-                      },
-                      {
-                        "name": "location_type",
+                    },
+                    {
+                        "name": "owner",
                         "value": {
-                          "Text": "canister"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location",
-                        "value": {
-                          "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/brain.matters.mystery-bm.gif"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_type",
-                        "value": {
-                          "Text": "image/gif"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_hash",
-                        "value": {
-                          "Text": "4b56b5f3526ccf851a7130f1b83d6412bc33644e79b84810a5c23c00ca75ff9d"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "size",
-                        "value": {
-                          "Nat": 9901386
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "sort",
-                        "value": {
-                          "Nat": 1
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "read",
-                        "value": {
-                          "Text": "public"
+                            "Text": "rrkah-fqaaa-aaaaa-aaaaq-cai"
                         },
                         "immutable": false
-                      }
-                    ]
-                  },
-                  {
-                    "Class": [
-                      {
-                        "name": "library_id",
+                    },
+                    {
+                        "name": "library",
                         "value": {
-                          "Text": "ledger"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "title",
-                        "value": {
-                          "Text": "ledger dApp"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location_type",
-                        "value": {
-                          "Text": "canister"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location",
-                        "value": {
-                          "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/ledger"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_type",
-                        "value": {
-                          "Text": "text/html"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_hash",
-                        "value": {
-                          "Text": "502ca09b67366e7fb0ba6c96d3612edb58463582ed6ff0116fcec69e82d999cc"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "size",
-                        "value": {
-                          "Nat": 1122558
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "sort",
-                        "value": {
-                          "Nat": 2
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "read",
-                        "value": {
-                          "Text": "public"
-                        },
-                        "immutable": false
-                      }
-                    ]
-                  },
-                  {
-                    "Class": [
-                      {
-                        "name": "library_id",
-                        "value": {
-                          "Text": "library"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "title",
-                        "value": {
-                          "Text": "library dApp"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location_type",
-                        "value": {
-                          "Text": "canister"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location",
-                        "value": {
-                          "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/library"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_type",
-                        "value": {
-                          "Text": "text/html"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_hash",
-                        "value": {
-                          "Text": "0f3b664a00ba4b6acfc61897285b96e4ee8b70b89c5e2e8f67716aed99ebca11"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "size",
-                        "value": {
-                          "Nat": 873013
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "sort",
-                        "value": {
-                          "Nat": 3
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "read",
-                        "value": {
-                          "Text": "public"
-                        },
-                        "immutable": false
-                      }
-                    ]
-                  },
-                  {
-                    "Class": [
-                      {
-                        "name": "library_id",
-                        "value": {
-                          "Text": "marketplace"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "title",
-                        "value": {
-                          "Text": "marketplace dApp"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location_type",
-                        "value": {
-                          "Text": "canister"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location",
-                        "value": {
-                          "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/marketplace"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_type",
-                        "value": {
-                          "Text": "text/html"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_hash",
-                        "value": {
-                          "Text": "c274565afa07043a6525ed4ffc39c3910473dc1a43becdabf79e539cbf9beea6"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "size",
-                        "value": {
-                          "Nat": 1527846
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "sort",
-                        "value": {
-                          "Nat": 4
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "read",
-                        "value": {
-                          "Text": "public"
-                        },
-                        "immutable": false
-                      }
-                    ]
-                  },
-                  {
-                    "Class": [
-                      {
-                        "name": "library_id",
-                        "value": {
-                          "Text": "nftdata"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "title",
-                        "value": {
-                          "Text": "nftdata dApp"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location_type",
-                        "value": {
-                          "Text": "canister"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location",
-                        "value": {
-                          "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/nftdata"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_type",
-                        "value": {
-                          "Text": "text/html"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_hash",
-                        "value": {
-                          "Text": "c37500edfa2e162e7b74a216fb444581b6e027d05b86bb9e24d81b743c3d8c90"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "size",
-                        "value": {
-                          "Nat": 1043828
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "sort",
-                        "value": {
-                          "Nat": 5
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "read",
-                        "value": {
-                          "Text": "public"
-                        },
-                        "immutable": false
-                      }
-                    ]
-                  },
-                  {
-                    "Class": [
-                      {
-                        "name": "library_id",
-                        "value": {
-                          "Text": "wallet"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "title",
-                        "value": {
-                          "Text": "wallet dApp"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location_type",
-                        "value": {
-                          "Text": "canister"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "location",
-                        "value": {
-                          "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/wallet"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_type",
-                        "value": {
-                          "Text": "text/html"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "content_hash",
-                        "value": {
-                          "Text": "526111b8cc68e0b63ff9e439af0460588c503f16cf0b93cc32b610162bdcb94f"
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "size",
-                        "value": {
-                          "Nat": 1545120
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "sort",
-                        "value": {
-                          "Nat": 6
-                        },
-                        "immutable": true
-                      },
-                      {
-                        "name": "read",
-                        "value": {
-                          "Text": "public"
-                        },
-                        "immutable": false
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            "immutable": true
-          },
-          {
-            "name": "__apps",
-            "value": {
-              "Array": {
-                "thawed": [
-                  {
-                    "Class": [
-                      {
-                        "name": "app_id",
-                        "value": {
-                          "Text": "brain.matters"
-                        },
-                        "immutable": false
-                      },
-                      {
-                        "name": "read",
-                        "value": {
-                          "Text": "public"
-                        },
-                        "immutable": false
-                      },
-                      {
-                        "name": "write",
-                        "value": {
-                          "Class": [
-                            {
-                              "name": "type",
-                              "value": {
-                                "Text": "allow"
-                              },
-                              "immutable": false
-                            },
-                            {
-                              "name": "list",
-                              "value": {
-                                "Array": {
-                                  "thawed": [
+                            "Array": {
+                                "thawed": [
                                     {
-                                      "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                    }
-                                  ]
-                                }
-                              },
-                              "immutable": false
-                            }
-                          ]
-                        },
-                        "immutable": false
-                      },
-                      {
-                        "name": "permissions",
-                        "value": {
-                          "Class": [
-                            {
-                              "name": "type",
-                              "value": {
-                                "Text": "allow"
-                              },
-                              "immutable": false
-                            },
-                            {
-                              "name": "list",
-                              "value": {
-                                "Array": {
-                                  "thawed": [
+                                        "Class": [
+                                            {
+                                                "name": "library_id",
+                                                "value": {
+                                                    "Text": "brain.matters.mystery-bm.gif"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "title",
+                                                "value": {
+                                                    "Text": "mystery-bm.gif"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location_type",
+                                                "value": {
+                                                    "Text": "canister"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location",
+                                                "value": {
+                                                    "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/brain.matters.mystery-bm.gif"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_type",
+                                                "value": {
+                                                    "Text": "image/gif"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_hash",
+                                                "value": {
+                                                    "Text": "4b56b5f3526ccf851a7130f1b83d6412bc33644e79b84810a5c23c00ca75ff9d"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "size",
+                                                "value": {
+                                                    "Nat": 9901386
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "sort",
+                                                "value": {
+                                                    "Nat": 1
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "read",
+                                                "value": {
+                                                    "Text": "public"
+                                                },
+                                                "immutable": false
+                                            }
+                                        ]
+                                    },
                                     {
-                                      "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                        "Class": [
+                                            {
+                                                "name": "library_id",
+                                                "value": {
+                                                    "Text": "ledger"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "title",
+                                                "value": {
+                                                    "Text": "ledger dApp"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location_type",
+                                                "value": {
+                                                    "Text": "canister"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location",
+                                                "value": {
+                                                    "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/ledger"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_type",
+                                                "value": {
+                                                    "Text": "text/html"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_hash",
+                                                "value": {
+                                                    "Text": "502ca09b67366e7fb0ba6c96d3612edb58463582ed6ff0116fcec69e82d999cc"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "size",
+                                                "value": {
+                                                    "Nat": 1122558
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "sort",
+                                                "value": {
+                                                    "Nat": 2
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "read",
+                                                "value": {
+                                                    "Text": "public"
+                                                },
+                                                "immutable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Class": [
+                                            {
+                                                "name": "library_id",
+                                                "value": {
+                                                    "Text": "library"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "title",
+                                                "value": {
+                                                    "Text": "library dApp"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location_type",
+                                                "value": {
+                                                    "Text": "canister"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location",
+                                                "value": {
+                                                    "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/library"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_type",
+                                                "value": {
+                                                    "Text": "text/html"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_hash",
+                                                "value": {
+                                                    "Text": "0f3b664a00ba4b6acfc61897285b96e4ee8b70b89c5e2e8f67716aed99ebca11"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "size",
+                                                "value": {
+                                                    "Nat": 873013
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "sort",
+                                                "value": {
+                                                    "Nat": 3
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "read",
+                                                "value": {
+                                                    "Text": "public"
+                                                },
+                                                "immutable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Class": [
+                                            {
+                                                "name": "library_id",
+                                                "value": {
+                                                    "Text": "marketplace"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "title",
+                                                "value": {
+                                                    "Text": "marketplace dApp"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location_type",
+                                                "value": {
+                                                    "Text": "canister"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location",
+                                                "value": {
+                                                    "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/marketplace"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_type",
+                                                "value": {
+                                                    "Text": "text/html"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_hash",
+                                                "value": {
+                                                    "Text": "c274565afa07043a6525ed4ffc39c3910473dc1a43becdabf79e539cbf9beea6"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "size",
+                                                "value": {
+                                                    "Nat": 1527846
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "sort",
+                                                "value": {
+                                                    "Nat": 4
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "read",
+                                                "value": {
+                                                    "Text": "public"
+                                                },
+                                                "immutable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Class": [
+                                            {
+                                                "name": "library_id",
+                                                "value": {
+                                                    "Text": "nftdata"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "title",
+                                                "value": {
+                                                    "Text": "nftdata dApp"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location_type",
+                                                "value": {
+                                                    "Text": "canister"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location",
+                                                "value": {
+                                                    "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/nftdata"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_type",
+                                                "value": {
+                                                    "Text": "text/html"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_hash",
+                                                "value": {
+                                                    "Text": "c37500edfa2e162e7b74a216fb444581b6e027d05b86bb9e24d81b743c3d8c90"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "size",
+                                                "value": {
+                                                    "Nat": 1043828
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "sort",
+                                                "value": {
+                                                    "Nat": 5
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "read",
+                                                "value": {
+                                                    "Text": "public"
+                                                },
+                                                "immutable": false
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Class": [
+                                            {
+                                                "name": "library_id",
+                                                "value": {
+                                                    "Text": "wallet"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "title",
+                                                "value": {
+                                                    "Text": "wallet dApp"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location_type",
+                                                "value": {
+                                                    "Text": "canister"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "location",
+                                                "value": {
+                                                    "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/wallet"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_type",
+                                                "value": {
+                                                    "Text": "text/html"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "content_hash",
+                                                "value": {
+                                                    "Text": "526111b8cc68e0b63ff9e439af0460588c503f16cf0b93cc32b610162bdcb94f"
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "size",
+                                                "value": {
+                                                    "Nat": 1545120
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "sort",
+                                                "value": {
+                                                    "Nat": 6
+                                                },
+                                                "immutable": true
+                                            },
+                                            {
+                                                "name": "read",
+                                                "value": {
+                                                    "Text": "public"
+                                                },
+                                                "immutable": false
+                                            }
+                                        ]
                                     }
-                                  ]
-                                }
-                              },
-                              "immutable": false
+                                ]
                             }
-                          ]
                         },
-                        "immutable": false
-                      },
-                      {
-                        "name": "data",
+                        "immutable": true
+                    },
+                    {
+                        "name": "__apps",
                         "value": {
-                          "Class": [
-                            {
-                              "name": "brain.matters.name",
-                              "value": {
-                                "Text": "Brain Matters"
-                              },
-                              "immutable": false
-                            },
-                            {
-                              "name": "brain.matters.total_in_collection",
-                              "value": {
-                                "Nat": 0
-                              },
-                              "immutable": false
-                            },
-                            {
-                              "name": "brain.matters.collectionid",
-                              "value": {
-                                "Text": "bm"
-                              },
-                              "immutable": false
-                            },
-                            {
-                              "name": "brain.matters.creator_principal",
-                              "value": {
-                                "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                              },
-                              "immutable": false
+                            "Array": {
+                                "thawed": [
+                                    {
+                                        "Class": [
+                                            {
+                                                "name": "app_id",
+                                                "value": {
+                                                    "Text": "brain.matters"
+                                                },
+                                                "immutable": false
+                                            },
+                                            {
+                                                "name": "read",
+                                                "value": {
+                                                    "Text": "public"
+                                                },
+                                                "immutable": false
+                                            },
+                                            {
+                                                "name": "write",
+                                                "value": {
+                                                    "Class": [
+                                                        {
+                                                            "name": "type",
+                                                            "value": {
+                                                                "Text": "allow"
+                                                            },
+                                                            "immutable": false
+                                                        },
+                                                        {
+                                                            "name": "list",
+                                                            "value": {
+                                                                "Array": {
+                                                                    "thawed": [
+                                                                        {
+                                                                            "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "immutable": false
+                                                        }
+                                                    ]
+                                                },
+                                                "immutable": false
+                                            },
+                                            {
+                                                "name": "permissions",
+                                                "value": {
+                                                    "Class": [
+                                                        {
+                                                            "name": "type",
+                                                            "value": {
+                                                                "Text": "allow"
+                                                            },
+                                                            "immutable": false
+                                                        },
+                                                        {
+                                                            "name": "list",
+                                                            "value": {
+                                                                "Array": {
+                                                                    "thawed": [
+                                                                        {
+                                                                            "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "immutable": false
+                                                        }
+                                                    ]
+                                                },
+                                                "immutable": false
+                                            },
+                                            {
+                                                "name": "data",
+                                                "value": {
+                                                    "Class": [
+                                                        {
+                                                            "name": "brain.matters.name",
+                                                            "value": {
+                                                                "Text": "Brain Matters"
+                                                            },
+                                                            "immutable": false
+                                                        },
+                                                        {
+                                                            "name": "brain.matters.total_in_collection",
+                                                            "value": {
+                                                                "Nat": 0
+                                                            },
+                                                            "immutable": false
+                                                        },
+                                                        {
+                                                            "name": "brain.matters.collectionid",
+                                                            "value": {
+                                                                "Text": "bm"
+                                                            },
+                                                            "immutable": false
+                                                        },
+                                                        {
+                                                            "name": "brain.matters.creator_principal",
+                                                            "value": {
+                                                                "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                            },
+                                                            "immutable": false
+                                                        }
+                                                    ]
+                                                },
+                                                "immutable": false
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
-                          ]
                         },
                         "immutable": false
-                      }
-                    ]
-                  }
+                    }
                 ]
-              }
+            }
+        },
+        "library": [
+            {
+                "library_id": "brain.matters.mystery-bm.gif",
+                "library_file": "collection/mystery-bm.gif"
             },
-            "immutable": false
-          }
+            {
+                "library_id": "ledger",
+                "library_file": "collection/dapps/ledger.html"
+            },
+            {
+                "library_id": "library",
+                "library_file": "collection/dapps/library.html"
+            },
+            {
+                "library_id": "marketplace",
+                "library_file": "collection/dapps/marketplace.html"
+            },
+            {
+                "library_id": "nftdata",
+                "library_file": "collection/dapps/nftData.html"
+            },
+            {
+                "library_id": "wallet",
+                "library_file": "collection/dapps/wallet.html"
+            }
         ]
-      }
     },
-    "library": [
-      {
-        "library_id": "brain.matters.mystery-bm.gif",
-        "library_file": "collection/mystery-bm.gif"
-      },
-      {
-        "library_id": "ledger",
-        "library_file": "collection/dapps/ledger.html"
-      },
-      {
-        "library_id": "library",
-        "library_file": "collection/dapps/library.html"
-      },
-      {
-        "library_id": "marketplace",
-        "library_file": "collection/dapps/marketplace.html"
-      },
-      {
-        "library_id": "nftdata",
-        "library_file": "collection/dapps/nftData.html"
-      },
-      {
-        "library_id": "wallet",
-        "library_file": "collection/dapps/wallet.html"
-      }
+    "nfts": [
+        {
+            "meta": {
+                "metadata": {
+                    "Class": [
+                        {
+                            "name": "id",
+                            "value": {
+                                "Text": "bm-0"
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "primary_asset",
+                            "value": {
+                                "Text": "brain.matters.nft0.png"
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "hidden_asset",
+                            "value": {
+                                "Text": "brain.matters.mystery-bm.gif"
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "owner",
+                            "value": {
+                                "Text": "rrkah-fqaaa-aaaaa-aaaaq-cai"
+                            },
+                            "immutable": false
+                        },
+                        {
+                            "name": "is_soulbound",
+                            "value": {
+                                "Bool": false
+                            },
+                            "immutable": false
+                        },
+                        {
+                            "name": "library",
+                            "value": {
+                                "Array": {
+                                    "thawed": [
+                                        {
+                                            "Class": [
+                                                {
+                                                    "name": "library_id",
+                                                    "value": {
+                                                        "Text": "brain.matters.nft0.png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "title",
+                                                    "value": {
+                                                        "Text": "Brain Matters - 0"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location_type",
+                                                    "value": {
+                                                        "Text": "canister"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location",
+                                                    "value": {
+                                                        "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/-/bm-0/-/brain.matters.nft0.png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_type",
+                                                    "value": {
+                                                        "Text": "image/png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_hash",
+                                                    "value": {
+                                                        "Text": "83924aaad49f32cee6f77280bdcf81c0979c17e9c0c19af2ef9065124d226736"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "size",
+                                                    "value": {
+                                                        "Nat": 381922
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "sort",
+                                                    "value": {
+                                                        "Nat": 1
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "read",
+                                                    "value": {
+                                                        "Text": "public"
+                                                    },
+                                                    "immutable": false
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "Class": [
+                                                {
+                                                    "name": "library_id",
+                                                    "value": {
+                                                        "Text": "brain.matters.mystery-bm.gif"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "title",
+                                                    "value": {
+                                                        "Text": "mystery-bm.gif"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location_type",
+                                                    "value": {
+                                                        "Text": "collection"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location",
+                                                    "value": {
+                                                        "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/brain.matters.mystery-bm.gif"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_type",
+                                                    "value": {
+                                                        "Text": "image/gif"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_hash",
+                                                    "value": {
+                                                        "Text": "4b56b5f3526ccf851a7130f1b83d6412bc33644e79b84810a5c23c00ca75ff9d"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "size",
+                                                    "value": {
+                                                        "Nat": 9901386
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "sort",
+                                                    "value": {
+                                                        "Nat": 2
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "read",
+                                                    "value": {
+                                                        "Text": "public"
+                                                    },
+                                                    "immutable": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "__apps",
+                            "value": {
+                                "Array": {
+                                    "thawed": [
+                                        {
+                                            "Class": [
+                                                {
+                                                    "name": "app_id",
+                                                    "value": {
+                                                        "Text": "brain.matters"
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "read",
+                                                    "value": {
+                                                        "Text": "public"
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "write",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "type",
+                                                                "value": {
+                                                                    "Text": "allow"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "list",
+                                                                "value": {
+                                                                    "Array": {
+                                                                        "thawed": [
+                                                                            {
+                                                                                "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "permissions",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "type",
+                                                                "value": {
+                                                                    "Text": "allow"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "list",
+                                                                "value": {
+                                                                    "Array": {
+                                                                        "thawed": [
+                                                                            {
+                                                                                "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "data",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "brain.matters.name",
+                                                                "value": {
+                                                                    "Text": "Brain Matters"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.total_in_collection",
+                                                                "value": {
+                                                                    "Nat": 0
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.collectionid",
+                                                                "value": {
+                                                                    "Text": "bm"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.creator_principal",
+                                                                "value": {
+                                                                    "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "immutable": false
+                        }
+                    ]
+                }
+            },
+            "library": [
+                {
+                    "library_id": "brain.matters.nft0.png",
+                    "library_file": "nfts/0/nft0.png"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "metadata": {
+                    "Class": [
+                        {
+                            "name": "id",
+                            "value": {
+                                "Text": "bm-1"
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "primary_asset",
+                            "value": {
+                                "Text": "brain.matters.nft1.png"
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "owner",
+                            "value": {
+                                "Text": "rrkah-fqaaa-aaaaa-aaaaq-cai"
+                            },
+                            "immutable": false
+                        },
+                        {
+                            "name": "is_soulbound",
+                            "value": {
+                                "Bool": false
+                            },
+                            "immutable": false
+                        },
+                        {
+                            "name": "library",
+                            "value": {
+                                "Array": {
+                                    "thawed": [
+                                        {
+                                            "Class": [
+                                                {
+                                                    "name": "library_id",
+                                                    "value": {
+                                                        "Text": "brain.matters.nft1.png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "title",
+                                                    "value": {
+                                                        "Text": "Brain Matters - 1"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location_type",
+                                                    "value": {
+                                                        "Text": "canister"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location",
+                                                    "value": {
+                                                        "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/-/bm-1/-/brain.matters.nft1.png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_type",
+                                                    "value": {
+                                                        "Text": "image/png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_hash",
+                                                    "value": {
+                                                        "Text": "ddc9505b22bf33bb5861ee248f33daf81f26b6038c3877ce3802994c48824ffa"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "size",
+                                                    "value": {
+                                                        "Nat": 377679
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "sort",
+                                                    "value": {
+                                                        "Nat": 1
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "read",
+                                                    "value": {
+                                                        "Text": "public"
+                                                    },
+                                                    "immutable": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "__apps",
+                            "value": {
+                                "Array": {
+                                    "thawed": [
+                                        {
+                                            "Class": [
+                                                {
+                                                    "name": "app_id",
+                                                    "value": {
+                                                        "Text": "brain.matters"
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "read",
+                                                    "value": {
+                                                        "Text": "public"
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "write",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "type",
+                                                                "value": {
+                                                                    "Text": "allow"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "list",
+                                                                "value": {
+                                                                    "Array": {
+                                                                        "thawed": [
+                                                                            {
+                                                                                "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "permissions",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "type",
+                                                                "value": {
+                                                                    "Text": "allow"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "list",
+                                                                "value": {
+                                                                    "Array": {
+                                                                        "thawed": [
+                                                                            {
+                                                                                "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "data",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "brain.matters.name",
+                                                                "value": {
+                                                                    "Text": "Brain Matters"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.total_in_collection",
+                                                                "value": {
+                                                                    "Nat": 0
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.collectionid",
+                                                                "value": {
+                                                                    "Text": "bm"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.creator_principal",
+                                                                "value": {
+                                                                    "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "immutable": false
+                        }
+                    ]
+                }
+            },
+            "library": [
+                {
+                    "library_id": "brain.matters.nft1.png",
+                    "library_file": "nfts/1/nft1.png"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "metadata": {
+                    "Class": [
+                        {
+                            "name": "id",
+                            "value": {
+                                "Text": "bm-2"
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "primary_asset",
+                            "value": {
+                                "Text": "brain.matters.nft2.png"
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "hidden_asset",
+                            "value": {
+                                "Text": "brain.matters.mystery-bm.gif"
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "owner",
+                            "value": {
+                                "Text": "rrkah-fqaaa-aaaaa-aaaaq-cai"
+                            },
+                            "immutable": false
+                        },
+                        {
+                            "name": "is_soulbound",
+                            "value": {
+                                "Bool": false
+                            },
+                            "immutable": false
+                        },
+                        {
+                            "name": "library",
+                            "value": {
+                                "Array": {
+                                    "thawed": [
+                                        {
+                                            "Class": [
+                                                {
+                                                    "name": "library_id",
+                                                    "value": {
+                                                        "Text": "brain.matters.nft2.png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "title",
+                                                    "value": {
+                                                        "Text": "Brain Matters - 2"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location_type",
+                                                    "value": {
+                                                        "Text": "canister"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location",
+                                                    "value": {
+                                                        "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/-/bm-2/-/brain.matters.nft2.png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_type",
+                                                    "value": {
+                                                        "Text": "image/png"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_hash",
+                                                    "value": {
+                                                        "Text": "69bae87826e7bbc2b8a09de35a29a5e99f617efb51c888ba42c73d3f8425fd60"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "size",
+                                                    "value": {
+                                                        "Nat": 377171
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "sort",
+                                                    "value": {
+                                                        "Nat": 1
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "read",
+                                                    "value": {
+                                                        "Text": "public"
+                                                    },
+                                                    "immutable": false
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "Class": [
+                                                {
+                                                    "name": "library_id",
+                                                    "value": {
+                                                        "Text": "brain.matters.mystery-bm.gif"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "title",
+                                                    "value": {
+                                                        "Text": "mystery-bm.gif"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location_type",
+                                                    "value": {
+                                                        "Text": "collection"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "location",
+                                                    "value": {
+                                                        "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080/collection/-/brain.matters.mystery-bm.gif"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_type",
+                                                    "value": {
+                                                        "Text": "image/gif"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "content_hash",
+                                                    "value": {
+                                                        "Text": "4b56b5f3526ccf851a7130f1b83d6412bc33644e79b84810a5c23c00ca75ff9d"
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "size",
+                                                    "value": {
+                                                        "Nat": 9901386
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "sort",
+                                                    "value": {
+                                                        "Nat": 2
+                                                    },
+                                                    "immutable": true
+                                                },
+                                                {
+                                                    "name": "read",
+                                                    "value": {
+                                                        "Text": "public"
+                                                    },
+                                                    "immutable": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "immutable": true
+                        },
+                        {
+                            "name": "__apps",
+                            "value": {
+                                "Array": {
+                                    "thawed": [
+                                        {
+                                            "Class": [
+                                                {
+                                                    "name": "app_id",
+                                                    "value": {
+                                                        "Text": "brain.matters"
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "read",
+                                                    "value": {
+                                                        "Text": "public"
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "write",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "type",
+                                                                "value": {
+                                                                    "Text": "allow"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "list",
+                                                                "value": {
+                                                                    "Array": {
+                                                                        "thawed": [
+                                                                            {
+                                                                                "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "permissions",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "type",
+                                                                "value": {
+                                                                    "Text": "allow"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "list",
+                                                                "value": {
+                                                                    "Array": {
+                                                                        "thawed": [
+                                                                            {
+                                                                                "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                },
+                                                {
+                                                    "name": "data",
+                                                    "value": {
+                                                        "Class": [
+                                                            {
+                                                                "name": "brain.matters.name",
+                                                                "value": {
+                                                                    "Text": "Brain Matters"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.total_in_collection",
+                                                                "value": {
+                                                                    "Nat": 0
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.collectionid",
+                                                                "value": {
+                                                                    "Text": "bm"
+                                                                },
+                                                                "immutable": false
+                                                            },
+                                                            {
+                                                                "name": "brain.matters.creator_principal",
+                                                                "value": {
+                                                                    "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
+                                                                },
+                                                                "immutable": false
+                                                            }
+                                                        ]
+                                                    },
+                                                    "immutable": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "immutable": false
+                        }
+                    ]
+                }
+            },
+            "library": [
+                {
+                    "library_id": "brain.matters.nft2.png",
+                    "library_file": "nfts/2/nft2.png"
+                }
+            ]
+        }
     ]
-  },
-  "nfts": [
-    {
-      "meta": {
-        "metadata": {
-          "Class": [
-            {
-              "name": "id",
-              "value": {
-                "Text": "bm-0"
-              },
-              "immutable": true
-            },
-            {
-              "name": "primary_asset",
-              "value": {
-                "Text": "brain.matters.nft0.png"
-              },
-              "immutable": true
-            },
-            {
-              "name": "hidden_asset",
-              "value": {
-                "Text": "brain.matters.mystery-bm.gif"
-              },
-              "immutable": true
-            },
-            {
-              "name": "owner",
-              "value": {
-                "Text": "rrkah-fqaaa-aaaaa-aaaaq-cai"
-              },
-              "immutable": false
-            },
-            {
-              "name": "is_soulbound",
-              "value": {
-                "Bool": false
-              },
-              "immutable": false
-            },
-            {
-              "name": "library",
-              "value": {
-                "Array": {
-                  "thawed": [
-                    {
-                      "Class": [
-                        {
-                          "name": "library_id",
-                          "value": {
-                            "Text": "brain.matters.nft0.png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "title",
-                          "value": {
-                            "Text": "Brain Matters - 0"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location_type",
-                          "value": {
-                            "Text": "canister"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location",
-                          "value": {
-                            "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-0/-/brain.matters.nft0.png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_type",
-                          "value": {
-                            "Text": "image/png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_hash",
-                          "value": {
-                            "Text": "83924aaad49f32cee6f77280bdcf81c0979c17e9c0c19af2ef9065124d226736"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "size",
-                          "value": {
-                            "Nat": 381922
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "sort",
-                          "value": {
-                            "Nat": 1
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "read",
-                          "value": {
-                            "Text": "public"
-                          },
-                          "immutable": false
-                        }
-                      ]
-                    },
-                    {
-                      "Class": [
-                        {
-                          "name": "library_id",
-                          "value": {
-                            "Text": "brain.matters.mystery-bm.gif"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "title",
-                          "value": {
-                            "Text": "mystery-bm.gif"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location_type",
-                          "value": {
-                            "Text": "collection"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location",
-                          "value": {
-                            "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/brain.matters.mystery-bm.gif"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_type",
-                          "value": {
-                            "Text": "image/gif"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_hash",
-                          "value": {
-                            "Text": "4b56b5f3526ccf851a7130f1b83d6412bc33644e79b84810a5c23c00ca75ff9d"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "size",
-                          "value": {
-                            "Nat": 9901386
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "sort",
-                          "value": {
-                            "Nat": 2
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "read",
-                          "value": {
-                            "Text": "public"
-                          },
-                          "immutable": false
-                        }
-                      ]
-                    }
-                  ]
-                }
-              },
-              "immutable": true
-            },
-            {
-              "name": "__apps",
-              "value": {
-                "Array": {
-                  "thawed": [
-                    {
-                      "Class": [
-                        {
-                          "name": "app_id",
-                          "value": {
-                            "Text": "brain.matters"
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "read",
-                          "value": {
-                            "Text": "public"
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "write",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "type",
-                                "value": {
-                                  "Text": "allow"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "list",
-                                "value": {
-                                  "Array": {
-                                    "thawed": [
-                                      {
-                                        "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                      }
-                                    ]
-                                  }
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "permissions",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "type",
-                                "value": {
-                                  "Text": "allow"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "list",
-                                "value": {
-                                  "Array": {
-                                    "thawed": [
-                                      {
-                                        "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                      }
-                                    ]
-                                  }
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "data",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "brain.matters.name",
-                                "value": {
-                                  "Text": "Brain Matters"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.total_in_collection",
-                                "value": {
-                                  "Nat": 0
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.collectionid",
-                                "value": {
-                                  "Text": "bm"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.creator_principal",
-                                "value": {
-                                  "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        }
-                      ]
-                    }
-                  ]
-                }
-              },
-              "immutable": false
-            }
-          ]
-        }
-      },
-      "library": [
-        {
-          "library_id": "brain.matters.nft0.png",
-          "library_file": "nfts/0/nft0.png"
-        }
-      ]
-    },
-    {
-      "meta": {
-        "metadata": {
-          "Class": [
-            {
-              "name": "id",
-              "value": {
-                "Text": "bm-1"
-              },
-              "immutable": true
-            },
-            {
-              "name": "primary_asset",
-              "value": {
-                "Text": "brain.matters.nft1.png"
-              },
-              "immutable": true
-            },
-            {
-              "name": "owner",
-              "value": {
-                "Text": "rrkah-fqaaa-aaaaa-aaaaq-cai"
-              },
-              "immutable": false
-            },
-            {
-              "name": "is_soulbound",
-              "value": {
-                "Bool": false
-              },
-              "immutable": false
-            },
-            {
-              "name": "library",
-              "value": {
-                "Array": {
-                  "thawed": [
-                    {
-                      "Class": [
-                        {
-                          "name": "library_id",
-                          "value": {
-                            "Text": "brain.matters.nft1.png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "title",
-                          "value": {
-                            "Text": "Brain Matters - 1"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location_type",
-                          "value": {
-                            "Text": "canister"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location",
-                          "value": {
-                            "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-1/-/brain.matters.nft1.png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_type",
-                          "value": {
-                            "Text": "image/png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_hash",
-                          "value": {
-                            "Text": "ddc9505b22bf33bb5861ee248f33daf81f26b6038c3877ce3802994c48824ffa"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "size",
-                          "value": {
-                            "Nat": 377679
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "sort",
-                          "value": {
-                            "Nat": 1
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "read",
-                          "value": {
-                            "Text": "public"
-                          },
-                          "immutable": false
-                        }
-                      ]
-                    }
-                  ]
-                }
-              },
-              "immutable": true
-            },
-            {
-              "name": "__apps",
-              "value": {
-                "Array": {
-                  "thawed": [
-                    {
-                      "Class": [
-                        {
-                          "name": "app_id",
-                          "value": {
-                            "Text": "brain.matters"
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "read",
-                          "value": {
-                            "Text": "public"
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "write",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "type",
-                                "value": {
-                                  "Text": "allow"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "list",
-                                "value": {
-                                  "Array": {
-                                    "thawed": [
-                                      {
-                                        "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                      }
-                                    ]
-                                  }
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "permissions",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "type",
-                                "value": {
-                                  "Text": "allow"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "list",
-                                "value": {
-                                  "Array": {
-                                    "thawed": [
-                                      {
-                                        "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                      }
-                                    ]
-                                  }
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "data",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "brain.matters.name",
-                                "value": {
-                                  "Text": "Brain Matters"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.total_in_collection",
-                                "value": {
-                                  "Nat": 0
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.collectionid",
-                                "value": {
-                                  "Text": "bm"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.creator_principal",
-                                "value": {
-                                  "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        }
-                      ]
-                    }
-                  ]
-                }
-              },
-              "immutable": false
-            }
-          ]
-        }
-      },
-      "library": [
-        {
-          "library_id": "brain.matters.nft1.png",
-          "library_file": "nfts/1/nft1.png"
-        }
-      ]
-    },
-    {
-      "meta": {
-        "metadata": {
-          "Class": [
-            {
-              "name": "id",
-              "value": {
-                "Text": "bm-2"
-              },
-              "immutable": true
-            },
-            {
-              "name": "primary_asset",
-              "value": {
-                "Text": "brain.matters.nft2.png"
-              },
-              "immutable": true
-            },
-            {
-              "name": "hidden_asset",
-              "value": {
-                "Text": "brain.matters.mystery-bm.gif"
-              },
-              "immutable": true
-            },
-            {
-              "name": "owner",
-              "value": {
-                "Text": "rrkah-fqaaa-aaaaa-aaaaq-cai"
-              },
-              "immutable": false
-            },
-            {
-              "name": "is_soulbound",
-              "value": {
-                "Bool": false
-              },
-              "immutable": false
-            },
-            {
-              "name": "library",
-              "value": {
-                "Array": {
-                  "thawed": [
-                    {
-                      "Class": [
-                        {
-                          "name": "library_id",
-                          "value": {
-                            "Text": "brain.matters.nft2.png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "title",
-                          "value": {
-                            "Text": "Brain Matters - 2"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location_type",
-                          "value": {
-                            "Text": "canister"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location",
-                          "value": {
-                            "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/-/bm-2/-/brain.matters.nft2.png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_type",
-                          "value": {
-                            "Text": "image/png"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_hash",
-                          "value": {
-                            "Text": "69bae87826e7bbc2b8a09de35a29a5e99f617efb51c888ba42c73d3f8425fd60"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "size",
-                          "value": {
-                            "Nat": 377171
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "sort",
-                          "value": {
-                            "Nat": 1
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "read",
-                          "value": {
-                            "Text": "public"
-                          },
-                          "immutable": false
-                        }
-                      ]
-                    },
-                    {
-                      "Class": [
-                        {
-                          "name": "library_id",
-                          "value": {
-                            "Text": "brain.matters.mystery-bm.gif"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "title",
-                          "value": {
-                            "Text": "mystery-bm.gif"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location_type",
-                          "value": {
-                            "Text": "collection"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "location",
-                          "value": {
-                            "Text": "http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000/collection/-/brain.matters.mystery-bm.gif"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_type",
-                          "value": {
-                            "Text": "image/gif"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "content_hash",
-                          "value": {
-                            "Text": "4b56b5f3526ccf851a7130f1b83d6412bc33644e79b84810a5c23c00ca75ff9d"
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "size",
-                          "value": {
-                            "Nat": 9901386
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "sort",
-                          "value": {
-                            "Nat": 2
-                          },
-                          "immutable": true
-                        },
-                        {
-                          "name": "read",
-                          "value": {
-                            "Text": "public"
-                          },
-                          "immutable": false
-                        }
-                      ]
-                    }
-                  ]
-                }
-              },
-              "immutable": true
-            },
-            {
-              "name": "__apps",
-              "value": {
-                "Array": {
-                  "thawed": [
-                    {
-                      "Class": [
-                        {
-                          "name": "app_id",
-                          "value": {
-                            "Text": "brain.matters"
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "read",
-                          "value": {
-                            "Text": "public"
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "write",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "type",
-                                "value": {
-                                  "Text": "allow"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "list",
-                                "value": {
-                                  "Array": {
-                                    "thawed": [
-                                      {
-                                        "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                      }
-                                    ]
-                                  }
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "permissions",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "type",
-                                "value": {
-                                  "Text": "allow"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "list",
-                                "value": {
-                                  "Array": {
-                                    "thawed": [
-                                      {
-                                        "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                      }
-                                    ]
-                                  }
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        },
-                        {
-                          "name": "data",
-                          "value": {
-                            "Class": [
-                              {
-                                "name": "brain.matters.name",
-                                "value": {
-                                  "Text": "Brain Matters"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.total_in_collection",
-                                "value": {
-                                  "Nat": 0
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.collectionid",
-                                "value": {
-                                  "Text": "bm"
-                                },
-                                "immutable": false
-                              },
-                              {
-                                "name": "brain.matters.creator_principal",
-                                "value": {
-                                  "Principal": "6gqoo-2ikz4-bw35v-4uhzs-m3h6o-kn5kl-i6knw-zaezt-2nkyl-oeorf-tae"
-                                },
-                                "immutable": false
-                              }
-                            ]
-                          },
-                          "immutable": false
-                        }
-                      ]
-                    }
-                  ]
-                }
-              },
-              "immutable": false
-            }
-          ]
-        }
-      },
-      "library": [
-        {
-          "library_id": "brain.matters.nft2.png",
-          "library_file": "nfts/2/nft2.png"
-        }
-      ]
-    }
-  ]
 }

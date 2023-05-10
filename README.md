@@ -10,6 +10,8 @@ Each release of `minting-starter` is compatible with a specific version of the `
 
 | Minting Starter Version | Origyn NFT Version |
 | ----------------------- | ------------------ |
+| 1.2.2                   | 0.1.4              |
+| 1.2.1                   | 0.1.4              |
 | 1.2.0                   | 0.1.4              |
 | 1.1.4                   | 0.1.3              |
 
@@ -201,7 +203,7 @@ Open a new dedicated terminal and run these two commands.
 ```console
 cd icx-proxy
 
-cargo run -- --debug -v --log "stderr" --replica "http://localhost:8000" --redis-url "" --phonebook-id "{phonebook canister id}"
+cargo run -- --debug -v --log "stderr" --replica "http://localhost:8080" --redis-url "" --phonebook-id "{phonebook canister id}"
 ```
 
 The phone book canister id will be located here: [.dfx/local/canister_ids.json](.dfx/local/canister_ids.json) at "phonebook" > "local".
@@ -253,7 +255,7 @@ Combine a root URL and a root-relative URL to get a full example of an absolute 
 -   Canister ID
 
     -   Localhost
-        -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8000
+        -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080
     -   Mainnet
         -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app
 
