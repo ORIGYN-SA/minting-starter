@@ -10,9 +10,7 @@ Each release of `minting-starter` is compatible with a specific version of the `
 
 | Minting Starter Version | Origyn NFT Version |
 | ----------------------- | ------------------ |
-| 1.2.2                   | 0.1.4              |
-| 1.2.1                   | 0.1.4              |
-| 1.2.0                   | 0.1.4              |
+| 1.2.0 - 1.2.2           | 0.1.4              |
 | 1.1.4                   | 0.1.3              |
 
 # Getting Started
