@@ -1,0 +1,18 @@
+type anon_class_32_1 = 
+ service {
+   getAccountID: () -> (text) query;
+   get_admin: () -> (principal) query;
+   get_governance_canister_id: () -> (principal) query;
+   get_ledger_canister_id: () -> (principal) query;
+   get_metrics: () -> () query;
+   mint: (nat64) -> (nat64);
+   mint_test: (nat64, AccountIdentifier) -> (nat64);
+   set_admin: (principal) -> ();
+   set_governance_canister_id: (principal) -> ();
+   set_ledger_canister_id: (principal) -> ();
+   set_tester: (principal) -> ();
+   wallet_receive: () -> (nat);
+   wallet_send: (nat, principal) -> (nat);
+ };
+type AccountIdentifier = text;
+service : () -> anon_class_32_1

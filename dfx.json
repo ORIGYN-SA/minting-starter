@@ -1,13 +1,31 @@
 {
     "canisters": {
+        "ogy_governance": {
+            "build": [],
+            "candid": "origyn_network/ogy_governance/ogy_governance.did",
+            "type": "custom",
+            "wasm": "origyn_network/ogy_governance/ogy_governance.wasm"
+        },
+        "ogy_ledger": {
+            "build": [],
+            "candid": "origyn_network/ogy_ledger/ogy_ledger.did",
+            "type": "custom",
+            "wasm": "origyn_network/ogy_ledger/ogy_ledger.wasm"
+        },
+        "ogy_mint": {
+            "build": [],
+            "candid": "origyn_network/ogy_mint/ogy_mint.did",
+            "type": "custom",
+            "wasm": "origyn_network/ogy_mint/ogy_mint.wasm"
+        },
         "origyn_nft_reference": {
             "main": "origyn_nft/src/origyn_nft_reference/main.mo",
             "type": "motoko"
         },
         "phonebook": {
+            "dependencies": [],
             "main": "phone_book/src/phone_book.mo",
-            "type": "motoko",
-            "dependencies": []
+            "type": "motoko"
         },
         "storage_canister_1": {
             "main": "origyn_nft/src/origyn_storage_reference/main.mo",
@@ -26,6 +44,9 @@
     "networks": {
         "local": {
             "bind": "127.0.0.1:8080",
+            "replica": {
+                "subnet_type": "system"
+            },
             "type": "ephemeral"
         }
     },

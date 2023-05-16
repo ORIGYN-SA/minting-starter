@@ -17,9 +17,11 @@ dapps-latest-build.zip
 
 # dfx temporary files
 .dfx/
+candid/
 
-# mint script output files
+# script output folders/files
 **/__*/
+settings/
 
 # frontend code
 node_modules
