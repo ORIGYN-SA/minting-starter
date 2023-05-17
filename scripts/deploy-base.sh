@@ -8,24 +8,6 @@ echo ""
 date
 
 
-echo "IC_NETWORK: $IC_NETWORK"
-echo "IDENTITY_NAME: $IDENTITY_NAME"
-echo "COLLECTION_ID: $COLLECTION_ID"
-echo "DISPLAY_NAME: $DISPLAY_NAME"
-echo "DESCRIPTION: $DESCRIPTION"
-echo "TOKEN_WORDS: $TOKEN_WORDS"
-echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
-echo "SOULBOUND: $SOULBOUND"
-
-echo "REPO_PATH: $REPO_PATH"
-echo "PROJECT_PATH: $PROJECT_PATH"
-echo "DAPPS_PATH: $DAPPS_PATH"
-echo "SCRIPTS_PATH: $SCRIPTS_PATH"
-echo "TOKEN_IDS_PATH: $TOKEN_IDS_PATH"
-echo "IC_NETWORK: $IC_NETWORK"
-echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
-
-
 ############################################################
 hdr "Input Validation"
 ############################################################
@@ -116,15 +98,6 @@ npm i
 
 show_elapsed_time
 
-
-############################################################
-hdr "Copy dApps to project"
-############################################################
-
-echo "Merging dapps to $DAPPS_PATH"
-rsync -av "$REPO_PATH/dapps/" "$DAPPS_PATH"
-
-show_elapsed_time
 
 ############################################################
 hdr "Install nns"
@@ -287,7 +260,44 @@ if [[ $IC_NETWORK == 'local' ]]; then
   dfx canister call phonebook list
 
   show_elapsed_time
+
+
+  ############################################################
+  hdr "Save local environment settings"
+  ############################################################
+
+  node ./scripts/update-env.js
+  echo "Created 'settings/env.local'"
+
+  echo "Copying 'settings/env.local' to 'DApps/.env'"
+  cp "settings/.env.local" "DApps/.env"
+
+  echo "Use these files in other projects that need environment settings from this deployment."
 fi
+
+############################################################
+hdr "Build DApps"
+############################################################
+
+cd DApps
+
+npm ci
+npm run bootstrap
+npm run build:all
+
+cd ..
+
+show_elapsed_time
+
+
+############################################################
+hdr "Copy DApps Build to Project's Collection Folder"
+############################################################
+
+echo "Merging dapps to staged folder"
+rsync -av --include="*.html" --exclude="*" "$REPO_PATH/DApps/dist/" "$PROJECT_PATH/__temp/collection/dapps"
+
+show_elapsed_time
 
 
 ############################################################

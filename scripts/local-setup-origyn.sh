@@ -86,12 +86,3 @@ dfx canister call ogy_governance get_ledger_canister_id --query
 dfx canister call ogy_governance set_minting_canister_id "(principal \"$OGY_MINT_CANISTER_ID\")"
 dfx canister call ogy_governance get_minting_canister_id --query
 
-############################################################
-hdr "Save local environment settings"
-############################################################
-
-node ./scripts/update-env.js
-
-
-echo "Created 'settings/env.local'"
-echo "Use these files in other projects that need environment settings from this deployment."
