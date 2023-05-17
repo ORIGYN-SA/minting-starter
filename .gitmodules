@@ -10,3 +10,6 @@
 [submodule "phone_book"]
 	path = phone_book
 	url = https://github.com/ORIGYN-SA/phone_book
+[submodule "DApps"]
+	path = DApps
+	url = https://github.com/ORIGYN-SA/DApps
