@@ -43,21 +43,21 @@ npm i
 dfx start --clean
 ```
 
-Install the Plug wallet Chrome extension and setup a local network as follows:
-
--   Network Name: Local
--   Host URL: http://localhost:8080/
--   Ledger canister id: {nns-ledger local canister id from dfx.json file}
-
-Select your local network in Plug.
-
--   Edit the "User Variables" section in projects/brain-matters/deploy.sh with any local principal IDs that should receive fake ICP and OGY tokens.
+Update user variables in projects/brain-matters/deploy.sh.
 
 Open new terminal:
 
 ```console
 bash projects/brain-matters/deploy.sh
 ```
+
+## Connect Plug wallet to local network
+
+Install the Plug wallet Chrome extension and setup a local network as follows:
+
+-   Network Name: Local
+-   Host URL: http://localhost:8080/
+-   Ledger canister id: {nns-ledger local canister id from dfx.json file}
 
 ## Update Git submodules
 
