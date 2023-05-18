@@ -2,33 +2,23 @@
 .vscode/**/*
 !.vscode/launch.json
 .idea/
-.vessel/
-
-# Github Access Token
-gittoken.key
-
-# dApps
-dapps-latest-build*
-dapps-latest-build.zip
 
 # Mac OSX temporary files
 .DS_Store
 **/.DS_Store
 
-# dfx temporary files
-.dfx/
-candid/
-
-# script output folders/files
+# build files
 **/__*/
-settings/
-
-# frontend code
+.dfx
+canister_ids.json
+vessel.dhall
+package-set.dhall
+.vessel
+mops.toml
+.mops
 node_modules
+settings
+candid
 
 # user secrets
 **/*.pem
-canister_ids.json
-
-projects/brain-matters/assets/collection/dapps/*
-projects/brain-matters-svg-layers/assets/collection/dapps/*

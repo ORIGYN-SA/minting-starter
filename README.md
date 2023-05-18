@@ -19,7 +19,14 @@ Each release of `minting-starter` is compatible with a specific version of the `
 
 -   Git
 -   Node 16 (higher versions will cause errors)
--   dfx 13.1
+-   dfx 0.14.0 or higher
+    ```
+    sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+    ```
+-   Mops CLI 0.12.3 or higher
+    ```
+    npm i -g ic-mops
+    ```
 -   Vessel
 
     Follow step 1 in these instructions: https://github.com/dfinity/vessel.
@@ -38,8 +45,6 @@ Run from the project root directory:
 
 ```console
 git submodule update --init --recursive
-vessel install
-npm i
 dfx start --clean
 ```
 
@@ -78,7 +83,7 @@ When creating an NFT collection, you can practice on your local computer before 
 To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [dfx.json](dfx.json).
 
 ```console
-DFX_VERSION=0.13.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+DFX_VERSION=0.14.0 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
 
 Open a separate terminal dedicated to running dfx. (Debug output from code running in the NFT canister will be displayed in this terminal.)

@@ -1,6 +1,7 @@
 #!/bin/bash
 # -e (exit on error)
 # -x (verbose debugging output)
+echo "current director: $(pwd)"
 
 IDENTITY="$1"
 echo "IDENTITY: \"$IDENTITY\""

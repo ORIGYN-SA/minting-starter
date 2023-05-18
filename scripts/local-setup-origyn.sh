@@ -2,6 +2,7 @@
 # -e (exit on error)
 # -x (verbose debugging output)
 set -e
+echo "current director: $(pwd)"
 source ./scripts/utils.sh
 
 
@@ -25,14 +26,6 @@ export ADMIN_ACCOUNT_ID=$(dfx ledger account-id)
 
 echo "ADMIN_PRINCIPAL: $ADMIN_PRINCIPAL"
 echo "ADMIN_ACCOUNT_ID: $ADMIN_ACCOUNT_ID"
-
-############################################################
-hdr "Verify Command Line Tools"
-############################################################
-
-echo "current director: $(pwd)"
-echo "node: $(node --version)"
-echo "python3: $(python3 --version)"
 
 ############################################################
 hdr "Deploy the OGY Mint WASM"
@@ -86,3 +79,63 @@ dfx canister call ogy_governance get_ledger_canister_id --query
 dfx canister call ogy_governance set_minting_canister_id "(principal \"$OGY_MINT_CANISTER_ID\")"
 dfx canister call ogy_governance get_minting_canister_id --query
 
+
+############################################################
+hdr "Ensure PHONE BOOK Canister"
+############################################################
+
+# Note: if ic network, the phone book canister is already created
+echo "Creating the PHONE BOOK canister on the local network."
+dfx canister create phonebook
+PHONE_BOOK_CANISTER_ID=$(dfx canister id phonebook)
+
+echo "PHONE_BOOK_CANISTER_ID: $PHONE_BOOK_CANISTER_ID"
+
+if [[ $PHONE_BOOK_CANISTER_ID == '' ]]; then
+  echo "The PHONE BOOK canister id could not be found."
+  exit 1
+fi
+
+show_elapsed_time
+
+
+############################################################
+hdr "Install PHONE BOOK vessel packages"
+############################################################
+
+rm -rf ./.vessel
+cp "phone_book/vessel.dhall" "vessel.dhall"
+cp "phone_book/package-set.dhall" "package-set.dhall"
+vessel install
+
+show_elapsed_time
+
+
+############################################################
+hdr "Build/Install PHONE BOOK Canister"
+############################################################
+
+echo "Building and installing the PHONE BOOK canister"
+dfx build phonebook
+yes yes | dfx canister install phonebook --mode=reinstall --argument "(principal \"$ADMIN_PRINCIPAL\")"
+
+show_elapsed_time
+
+
+############################################################
+hdr "Add PHONE BOOK Entry"
+############################################################
+
+# Note: The mainnet phone book canister is a well-known
+# canister id: ngrpb-5qaaa-aaaaj-adz7a-cai
+# Only admins can add a phonebook entry.
+
+NFT_CANISTER_ID=$(dfx canister id origyn_nft_reference)
+
+echo "Inserting phone book entry, mapping the collection id to the NFT canister id."
+dfx canister call phonebook insert "(\"$COLLECTION_ID\", vec {principal \"$NFT_CANISTER_ID\"})"
+
+echo "Listing phone book entries."
+dfx canister call phonebook list
+
+show_elapsed_time

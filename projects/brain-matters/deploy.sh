@@ -2,10 +2,13 @@
 # -e (exit on error)
 # -x (verbose debugging output)
 set -e
+echo $(pwd)
 source ./scripts/utils.sh
 
 echo ""
 date
+
+source ./scripts/cli-tools.sh
 
 ############################################################
 hdr "User Variables"

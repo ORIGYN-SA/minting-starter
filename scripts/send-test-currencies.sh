@@ -2,6 +2,7 @@
 # -e (exit on error)
 # -x (verbose debugging output)
 set -e
+echo "current director: $(pwd)"
 source ./scripts/utils.sh
 
 # This script can run independently of deploy.sh, but can not be run before deploy.sh
@@ -36,7 +37,9 @@ hdr "Send OGY to Test Accounts"
 for TEST_PRINCIPAL_ID in "${TEST_PRINCIPAL_IDS[@]}"; do
   echo $TEST_PRINCIPAL_ID
   TEST_ACCOUNT_ID=$(python3 scripts/principal_to_accountid.py "$TEST_PRINCIPAL_ID")
+  set -x
   dfx canister call ogy_ledger send_dfx "(record {memo=1: nat64; amount=record {e8s=${TEST_OGY_AMOUNT}00000000:nat64}; fee=record {e8s=200000:nat64}; to=\"${TEST_ACCOUNT_ID}\" })"
+  set +x
 done
 
 echo "$TEST_OGY_AMOUNT 💰 OGY (not real) has been sent to your test accounts on your local network's ledger."
@@ -63,7 +66,9 @@ fi
 
 for TEST_PRINCIPAL_ID in "${TEST_PRINCIPAL_IDS[@]}"; do
   TEST_ACCOUNT_ID=$(python3 scripts/principal_to_accountid.py "$TEST_PRINCIPAL_ID")
+  set -x
   dfx canister --network local call nns-ledger send_dfx "(record {memo=1: nat64; amount=record {e8s=${TEST_ICP_AMOUNT}00000000:nat64}; fee=record {e8s=10000:nat64}; to=\"${TEST_ACCOUNT_ID}\"})"
+  set +x
 done
 
 # Switch back to the original identity

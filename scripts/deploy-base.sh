@@ -2,6 +2,7 @@
 # -e (exit on error)
 # -x (verbose debugging output)
 set -e
+echo "current director: $(pwd)"
 source ./scripts/utils.sh
 
 echo ""
@@ -25,6 +26,14 @@ if [[ $IDENTITY_NAME == "" ]]; then
 else
   echo "IDENTITY_NAME is valid"
 fi
+
+show_elapsed_time
+
+############################################################
+hdr "Install npm packages"
+############################################################
+
+npm ci
 
 show_elapsed_time
 
@@ -91,7 +100,17 @@ show_elapsed_time
 
 
 ############################################################
-hdr "Install Node Modules"
+hdr "Copy mops.toml from origyn_nft to root"
+############################################################
+
+rm -rf ./.mops
+cp "origyn_nft/mops.toml" "mops.toml"
+
+show_elapsed_time
+
+
+############################################################
+hdr "Install Node Packages"
 ############################################################
 
 npm i
@@ -103,15 +122,14 @@ show_elapsed_time
 hdr "Install nns"
 ############################################################
 
-echo $(pwd)
-
-
 if grep -q '"nns-ledger"' .dfx/local/canister_ids.json; then
   echo "nns already installed"
 else
   dfx nns install
   dfx nns import
 fi
+
+show_elapsed_time
 
 
 if [[ $IC_NETWORK == 'local' ]]; then
@@ -127,20 +145,6 @@ if [[ $IC_NETWORK == 'local' ]]; then
   dfx identity --network $IC_NETWORK set-wallet $IDENTITY_WALLET || true
 
   show_elapsed_time
-
-  ############################################################
-  hdr "Install local Origyn Network Canisters"
-  ############################################################
-
-  echo "Calling ./scripts/local-setup-origyn.sh"
-  source ./scripts/local-setup-origyn.sh
-
-  ############################################################
-  hdr "Send fake OGY and ICP to Test Accounts"
-  ############################################################
-
-  echo "Calling ./scripts/send-test-currencies.sh"
-  source ./scripts/send-test-currencies.sh "$TEST_ICP_AMOUNT" "$TEST_OGY_AMOUNT" "${TEST_PRINCIPAL_IDS[@]}"
 fi
 
 
@@ -214,53 +218,25 @@ show_elapsed_time
 
 # show_elapsed_time
 
+
 if [[ $IC_NETWORK == 'local' ]]; then
-  ############################################################
-  hdr "Ensure PHONE BOOK Canister"
-  ############################################################
-
-  # Note: if ic network, the phone book canister is already created
-  echo "Creating the PHONE BOOK canister on the $IC_NETWORK network."
-  dfx canister --network $IC_NETWORK create phonebook
-  PHONE_BOOK_CANISTER_ID=$(dfx canister --network $IC_NETWORK id phonebook)
-
-  echo "PHONE_BOOK_CANISTER_ID: $PHONE_BOOK_CANISTER_ID"
-
-  if [[ $PHONE_BOOK_CANISTER_ID == '' ]]; then
-    echo "The PHONE BOOK canister id could not be found."
-    exit 1
-  fi
-
-  show_elapsed_time
-
 
   ############################################################
-  hdr "Build/Install PHONE BOOK Canister"
+  hdr "Install local Origyn Network Canisters"
   ############################################################
 
-  echo "Building and installing the PHONE BOOK canister"
-  dfx build --network $IC_NETWORK phonebook
-  yes yes | dfx canister --network $IC_NETWORK install phonebook --mode=reinstall --argument "(principal \"$ADMIN_PRINCIPAL\")"
-
-  show_elapsed_time
-
+  echo "Calling ./scripts/local-setup-origyn.sh"
+  source ./scripts/local-setup-origyn.sh
 
   ############################################################
-  hdr "Add PHONE BOOK Entry"
+  hdr "Send fake OGY and ICP to Test Accounts"
   ############################################################
 
-  # Note: The mainnet phone book canister is a well-known
-  # canister id: ngrpb-5qaaa-aaaaj-adz7a-cai
-  # Only admins can add a phonebook entry.
+  echo "Calling ./scripts/send-test-currencies.sh"
+  source ./scripts/send-test-currencies.sh "$TEST_ICP_AMOUNT" "$TEST_OGY_AMOUNT" "${TEST_PRINCIPAL_IDS[@]}"
+fi
 
-  echo "Inserting phone book entry, mapping the collection id to the NFT canister id."
-  dfx canister call phonebook insert "(\"$COLLECTION_ID\", vec {principal \"$NFT_CANISTER_ID\"})"
-
-  echo "Listing phone book entries."
-  dfx canister call phonebook list
-
-  show_elapsed_time
-
+if [[ $IC_NETWORK == 'local' ]]; then
 
   ############################################################
   hdr "Save local environment settings"
@@ -306,7 +282,7 @@ hdr "CSM - Config"
 
 echo "Building csm library"
 cd csm
-npm i
+npm ci
 npm run build
 cd ..
 
