@@ -104,8 +104,8 @@ hdr "Install PHONE BOOK vessel packages"
 ############################################################
 
 rm -rf ./.vessel
-cp "phone_book/vessel.dhall" "vessel.dhall"
-cp "phone_book/package-set.dhall" "package-set.dhall"
+cp "submodules/phone_book/vessel.dhall" "vessel.dhall"
+cp "submodules/phone_book/package-set.dhall" "package-set.dhall"
 vessel install
 
 show_elapsed_time

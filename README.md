@@ -214,7 +214,7 @@ If your NFT collection has large media files, you may want to test it locally wi
 Open a new dedicated terminal and run these two commands.
 
 ```console
-cd icx-proxy
+cd submodules/icx-proxy
 
 cargo run -- --debug -v --log "stderr" --replica "http://localhost:8080" --redis-url "" --phonebook-id "{phonebook canister id}"
 ```

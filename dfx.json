@@ -19,16 +19,16 @@
             "wasm": "origyn_network/ogy_mint/ogy_mint.wasm"
         },
         "origyn_nft_reference": {
-            "main": "origyn_nft/src/origyn_nft_reference/main.mo",
+            "main": "submodules/origyn_nft/src/origyn_nft_reference/main.mo",
             "type": "motoko"
         },
         "phonebook": {
             "dependencies": [],
-            "main": "phone_book/src/phone_book.mo",
+            "main": "submodules/phone_book/src/phone_book.mo",
             "type": "motoko"
         },
         "storage_canister_1": {
-            "main": "origyn_nft/src/origyn_storage_reference/main.mo",
+            "main": "submodules/origyn_nft/src/origyn_storage_reference/main.mo",
             "type": "motoko"
         }
     },

@@ -10,7 +10,6 @@
 # build files
 **/__*/
 .dfx
-canister_ids.json
 vessel.dhall
 package-set.dhall
 .vessel

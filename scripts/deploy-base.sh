@@ -104,7 +104,8 @@ hdr "Copy mops.toml from origyn_nft to root"
 ############################################################
 
 rm -rf ./.mops
-cp "origyn_nft/mops.toml" "mops.toml"
+echo "Copying mops.toml from submodules/origyn_nft to root"
+cp "submodules/origyn_nft/mops.toml" "mops.toml"
 
 show_elapsed_time
 
@@ -155,7 +156,7 @@ hdr "Ensure NFT Canister"
 
 if [[ $IC_NETWORK == 'local' ]]; then
   # Note: if ic network, the canister should already be created
-  # and the mainnet canister id should be in ./origyn_nft/canister_ids.json
+  # and the mainnet canister id should be in ./canister_ids.json
   echo "Creating the NFT canister on the $IC_NETWORK network."
   dfx canister --network $IC_NETWORK create origyn_nft_reference || true
 fi
@@ -246,8 +247,8 @@ if [[ $IC_NETWORK == 'local' ]]; then
   node ./scripts/update-env.js
   echo "Created 'settings/env.local'"
 
-  echo "Copying 'settings/env.local' to 'DApps/.env'"
-  cp "settings/.env.local" "DApps/.env"
+  echo "Copying 'settings/env.local' to 'submodules/DApps/.env'"
+  cp "settings/.env.local" "submodules/DApps/.env"
 
   echo "Use these files in other projects that need environment settings from this deployment."
 fi
@@ -256,13 +257,13 @@ fi
 hdr "Build DApps"
 ############################################################
 
-cd DApps
+cd submodules/DApps
 
 npm ci
 npm run bootstrap
 npm run build:all
 
-cd ..
+cd ../..
 
 show_elapsed_time
 
@@ -272,7 +273,7 @@ hdr "Copy DApps Build to Project's Collection Folder"
 ############################################################
 
 echo "Merging dapps to staged folder"
-rsync -av --include="*.html" --exclude="*" "$REPO_PATH/DApps/dist/" "$PROJECT_PATH/__temp/collection/dapps"
+rsync -av --include="*.html" --exclude="*" "$REPO_PATH/submodules/DApps/dist/" "$PROJECT_PATH/__temp/collection/dapps"
 
 show_elapsed_time
 
@@ -282,10 +283,10 @@ hdr "CSM - Config"
 ############################################################
 
 echo "Building csm library"
-cd csm
+cd submodules/csm
 npm ci
 npm run build
-cd ..
+cd ../..
 
 echo "Calling the csm config function to create NFT metadata"
 
