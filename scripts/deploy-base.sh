@@ -391,3 +391,29 @@ node --trace-uncaught ./scripts/csm-mint.js \
 echo $'\nMinting finished.\n'
 
 show_elapsed_time
+
+
+############################################################
+hdr "Summary"
+############################################################
+
+echo "Collection DApps\n"
+if [[ $IC_NETWORK == 'local' ]]; then
+  echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/vault
+  echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/marketplace
+  echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/data
+  echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/library
+  echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/ledger
+
+  echo "Continue running dfx to test your collection".
+  echo "When you are finished testing, enter CTRL+C to stop dfx."
+  echo "To start the local network again, run 'dfx start' without the 'clean' argument."
+else
+  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/vault
+  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/marketplace
+  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/data
+  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/library
+  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/ledger
+fi
+
+echo "\nDEPLOYMENT COMPLETE 🥳 "
