@@ -396,11 +396,12 @@ show_elapsed_time
 
 
 ############################################################
-hdr "Summary"
+hdr "Deployment Summary"
 ############################################################
 
 if [[ $IC_NETWORK == 'local' ]]; then
-  echo "Collection DApps on localhost:"
+  echo "Your dApps on localhost:"
+  echo ""
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/vault
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/marketplace
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/data
@@ -410,15 +411,18 @@ if [[ $IC_NETWORK == 'local' ]]; then
   echo "Continue running dfx to test your collection".
   echo "When you are finished testing, enter CTRL+C to stop dfx."
   echo "To start the local network again, run 'dfx start' without the 'clean' argument."
+  echo ""
+  echo "🚀 LOCAL DEPLOYMENT COMPLETED SUCCESSFULLY 🚀"
+  echo ""
 else
-  echo "Collection DApps on mainnet"
+  echo "Your dApps on mainnet:"
+  echo ""
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/vault
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/marketplace
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/data
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/library
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/ledger
+  echo ""
+  echo "🚀 MAINNET DEPLOYMENT COMPLETED SUCCESSFULLY 🚀"
+  echo ""
 fi
-
-echo ""
-echo "DEPLOYMENT COMPLETE 🥳 "
-echo ""
