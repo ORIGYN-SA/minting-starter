@@ -1,15 +1,15 @@
 [submodule "csm"]
-	path = csm
+	path = submodules/csm
 	url = https://github.com/ORIGYN-SA/csm
 [submodule "origyn_nft"]
-	path = origyn_nft
+	path = submodules/origyn_nft
 	url = https://github.com/ORIGYN-SA/origyn_nft
 [submodule "icx-proxy"]
-	path = icx-proxy
+	path = submodules/icx-proxy
 	url = https://github.com/ORIGYN-SA/icx-proxy
 [submodule "phone_book"]
-	path = phone_book
+	path = submodules/phone_book
 	url = https://github.com/ORIGYN-SA/phone_book
 [submodule "DApps"]
-	path = DApps
+	path = submodules/DApps
 	url = https://github.com/ORIGYN-SA/DApps
