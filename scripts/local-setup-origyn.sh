@@ -2,7 +2,7 @@
 # -e (exit on error)
 # -x (verbose debugging output)
 set -e
-echo "current director: $(pwd)"
+echo "current directory: $(pwd)"
 source ./scripts/utils.sh
 
 

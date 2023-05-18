@@ -2,7 +2,7 @@
 # -e (exit on error)
 # -x (verbose debugging output)
 set -e
-echo "current director: $(pwd)"
+echo "current directory: $(pwd)"
 source ./scripts/utils.sh
 
 echo ""
@@ -118,21 +118,21 @@ npm i
 show_elapsed_time
 
 
-############################################################
-hdr "Install nns"
-############################################################
-
-if grep -q '"nns-ledger"' .dfx/local/canister_ids.json; then
-  echo "nns already installed"
-else
-  dfx nns install
-  dfx nns import
-fi
-
-show_elapsed_time
-
-
 if [[ $IC_NETWORK == 'local' ]]; then
+
+  ############################################################
+  hdr "Install nns"
+  ############################################################
+
+  if grep -q '"nns-ledger"' .dfx/local/canister_ids.json; then
+    echo "nns already installed"
+  else
+    dfx nns install
+    dfx nns import
+  fi
+
+  show_elapsed_time
+
   ############################################################
   hdr "Create Identity Wallet"
   ############################################################
@@ -145,6 +145,7 @@ if [[ $IC_NETWORK == 'local' ]]; then
   dfx identity --network $IC_NETWORK set-wallet $IDENTITY_WALLET || true
 
   show_elapsed_time
+  
 fi
 
 
@@ -397,18 +398,19 @@ show_elapsed_time
 hdr "Summary"
 ############################################################
 
-echo "Collection DApps\n"
 if [[ $IC_NETWORK == 'local' ]]; then
+  echo "Collection DApps on localhost:"
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/vault
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/marketplace
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/data
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/library
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/ledger
-
+  echo ""
   echo "Continue running dfx to test your collection".
   echo "When you are finished testing, enter CTRL+C to stop dfx."
   echo "To start the local network again, run 'dfx start' without the 'clean' argument."
 else
+  echo "Collection DApps on mainnet"
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/vault
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/marketplace
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/data
@@ -416,4 +418,6 @@ else
   echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/ledger
 fi
 
-echo "\nDEPLOYMENT COMPLETE 🥳 "
+echo ""
+echo "DEPLOYMENT COMPLETE 🥳 "
+echo ""
