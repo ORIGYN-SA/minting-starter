@@ -412,6 +412,8 @@ if [[ $IC_NETWORK == 'local' ]]; then
   echo "When you are finished testing, enter CTRL+C to stop dfx."
   echo "To start the local network again, run 'dfx start' without the 'clean' argument."
   echo ""
+  echo "Please clear your browser's localStorage to clear out any mainnet canister IDs."
+  echo ""
   echo "🚀 LOCAL DEPLOYMENT COMPLETED SUCCESSFULLY 🚀"
   echo ""
 else
