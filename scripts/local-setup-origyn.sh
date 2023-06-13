@@ -12,8 +12,8 @@ ensure_wasm() {
       echo "found .dfx/local/canisters/$NAME/$NAME.wasm"
   else
     mkdir -p ".dfx/local/canisters/$NAME"
-    cp "origyn_network/$NAME/$NAME.wasm" ".dfx/local/canisters/$NAME/$NAME.wasm"
-    cp "origyn_network/$NAME/$NAME.did" ".dfx/local/canisters/$NAME/$NAME.did"
+    cp "network/$NAME/$NAME.wasm" ".dfx/local/canisters/$NAME/$NAME.wasm"
+    cp "network/$NAME/$NAME.did" ".dfx/local/canisters/$NAME/$NAME.did"
   fi
 }
 
@@ -31,9 +31,6 @@ echo "ADMIN_ACCOUNT_ID: $ADMIN_ACCOUNT_ID"
 hdr "Deploy the OGY Mint WASM"
 ############################################################
 
-gunzip -k --force origyn_network/ogy_mint/ogy_mint.wasm.gz
-
-
 dfx deploy ogy_mint
 dfx canister call ogy_mint set_admin "(principal \"$ADMIN_PRINCIPAL\")"
 
@@ -44,7 +41,7 @@ OGY_MINT_CANISTER_ACCOUNT=$(python3 scripts/principal_to_accountid.py $OGY_MINT_
 hdr "Deploy the OGY Ledger WASM"
 ############################################################
 
-gunzip -k --force origyn_network/ogy_ledger/ogy_ledger.wasm.gz
+gunzip -k --force network/ogy_ledger/ogy_ledger.wasm.gz
 
 dfx canister create ogy_ledger
 ensure_wasm "ogy_ledger"
@@ -53,9 +50,6 @@ dfx canister install ogy_ledger --argument "(record {minting_account = \"${OGY_M
 ############################################################
 hdr "Deploy the OGY Governance WASM"
 ############################################################
-
-gunzip -k --force origyn_network/ogy_governance/ogy_governance.wasm.gz
-
 
 dfx deploy ogy_governance
 dfx canister call ogy_governance initialize "(principal \"$ADMIN_PRINCIPAL\")"

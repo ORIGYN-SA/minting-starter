@@ -36,10 +36,13 @@ export ASSET_MAPPINGS="primary:primary*.png, preview:preview*.png, experience:ex
 export SOCIALS="discord:https%3A%2F%2Fdiscord.com%2F, distrikt:https%3A%2F%2Fdistrikt.app%2F, dscvr:https%3A%2F%2Fdscvr.one%2F, medium:https%3A%2F%2Fmedium.com%2F, twitter:https%3A%2F%2Ftwitter.com%2F"
 export SOULBOUND="false"
 
-# Replace these local account IDs with your own
-# You may want to copy your principal IDs from Plug wallet and other test wallets.
-# Note that the same identity may be used across multiple networks (local, ic, etc.).
-# The following IDs are examples and should be overwritten with your own.
+# Replace these sample local principal IDs with your own
+# - These are principal IDs from Plug wallet and other test wallets.
+#   - The same identity may be used across multiple networks (local, ic, etc.).
+# - To test with local Internet Identity accounts, you can login to the Vault dApp after
+#   the deploy script completes, and then copy the principal id from the Vault.
+#   - You can then send ICP and OGY to your accounts by running:
+#     bash ./scripts/send-test-currencies.sh 1000 60000 "your-principal-id-1" "your-principal-id-2"
 export TEST_PRINCIPAL_IDS=(
     "6i6da-t3dfv-vteyg-v5agl-tpgrm-63p4y-t5nmm-gi7nl-o72zu-jd3sc-7qe"
     "krjhg-qrin2-dbitb-mnkxf-yrjyt-wimro-t4a6r-pahtk-z34dp-t2gui-aqe"

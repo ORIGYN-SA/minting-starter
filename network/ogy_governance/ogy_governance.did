@@ -1,0 +1,318 @@
+type anon_class_75_1 = 
+ service {
+   __move_testtime: (int) -> (int);
+   back_up: (nat) ->
+    (variant {
+       data: GovernanceBackupChunk;
+       eof: GovernanceBackupChunk;
+     }) query;
+   burn_vesting_rewards: (principal) ->
+    (record {
+       quantity: nat64;
+       rewards: nat64;
+     });
+   change_owner: (principal, principal) -> (bool);
+   classify_staking_rewards: () -> (int);
+   current_log: () -> (vec LogEntry) query;
+   finalize_vote: (int) -> (GovProposalStable);
+   fix_lock: () -> (text);
+   getAccountID: () -> (text) query;
+   get_balances: () -> (Balances) query;
+   get_balances_admin: (principal) -> (Balances) query;
+   get_balances_staked_csv: () -> (text) query;
+   get_balances_unstaked: () -> (vec record {
+                                       principal;
+                                       nat64;
+                                     }) query;
+   get_balances_unstaked_csv: () -> (text) query;
+   get_balances_vesting_csv: () -> (text) query;
+   get_burned_transactions: (nat, nat) -> (vec nat64) query;
+   get_ledger_canister_id: () -> (principal) query;
+   get_liquidity: () -> (nat64) query;
+   get_metrics: () -> (Metrics) query;
+   get_minting_canister_id: () -> (principal) query;
+   get_proposal: (int) -> (opt GovProposalStable) query;
+   get_proposals: (nat, nat, opt ProposalFilter) ->
+    (vec GovProposalStable) query;
+   get_staked_tokens_by_principal: (principal) ->
+    (vec StakedTokensStable) query;
+   get_staked_tokens_principals: () -> (vec principal) query;
+   get_vested_tokens_principals: () -> (vec principal) query;
+   get_vesting_canister_id: () -> (principal) query;
+   get_vesting_tokens_by_principal: (principal) ->
+    (vec StakedTokensStable) query;
+   harvest_log: (nat) -> (vec vec LogEntry);
+   initialize: (principal) -> ();
+   kill_vesting: (principal, vec nat) ->
+    (record {
+       quantity: nat64;
+       rewards: nat64;
+     });
+   log_history_page: (nat) -> (vec LogEntry) query;
+   log_history_page_chunk: (nat, nat, nat) -> (vec LogEntry) query;
+   log_history_size: () -> (nat) query;
+   manage_stake: (StakeCommand) -> (ManageStakeResponse);
+   nuke_log: () -> ();
+   predict_vote: (int) -> (GovProposalStable) query;
+   redeem_deposit: (principal, opt vec nat8, nat64) -> (nat64);
+   redeem_rewards: (nat) -> (nat64);
+   retry_mint_and_clear: () -> (nat64);
+   run_staking_rewards: () -> (nat64);
+   set_admin: (principal) -> ();
+   set_data_harvester_id: (principal, nat) -> ();
+   set_default_follow: (opt record {
+                              principal;
+                              nat;
+                            }) -> ();
+   set_halt: (bool) -> ();
+   set_ledger_canister_id: (principal) -> ();
+   set_log_harvester_id: (principal) -> ();
+   set_maintenance: (principal) -> ();
+   set_minting_canister_id: (principal) -> ();
+   set_ogy_fee: (nat64) -> ();
+   set_reporter: (principal) -> ();
+   set_test_time: (int) -> ();
+   set_time_mode: (TimeMode) -> ();
+   set_vesting_canister_id: (principal) -> ();
+   stake_tokens: (nat64, int) -> (nat);
+   staked_tokens_seed: (principal, StakedTokensStable) -> (nat);
+   sync_metrics: (text) -> ();
+   unstake_tokens: (nat) -> (nat64);
+   update_inflation_rate: () -> (UpdateInflationResponse);
+   vest_stake: (principal, nat) -> (nat);
+   wallet_receive: () -> (nat);
+   wallet_send: (nat, principal) -> (nat);
+   withdraw_unlocked_tokens: (AccountIdentifier, nat64) -> (nat64);
+ };
+type VarType = 
+ record {
+   key: text;
+   val:
+    variant {
+      Blob: blob;
+      Bool: bool;
+      Class: vec VarType;
+      Float: float64;
+      Int: int;
+      Nat: nat;
+      Nat32: nat32;
+      Nat64: nat64;
+      Nat8: nat8;
+      Opt: opt VarType;
+      Principal: principal;
+      Text: text;
+      Variant: record {
+                 text;
+                 opt VarType;
+               };
+    };
+ };
+type UpdateInflationResponse = 
+ record {
+   inflation_rate: float64;
+   last_inflation_rate_update: int;
+ };
+type TimeMode = 
+ variant {
+   standard;
+   test;
+ };
+type StakedTokensStable__1 = 
+ record {
+   classification: float64;
+   createdDate: int;
+   dissolving: bool;
+   endLockTime: int;
+   follow: opt record {
+                 principal;
+                 nat;
+               };
+   last_classification_time: int;
+   last_vote: int;
+   quantity: nat64;
+   redeemedRewards: vec StakedTokensRewardsEntry;
+   rewards: vec StakedTokensRewardsEntry;
+   unlockedDate: int;
+   unlockedQuantity: nat64;
+   votes: vec record {
+                int;
+                bool;
+              };
+ };
+type StakedTokensStable = 
+ record {
+   classification: float64;
+   createdDate: int;
+   dissolving: bool;
+   endLockTime: int;
+   follow: opt record {
+                 principal;
+                 nat;
+               };
+   last_classification_time: int;
+   last_vote: int;
+   quantity: nat64;
+   redeemedRewards: vec StakedTokensRewardsEntry;
+   rewards: vec StakedTokensRewardsEntry;
+   unlockedDate: int;
+   unlockedQuantity: nat64;
+   votes: vec record {
+                int;
+                bool;
+              };
+ };
+type StakedTokensRewardsEntry = 
+ record {
+   amount: nat64;
+   date: int;
+ };
+type StakeCommand = 
+ record {
+   command:
+    variant {
+      follow: opt record {
+                    principal;
+                    nat;
+                  };
+      proposal: record {
+                  command_type: GovProposalType;
+                  expires_length: int;
+                };
+      updateDissolve: bool;
+      updateEndLockTime: int;
+      vote: record {
+              proposal: int;
+              vote: bool;
+            };
+    };
+   index: nat;
+   stake_type: variant {
+                 staked;
+                 vesting;
+               };
+ };
+type ProposalFilter = variant {open;};
+type Metrics = 
+ record {
+   last_classification_time: int;
+   last_reward_rate_update: int;
+   last_reward_time: int;
+   ogy_fee: nat64;
+   ogy_to_xdr: float64;
+   reward_rate: float64;
+   total_claimable_rewards: nat64;
+   total_dissolving: nat64;
+   total_failed_proposal_forfeit: nat64;
+   total_in_governance: nat64;
+   total_locked_but_not_staked: nat64;
+   total_staked: nat64;
+   total_unclaimed_rewards: nat64;
+   total_unstaked: nat64;
+   total_vesting: nat64;
+ };
+type ManageStakeResponse = 
+ variant {
+   Proposal: int;
+   Result: bool;
+ };
+type LogEntry = 
+ record {
+   caller: opt principal;
+   data: vec VarType;
+   event: text;
+   timestamp: int;
+ };
+type GovernanceBackupChunk = 
+ record {
+   failed_mint: vec record {
+                      int;
+                      nat64;
+                    };
+   failed_send: vec record {
+                      int;
+                      principal;
+                      nat64;
+                      nat64;
+                      text;
+                    };
+   proposals: vec record {
+                    int;
+                    GovProposalStable__1;
+                  };
+   redeemed_blocks: vec nat64;
+   staked: vec record {
+                 principal;
+                 nat;
+                 StakedTokensStable__1;
+               };
+   unstaked_balance: vec record {
+                           principal;
+                           nat64;
+                         };
+   vesting: vec record {
+                  principal;
+                  nat;
+                  StakedTokensStable__1;
+                };
+ };
+type GovProposalType = 
+ variant {
+   CanisterOversight: principal;
+   Motion: record {
+             "text": text;
+             url: text;
+           };
+   SetXDRRatio: float64;
+ };
+type GovProposalStable__1 = 
+ record {
+   against_votes: nat64;
+   command_type: GovProposalType;
+   expires: int;
+   for_votes: nat64;
+   id: int;
+   proposer: record {
+               principal;
+               nat;
+             };
+   result: opt variant {
+                 Failed;
+                 NoQuorum;
+                 Passed;
+               };
+   risked_ogy: nat64;
+   voting_power: nat64;
+ };
+type GovProposalStable = 
+ record {
+   against_votes: nat64;
+   command_type: GovProposalType;
+   expires: int;
+   for_votes: nat64;
+   id: int;
+   proposer: record {
+               principal;
+               nat;
+             };
+   result: opt variant {
+                 Failed;
+                 NoQuorum;
+                 Passed;
+               };
+   risked_ogy: nat64;
+   voting_power: nat64;
+ };
+type Balances = 
+ record {
+   staked: vec record {
+                 nat;
+                 StakedTokensStable__1;
+               };
+   unstaked: nat64;
+   vesting: vec record {
+                  nat;
+                  StakedTokensStable__1;
+                };
+ };
+type AccountIdentifier = text;
+service : () -> anon_class_75_1

@@ -1,0 +1,16 @@
+type PhoneBook = 
+ service {
+   delete: (Name) -> (opt Canisters);
+   insert: (Name, Canisters) -> (opt Canisters);
+   list: (opt nat, opt nat) -> (vec record {
+                                      Name;
+                                      Canisters;
+                                    });
+   lookup: (Name) -> (opt vec Canister) query;
+   reverse_lookup: (Canister) -> (Name) query;
+   update_admin: (Canisters) -> (Canisters);
+ };
+type Name = text;
+type Canisters = vec Canister;
+type Canister = principal;
+service : (principal) -> PhoneBook

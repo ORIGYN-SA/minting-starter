@@ -125,13 +125,8 @@ if [[ $IC_NETWORK == 'local' ]]; then
   hdr "Install nns"
   ############################################################
 
-  if grep -q '"nns-ledger"' .dfx/local/canister_ids.json; then
-    echo "nns already installed"
-  else
-    dfx nns install
-    dfx nns import
-  fi
-
+  dfx nns install    
+  
   show_elapsed_time
 
   ############################################################
@@ -146,7 +141,6 @@ if [[ $IC_NETWORK == 'local' ]]; then
   dfx identity --network $IC_NETWORK set-wallet $IDENTITY_WALLET || true
 
   show_elapsed_time
-  
 fi
 
 
@@ -236,12 +230,9 @@ if [[ $IC_NETWORK == 'local' ]]; then
 
   echo "Calling ./scripts/send-test-currencies.sh"
   source ./scripts/send-test-currencies.sh "$TEST_ICP_AMOUNT" "$TEST_OGY_AMOUNT" "${TEST_PRINCIPAL_IDS[@]}"
-fi
-
-if [[ $IC_NETWORK == 'local' ]]; then
 
   ############################################################
-  hdr "Save local environment settings"
+  hdr "Save Local Environment Settings"
   ############################################################
 
   node ./scripts/update-env.js
@@ -408,11 +399,24 @@ if [[ $IC_NETWORK == 'local' ]]; then
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/library
   echo http://${NFT_CANISTER_ID}.localhost:8080/collection/-/ledger
   echo ""
+  echo "---------------------------------------------------------------------------------"
+  echo ""
   echo "Continue running dfx to test your collection".
   echo "When you are finished testing, enter CTRL+C to stop dfx."
   echo "To start the local network again, run 'dfx start' without the 'clean' argument."
   echo ""
-  echo "Please clear your browser's localStorage to clear out any mainnet canister IDs."
+  echo "---------------------------------------------------------------------------------"
+  echo ""
+  echo "To test with local Internet Identity accounts, browse to the Vault dApp, click \"Connect\", create a new identity, and then copy the principal ID in Vault."
+  echo "You can then send ICP and OGY to your accounts by running this command:"
+  echo ""
+  echo "  bash ./scripts/send-test-currencies.sh 1000 60000 \"your-principal-id-1\" \"your-principal-id-2\""
+  echo ""
+  echo "To change the NFT collection owner to one of your test principals, run this command:"
+  echo ""
+  echo "  dfx canister call origyn_nft_reference collection_update_nft_origyn \"(variant {UpdateOwner=principal \\\"your-principal-id\\\"})\""
+  echo ""
+  echo "---------------------------------------------------------------------------------"
   echo ""
   echo "🚀 LOCAL DEPLOYMENT COMPLETED SUCCESSFULLY 🚀"
   echo ""
