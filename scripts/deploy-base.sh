@@ -285,7 +285,9 @@ node --trace-uncaught ./scripts/csm-config.js \
 --folderPath "$PROJECT_PATH/__temp" \
 --nftCanisterId "$NFT_CANISTER_ID" \
 --creatorPrincipal "$ADMIN_PRINCIPAL" \
---displayName "$DISPLAY_NAME" \
+--collectionName "$COLLECTION_NAME" \
+--collectionSymbol "$COLLECTION_SYMBOL" \
+--collectionLogoPath "$COLLECTION_LOGO_PATH" \
 --description "$DESCRIPTION" \
 --collectionId "$COLLECTION_ID" \
 --assetMappings "$ASSET_MAPPINGS" \

@@ -11,6 +11,25 @@ date
 source ./scripts/cli-tools.sh
 
 ############################################################
+hdr "Dynamic Variables"
+############################################################
+
+export PROJECT_PATH="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+export REPO_PATH="$(cd -P -- "$(dirname -- "$PROJECT_PATH/../../..")" && pwd -P)"
+export SCRIPTS_PATH="$REPO_PATH/scripts"
+export TOKEN_IDS_PATH="$PROJECT_PATH/token-ids.json"
+export IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
+
+echo "Present working directory: $(pwd)"
+echo "REPO_PATH: $REPO_PATH"
+echo "PROJECT_PATH: $PROJECT_PATH"
+echo "SCRIPTS_PATH: $SCRIPTS_PATH"
+echo "TOKEN_IDS_PATH: $TOKEN_IDS_PATH"
+echo "IC_NETWORK: $IC_NETWORK"
+echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
+
+
+############################################################
 hdr "User Variables"
 ############################################################
 
@@ -26,7 +45,9 @@ export IDENTITY_NAME="local_deployer"
 
 # NFT collection settings
 export COLLECTION_ID="brain-matters"
-export DISPLAY_NAME="Brain Matters"
+export COLLECTION_NAME="Brain Matters"
+export COLLECTION_SYMBOL="BM"
+export COLLECTION_LOGO_PATH="${PROJECT_PATH}/assets/nfts/17/preview17.png"
 export DESCRIPTION="A collection of 20 unique Brain Matters NFTs"
 export TOKEN_COUNT=20
 export TOKEN_WORD_COUNT=3 # number of words in a token id, for example: pons-meninges-thalamus
@@ -57,32 +78,15 @@ export TEST_OGY_AMOUNT=600000
 echo "IC_NETWORK: $IC_NETWORK"
 echo "IDENTITY_NAME: $IDENTITY_NAME"
 echo "COLLECTION_ID: $COLLECTION_ID"
-echo "DISPLAY_NAME: $DISPLAY_NAME"
+echo "COLLECTION_NAME: $COLLECTION_NAME"
+echo "COLLECTION_SYMBOL: $COLLECTION_SYMBOL"
+echo "COLLECTION_LOGO_PATH: $COLLECTION_LOGO_PATH"
 echo "DESCRIPTION: $DESCRIPTION"
 echo "TOKEN_WORDS: $TOKEN_WORDS"
 echo "ASSET_MAPPINGS: $ASSET_MAPPINGS"
 echo "SOULBOUND: $SOULBOUND"
 
-
 ############################################################
-hdr "Dynamic Variables"
-############################################################
-
-export PROJECT_PATH="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
-export REPO_PATH="$(cd -P -- "$(dirname -- "$PROJECT_PATH/../../..")" && pwd -P)"
-export SCRIPTS_PATH="$REPO_PATH/scripts"
-export TOKEN_IDS_PATH="$PROJECT_PATH/token-ids.json"
-export IDENTITY_PEM_FILE_PATH="${PROJECT_PATH}/${IDENTITY_NAME}.pem"
-
-echo "Present working directory: $(pwd)"
-echo "REPO_PATH: $REPO_PATH"
-echo "PROJECT_PATH: $PROJECT_PATH"
-echo "SCRIPTS_PATH: $SCRIPTS_PATH"
-echo "TOKEN_IDS_PATH: $TOKEN_IDS_PATH"
-echo "IC_NETWORK: $IC_NETWORK"
-echo "IDENTITY_PEM_FILE_PATH: $IDENTITY_PEM_FILE_PATH"
-############################################################
-
 
 # This is the base script that deploys the canisters and creates the NFT collection
 source ./scripts/deploy-base.sh
