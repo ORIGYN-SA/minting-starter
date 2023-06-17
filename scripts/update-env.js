@@ -67,9 +67,12 @@ if (canisters.ogy_ledger?.local) {
 if (canisters.phonebook?.local) {
     local.push(`PHONE_BOOK_CANISTER_ID="${canisters.phonebook.local}"`);
 }
-if (dfx.canisters?.['nns-internet-identity']?.remote?.id?.local) {
+if (dfx.canisters?.['internet_identity']?.remote?.id?.local) {
     local.push(
-        `II_PROVIDER="http://${dfx.canisters?.['nns-internet-identity']?.remote?.id?.local}.localhost:8080/"`
+        `INTERNET_IDENTITY_CANISTER_ID="${dfx.canisters?.['internet_identity'].remote.id.local}"`
+    );
+    local.push(
+        `II_PROVIDER="http://${dfx.canisters?.['internet_identity'].remote.id.local}.localhost:8080/"`
     );
 }
 appendDevServerSettings(

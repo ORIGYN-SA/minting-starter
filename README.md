@@ -10,7 +10,7 @@ Each release of `minting-starter` is compatible with a specific version of the `
 
 | Minting Starter Version | Origyn NFT Version |
 | ----------------------- | ------------------ |
-| 1.2.0 - 1.2.2           | 0.1.4              |
+| 1.2.0 - 1.3.1           | 0.1.4              |
 | 1.1.4                   | 0.1.3              |
 
 # Getting Started
@@ -19,9 +19,9 @@ Each release of `minting-starter` is compatible with a specific version of the `
 
 -   Git
 -   Node 16 (higher versions will cause errors)
--   dfx 0.14.0 or higher
+-   dfx 0.14.1 or higher
     ```
-    sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+    DFX_VERSION=0.14.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
     ```
 -   Mops CLI 0.12.3 or higher
     ```
@@ -56,14 +56,6 @@ Open new terminal:
 bash projects/brain-matters/deploy.sh
 ```
 
-## Connect Plug wallet to local network
-
-Install the Plug wallet Chrome extension and setup a local network as follows:
-
--   Network Name: Local
--   Host URL: http://localhost:8080/
--   Ledger canister id: {nns-ledger local canister id from dfx.json file}
-
 ## Update Git submodules
 
 Submodules are other Git repositories cloned into subfolders that are needed for this project to run correctly.
@@ -76,6 +68,24 @@ Once you have confirmed access, run the following command to clone the submodule
 git submodule update --init --recursive
 ```
 
+## Connect Plug wallet to local network
+
+-   Install the Plug wallet Chrome extension and setup a local network as follows:
+
+    -   Network Name: Local
+    -   Host URL: http://localhost:8080/
+    -   Ledger canister id: {nns-ledger local canister id from dfx.json file}
+
+-   Select the local network.
+
+-   Create a new test account, or use an existing account.
+
+-   Export the pem file for your account.
+
+-   Import the pem file with `dfx identity import test ./path/to/test.pem`. (In this example, `test` is the identity name.)
+
+-   Update the `IDENTITY_NAME` variable in `projects/brain-matters/deploy.sh` with the identity name.
+
 ## dfx Command Line Tool
 
 When creating an NFT collection, you can practice on your local computer before attempting to stage and mint your collection on the Internet Computer's mainnet.
@@ -83,16 +93,8 @@ When creating an NFT collection, you can practice on your local computer before 
 To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [dfx.json](dfx.json).
 
 ```console
-DFX_VERSION=0.14.0 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+DFX_VERSION=0.14.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
-
-Open a separate terminal dedicated to running dfx. (Debug output from code running in the NFT canister will be displayed in this terminal.)
-
-```console
-dfx start --clean
-```
-
-When you no longer need dfx running, press CTRL+c to stop it. (It will need to stay running for the rest of these instructions.)
 
 ## Required Folder Structure
 
@@ -122,38 +124,66 @@ The csm library expects this folder structure when scanning for files.
             starting at the root of the collection folder.
         -   Example: [projects/brain-matters/assets/nfts/0/collection.json](projects/brain-matters/assets/nfts/0/collection.json).
 
-## Deploy the Sample NFT Collection
+## Deploying Locally
 
-To generate metadata from local files, stage (upload) the files to an NFT canister and mint the NFTs, run one of the following scripts (while dfx is still running):
+### Start dfx
 
-**Simple example with only images**
+Open a separate terminal dedicated to running dfx. (Debug output from code running in the NFT canister will be displayed in this terminal.)
+
+```console
+dfx start --clean
+```
+
+When you no longer need dfx running, press CTRL+c to stop it. (It will need to stay running for the rest of these instructions.)
+
+To restart dfx later again without redeploying a fresh local network:
+
+```
+dfx start
+```
+
+### Deploy Script
+
+To generate metadata from local files, stage (upload) the files to an NFT canister and mint the NFTs, run the following script (while dfx is still running):
+
+**Example with images, an HTML experience page, a pre-config script and a post-config script**
 
 ```console
 bash ./projects/brain-matters/deploy.sh
 ```
 
-**Full example with an HTML experience page, a pre-config script and a post-config script**
+If the script runs successfully:
 
-```console
-bash ./projects/brain-matters/deploy.sh
-```
-
-If the script runs successfully, it will create a new "\_\_staged" folder in the same folder as the "deploy.sh" script.
+-   The console will display direct links to each default dApp along with additional instructions.
+-   Fake ICP and OGY will be sent to the principals you listed in the `User Variables` section of the deploy script.
+-   It creates a new "\_\_staged" folder in the same folder as the "deploy.sh" script containing the final assets that are uploaded to your NFT canister.
+-   It creates `settings/.env` and `settings/.env.local` files. For local deployments the contents of `.env.local` are copied to `submodules/DApps`.
+    -   While dfx is running, you can open a new terminal in the DApps folder and run `npm run start:{dapp name}` to debug code with webpack dev server.
+        (Be sure to follow the quick start in the readme first.)
 
 To verify your deployment, see the "Testing Deployments" section below.
 
-## Sample Command Line Output
+### Send Fake ICP and OGY to Additional Test Principals
+
+-   See instructions in `scripts/send-test-currencies.sh`.
+
+### Testing with Internet Identity
+
+Internet Identity principals are different for each browser origin (domain + port). Since Origyn NFT canisters can be accessed with multiple browser origins,
+your principal will change with each URL variation.
+
+Also, since the local test principals are derived from accounts created in the local Internet Identity canister deployed by `dfx`, those accounts will be lost each
+time you re-deploy locally.
+
+For the reasons above, you can not deploy locally or to mainnet with an Internet Identity principal as the initial collection owner.
+
+A Plug wallet identity is the best option since Plug provides support for local networks. (See "Connect Plug wallet to local network" above.)
+
+### Sample Command Line Output
 
 When deploying an NFT collection the progress of the deploy script will be sent to the terminal.
 
 Here is [sample terminal output](./docs/terminal-deploy-script-localhost.md) for a successful mint on localhost.
-
-## Creating Your Own NFT Collection
-
--   Fork this GitHub repository.
--   Replace the files in the assets folders with your own files.
--   Find the "Set User Variables" section in the deploy.sh script and change the values to your own.
--   Follow the same instructions above to run the deploy.sh script and test locally.
 
 ## Deploying to the Internet Computer Mainnet
 
@@ -165,6 +195,13 @@ Here is [sample terminal output](./docs/terminal-deploy-script-localhost.md) for
 -   Run the deploy.sh script.
 
 Here is [sample terminal output](./docs/terminal-deploy-script-mainnet.md) for a successful mint on mainnet.
+
+## Creating Your Own NFT Collection
+
+-   Fork this GitHub repository.
+-   Replace the files in the assets folders with your own files.
+-   Find the "User Variables" section in the deploy.sh script and change the values to your own.
+-   Follow the same instructions above to run the deploy.sh script and test locally.
 
 ---
 

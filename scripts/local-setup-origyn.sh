@@ -12,7 +12,7 @@ ensure_wasm() {
       echo "found .dfx/local/canisters/$NAME/$NAME.wasm"
   else
     mkdir -p ".dfx/local/canisters/$NAME"
-    cp "network/$NAME/$NAME.wasm" ".dfx/local/canisters/$NAME/$NAME.wasm"
+    mv "network/$NAME/$NAME.wasm" ".dfx/local/canisters/$NAME/$NAME.wasm"
     cp "network/$NAME/$NAME.did" ".dfx/local/canisters/$NAME/$NAME.did"
   fi
 }

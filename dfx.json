@@ -1,5 +1,16 @@
 {
     "canisters": {
+        "internet_identity": {
+            "build": "",
+            "candid": "candid/internet_identity.did",
+            "remote": {
+                "id": {
+                    "local": "qhbym-qaaaa-aaaaa-aaafq-cai"
+                }
+            },
+            "type": "custom",
+            "wasm": ""
+        },
         "nns-cycles-minting": {
             "build": "",
             "candid": "candid/nns-cycles-minting.did",
@@ -7,6 +18,17 @@
                 "id": {
                     "ic": "rkp4c-7iaaa-aaaaa-aaaca-cai",
                     "local": "rkp4c-7iaaa-aaaaa-aaaca-cai"
+                }
+            },
+            "type": "custom",
+            "wasm": ""
+        },
+        "nns-dapp": {
+            "build": "",
+            "candid": "candid/nns-dapp.did",
+            "remote": {
+                "id": {
+                    "local": "qsgjb-riaaa-aaaaa-aaaga-cai"
                 }
             },
             "type": "custom",
@@ -96,18 +118,6 @@
             "type": "custom",
             "wasm": ""
         },
-        "nns-internet-identity": {
-            "build": "",
-            "candid": "network/nns_internet_identity/nns_internet_identity.did",
-            "remote": {
-                "id": {
-                    "ic": "qhbym-qaaaa-aaaaa-aaafq-cai",
-                    "local": "qhbym-qaaaa-aaaaa-aaafq-cai"
-                }
-            },
-            "type": "custom",
-            "wasm": ""
-        },
         "ogy_governance": {
             "build": [],
             "candid": "network/ogy_governance/ogy_governance.did",
@@ -118,7 +128,7 @@
             "build": [],
             "candid": "network/ogy_ledger/ogy_ledger.did",
             "type": "custom",
-            "wasm": "network/ogy_ledger/ogy_ledger.wasm.gz"
+            "wasm": "network/ogy_ledger/ogy_ledger.wasm"
         },
         "ogy_mint": {
             "build": [],
