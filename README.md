@@ -43,7 +43,7 @@ Each release of `minting-starter` is compatible with a specific version of the `
 
 Run from the project root directory:
 
-```console
+```
 git submodule update --init --recursive
 dfx start --clean
 ```
@@ -52,11 +52,11 @@ Update user variables in projects/brain-matters/deploy.sh.
 
 Open new terminal:
 
-```console
+```
 bash projects/brain-matters/deploy.sh
 ```
 
-## Update Git submodules
+## Update Git Submodules
 
 Submodules are other Git repositories cloned into subfolders that are needed for this project to run correctly.
 
@@ -64,11 +64,21 @@ First ensure that you have read access to all the GithHub repositories listed in
 
 Once you have confirmed access, run the following command to clone the submodules:
 
-```console
+```
 git submodule update --init --recursive
 ```
 
-## Connect Plug wallet to local network
+## `dfx` Command Line Tool
+
+When creating an NFT collection, you can practice on your local computer before attempting to stage and mint your collection on the Internet Computer's mainnet.
+
+To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [dfx.json](dfx.json).
+
+```
+DFX_VERSION=0.14.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+```
+
+## Connect Plug Wallet to Local Network
 
 -   Install the Plug wallet Chrome extension and setup a local network as follows:
 
@@ -85,16 +95,6 @@ git submodule update --init --recursive
 -   Import the pem file with `dfx identity import test ./path/to/test.pem`. (In this example, `test` is the identity name.)
 
 -   Update the `IDENTITY_NAME` variable in `projects/brain-matters/deploy.sh` with the identity name.
-
-## dfx Command Line Tool
-
-When creating an NFT collection, you can practice on your local computer before attempting to stage and mint your collection on the Internet Computer's mainnet.
-
-To run a local instance of the Internet Computer, you will first need to install the dfx command line tool. The version should match the version specified for the "dfx" attribute in [dfx.json](dfx.json).
-
-```console
-DFX_VERSION=0.14.1 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
-```
 
 ## Required Folder Structure
 
@@ -126,17 +126,17 @@ The csm library expects this folder structure when scanning for files.
 
 ## Deploying Locally
 
-### Start dfx
+### Start `dfx`
 
 Open a separate terminal dedicated to running dfx. (Debug output from code running in the NFT canister will be displayed in this terminal.)
 
-```console
+```
 dfx start --clean
 ```
 
-When you no longer need dfx running, press CTRL+c to stop it. (It will need to stay running for the rest of these instructions.)
+Ensure dfx continues to run as you proceed with the following instructions. If you no longer need dfx, you can stop it by pressing CTRL+c.
 
-To restart dfx later again without redeploying a fresh local network:
+To restart dfx later again without redeploying a fresh local network, omit the `--clean` argument:
 
 ```
 dfx start
@@ -148,7 +148,7 @@ To generate metadata from local files, stage (upload) the files to an NFT canist
 
 **Example with images, an HTML experience page, a pre-config script and a post-config script**
 
-```console
+```
 bash ./projects/brain-matters/deploy.sh
 ```
 
@@ -158,8 +158,7 @@ If the script runs successfully:
 -   Fake ICP and OGY will be sent to the principals you listed in the `User Variables` section of the deploy script.
 -   It creates a new "\_\_staged" folder in the same folder as the "deploy.sh" script containing the final assets that are uploaded to your NFT canister.
 -   It creates `settings/.env` and `settings/.env.local` files. For local deployments the contents of `.env.local` are copied to `submodules/DApps`.
-    -   While dfx is running, you can open a new terminal in the DApps folder and run `npm run start:{dapp name}` to debug code with webpack dev server.
-        (Be sure to follow the quick start in the readme first.)
+    -   While dfx is running, if you wish to debug code with the webpack dev server, open a new terminal in the `submodules/DApps` folder and execute the command `npm run start:{dapp name}`. (Be sure to follow the quick start in `submodules/DApps/README.md` first.)
 
 To verify your deployment, see the "Testing Deployments" section below.
 
@@ -250,7 +249,7 @@ If your NFT collection has large media files, you may want to test it locally wi
 
 Open a new dedicated terminal and run these two commands.
 
-```console
+```
 cd submodules/icx-proxy
 
 cargo run -- --debug -v --log "stderr" --replica "http://localhost:8080" --redis-url "" --phonebook-id "{phonebook canister id}"
@@ -262,15 +261,23 @@ Leave the proxy running while you are testing. To stop it, press CTRL+c.
 
 ## Testing Deployments
 
-To verify that your NFT collection was deployed correctly, you can view your on-chain resources with the root URL for your configuration, followed by the relative URL of a resource:
+To verify that your NFT collection was deployed correctly, you can view your on-chain resources with the `canister URL` (root-relative for direct URLs or pseudo root-relative for proxy URLs), followed by the `canister-relative URL` of a resource:
 
-### Root URLs
+These terms originate from the `url-parser` module in [ORIGYN-SA/perpetualos-context](https://github.com/ORIGYN-SA/perpetualos-context).
+
+### Canister URLs
 
 NFTs and collections can be access in three ways.
 
 -   Direct: HTTP requests are sent directly to the canister using the canister id. This option is fully decentralized, so it's always online, even if the proxy can't be reached. However, large files take longer to download and video streaming may be slow, resulting in a poor user experience.
 -   Proxy: HTTP requests are sent to a reverse-proxy which requests files from the canister and caches them so they can be served to the user quickly and videso can stream smoothly.
 -   Proxy + Phonebook: The canister id in the URL can be replaced with a user friendly collection id. The reverse-proxy will lookup the canister id in the phonebook canister. The URL will only work after a phonebook entry has been created mapping the collection id to the canister id.
+
+### Canister-Relative URLs
+
+All staged files will have a `location` attribute in the generated metadata file here: [projects/brain-matters/\_\_staged/metadata.json](projects/brain-matters/__staged/metadata.json).
+
+The `location` is a `canister-relative URL` and should work when appended to the `canister URL`.
 
 **Localhost**
 
@@ -288,19 +295,11 @@ The canister id will be located here: [canister_ids.json](canister_ids.json) at 
 -   Proxy: https://prptl.io/-/{canister-id}/
 -   Proxy + Phonebook: https://prptl.io/-/{collection-id}/
 
-### Relative URLs
-
-Collection Info: \/collection\/info
-
-All staged files will have "location" attribute in the generated metadata file here: [projects/brain-matters/\_\_staged/metadata.json](projects/brain-matters/__staged/metadata.json).
-
-The location is the relative path and should work when combined with the root URL.
-
 ### Example URLs
 
-Combine a root URL and a root-relative URL to get a full example of an absolute URL.
+Combine a `canister URL` and a `canister-relative URL` to get a full example of an absolute URL.
 
-**Root URLs**
+**Canister URLs**
 
 -   Canister ID
 
@@ -322,7 +321,7 @@ Combine a root URL and a root-relative URL to get a full example of an absolute 
     -   Mainnet
         -   https://prptl.io/-/bm
 
-**Root-Relative URLs**
+**Canister-Relative URLs**
 
 -   Collection Level
 
