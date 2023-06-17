@@ -1,6 +1,9 @@
 import fs from 'fs';
 
-const canisters = JSON.parse(fs.readFileSync('.dfx/local/canister_ids.json'));
+const localCanisters = JSON.parse(
+    fs.readFileSync('.dfx/local/canister_ids.json')
+);
+const mainnetCanisters = JSON.parse(fs.readFileSync('./canister_ids.json'));
 const dfx = JSON.parse(fs.readFileSync('dfx.json'));
 
 let mainnet = [];
@@ -50,7 +53,11 @@ mainnet.push(`ICP_LEDGER_CANISTER_ID="ryjl3-tyaaa-aaaaa-aaaba-cai"`);
 mainnet.push(`OGY_LEDGER_CANISTER_ID="jwcfb-hyaaa-aaaaj-aac4q-cai"`);
 mainnet.push(`PHONE_BOOK_CANISTER_ID="ngrpb-5qaaa-aaaaj-adz7a-cai"`);
 mainnet.push(`II_PROVIDER="https://identity.ic0.app/"`);
-appendDevServerSettings(mainnet, 9000, '"" # your mainnet canister id');
+appendDevServerSettings(
+    mainnet,
+    9000,
+    `"${mainnetCanisters.origyn_nft_reference?.ic}"`
+);
 fs.writeFileSync(`${settingsFolder}/.env`, mainnet.join('\n'));
 
 // ##### .env.local #####
@@ -61,11 +68,11 @@ if (dfx.canisters?.['nns-ledger']?.remote?.id?.local) {
         `ICP_LEDGER_CANISTER_ID="${dfx.canisters?.['nns-ledger'].remote.id.local}"`
     );
 }
-if (canisters.ogy_ledger?.local) {
-    local.push(`OGY_LEDGER_CANISTER_ID="${canisters.ogy_ledger.local}"`);
+if (localCanisters.ogy_ledger?.local) {
+    local.push(`OGY_LEDGER_CANISTER_ID="${localCanisters.ogy_ledger.local}"`);
 }
-if (canisters.phonebook?.local) {
-    local.push(`PHONE_BOOK_CANISTER_ID="${canisters.phonebook.local}"`);
+if (localCanisters.phonebook?.local) {
+    local.push(`PHONE_BOOK_CANISTER_ID="${localCanisters.phonebook.local}"`);
 }
 if (dfx.canisters?.['internet_identity']?.remote?.id?.local) {
     local.push(
@@ -78,6 +85,6 @@ if (dfx.canisters?.['internet_identity']?.remote?.id?.local) {
 appendDevServerSettings(
     local,
     8081,
-    `"${canisters.origyn_nft_reference?.local}"`
+    `"${localCanisters.origyn_nft_reference?.local}"`
 );
 fs.writeFileSync(`${settingsFolder}/.env.local`, local.join('\n'));

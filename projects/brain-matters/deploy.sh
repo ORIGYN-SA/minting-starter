@@ -35,12 +35,12 @@ hdr "User Variables"
 # Edit these user variables as needed
 
 # "local" or "ic" (mainnet)
-export IC_NETWORK="ic"
+export IC_NETWORK="local"
 
 # If local network, creates/imports/uses identity if it does exist.
 # If ic network (mainnet), make sure you manually import your existing
 # identity first, then provide the name of your imported identity here.
-export IDENTITY_NAME="dapps"
+export IDENTITY_NAME="local_deployer"
 
 # NFT collection settings
 export COLLECTION_ID="brain-matters"

@@ -238,8 +238,16 @@ if [[ $IC_NETWORK == 'local' ]]; then
   node ./scripts/update-env.js
   echo "Created 'settings/env.local'"
 
-  echo "Copying 'settings/env.local' to 'submodules/DApps/.env'"
+  echo "Copying 'settings/.env.local' to 'submodules/DApps/.env'"
   cp "settings/.env.local" "submodules/DApps/.env"
+
+  echo "Use these files in other projects that need environment settings from this deployment."
+else
+  ############################################################
+  hdr "Save Mainnet Environment Settings"
+  ############################################################
+  echo "Copying 'settings/.env' to 'submodules/DApps/.env'"
+  cp "settings/.env" "submodules/DApps/.env"
 
   echo "Use these files in other projects that need environment settings from this deployment."
 fi
