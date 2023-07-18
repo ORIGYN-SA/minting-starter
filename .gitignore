@@ -21,3 +21,5 @@ candid
 
 # user secrets
 **/*.pem
+# see: https://github.com/dfinity/sdk/blob/master/docs/cli-reference/dfx-nns.md#example-accessing-icp-on-the-command-line
+!scripts/local-nns.pem

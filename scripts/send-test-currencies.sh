@@ -58,6 +58,9 @@ set -e
 
 if [[ $(dfx identity whoami) != $NNS_LOCAL_IDENTITY ]]; then
   echo "Creating dfx identity $NNS_LOCAL_IDENTITY"
+
+  # load built-in (publically known) identity key used by nns
+  # https://github.com/dfinity/sdk/blob/master/docs/cli-reference/dfx-nns.md#example-accessing-icp-on-the-command-line
   dfx identity import $NNS_LOCAL_IDENTITY ./scripts/local-nns.pem
 
   dfx identity use $NNS_LOCAL_IDENTITY
