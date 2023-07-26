@@ -12615,11 +12615,11 @@ Elapsed: 0 hr 12 min 45 sec (Fri Jun 16 17:56:36 MDT 2023)
 
 Your dApps on mainnet:
 
-https://mludz-biaaa-aaaal-qbhwa-cai.raw.ic0.app/collection/-/vault
-https://mludz-biaaa-aaaal-qbhwa-cai.raw.ic0.app/collection/-/marketplace
-https://mludz-biaaa-aaaal-qbhwa-cai.raw.ic0.app/collection/-/data
-https://mludz-biaaa-aaaal-qbhwa-cai.raw.ic0.app/collection/-/library
-https://mludz-biaaa-aaaal-qbhwa-cai.raw.ic0.app/collection/-/ledger
+https://mludz-biaaa-aaaal-qbhwa-cai.raw.icp0.io/collection/-/vault
+https://mludz-biaaa-aaaal-qbhwa-cai.raw.icp0.io/collection/-/marketplace
+https://mludz-biaaa-aaaal-qbhwa-cai.raw.icp0.io/collection/-/data
+https://mludz-biaaa-aaaal-qbhwa-cai.raw.icp0.io/collection/-/library
+https://mludz-biaaa-aaaal-qbhwa-cai.raw.icp0.io/collection/-/ledger
 
 🚀 MAINNET DEPLOYMENT COMPLETED SUCCESSFULLY 🚀
 

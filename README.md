@@ -291,7 +291,7 @@ The canister id will be located here: [.dfx/local/canister_ids.json](.dfx/local/
 
 The canister id will be located here: [canister_ids.json](canister_ids.json) at "origyn_nft_reference" > "ic".
 
--   Direct (Fully decentralized): https://{canister id}.raw.ic0.app/
+-   Direct (Fully decentralized): https://{canister id}.raw.icp0.io/
 -   Proxy: https://prptl.io/-/{canister-id}/
 -   Proxy + Phonebook: https://prptl.io/-/{collection-id}/
 
@@ -306,7 +306,7 @@ Combine a `canister URL` and a `canister-relative URL` to get a full example of 
     -   Localhost
         -   http://rrkah-fqaaa-aaaaa-aaaaq-cai.localhost:8080
     -   Mainnet
-        -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.ic0.app
+        -   https://ap5ok-kqaaa-aaaak-acvha-cai.raw.icp0.io
 
 -   Proxy
 

@@ -435,11 +435,11 @@ if [[ $IC_NETWORK == 'local' ]]; then
 else
   echo "Your dApps on mainnet:"
   echo ""
-  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/vault
-  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/marketplace
-  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/data
-  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/library
-  echo https://${NFT_CANISTER_ID}.raw.ic0.app/collection/-/ledger
+  echo https://${NFT_CANISTER_ID}.raw.icp0.io/collection/-/vault
+  echo https://${NFT_CANISTER_ID}.raw.icp0.io/collection/-/marketplace
+  echo https://${NFT_CANISTER_ID}.raw.icp0.io/collection/-/data
+  echo https://${NFT_CANISTER_ID}.raw.icp0.io/collection/-/library
+  echo https://${NFT_CANISTER_ID}.raw.icp0.io/collection/-/ledger
   echo ""
   echo "🚀 MAINNET DEPLOYMENT COMPLETED SUCCESSFULLY 🚀"
   echo ""
