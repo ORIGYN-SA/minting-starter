@@ -175,7 +175,9 @@ echo "Building and installing the NFT canister"
 dfx build --network $IC_NETWORK origyn_nft_reference
 
 gzip -kf ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm
-yes yes | dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz
+# Removed `yes yes |` piping forcing user interaction with yes/no prompt.
+# Explanation here: https://forum.dfinity.org/t/error-failed-to-create-agentenvironment/21204/7
+dfx canister --network $IC_NETWORK install origyn_nft_reference --mode=reinstall --wasm ./.dfx/$IC_NETWORK/canisters/origyn_nft_reference/origyn_nft_reference.wasm.gz
 dfx canister --network $IC_NETWORK call origyn_nft_reference manage_storage_nft_origyn '(variant {configure_storage = variant {heap = opt (500000000:nat)}})'
 dfx canister --network $IC_NETWORK call origyn_nft_reference collection_update_nft_origyn "(variant {UpdateOwner = principal \"$ADMIN_PRINCIPAL\"})"
 
