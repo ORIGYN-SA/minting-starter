@@ -54,7 +54,7 @@ for (let index = 0; index < 16; index++) {
 
     // write each of the 16 experience pages to their corresponding folders
     const nftFolder = path.join(tempDir, 'nfts', (index + 1).toString());
-    const nftFile = `experience${index}.html`;
+    const nftFile = `experience${index + 1}.html`;
     fse.ensureDirSync(nftFolder);
     fs.writeFileSync(path.join(nftFolder, nftFile), experienceHtml);
 }
